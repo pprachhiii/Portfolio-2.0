@@ -1,0 +1,316 @@
+/* ================= SIDEBAR ================= */
+
+#sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-w);
+
+  background: var(--section-bg);
+
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 0 18px;
+
+  z-index: 600;
+  pointer-events: none;
+
+  transition:
+    background-color 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+  HERO:
+  Do not paint a separate sidebar background.
+  KineticGrid from Hero should remain visible.
+*/
+html[data-bg-mode="kinetic"] #sidebar {
+  background: transparent;
+}
+
+/*
+  ABOUT / OTHER COLORED SECTIONS:
+  Sidebar follows --section-bg.
+*/
+html[data-bg-mode="color"] #sidebar {
+  background: var(--section-bg);
+}
+
+#sidebar > * {
+  pointer-events: auto;
+}
+
+/* ================= KS CIRCLE ================= */
+
+.avatar-mark {
+  width: 70px;
+  height: 70px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: rgb(255, 158, 174);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+
+  text-decoration: none;
+
+  transition:
+    transform .35s cubic-bezier(.2,.9,.3,1.3);
+}
+
+
+/* ================= VIDEO BACKGROUND ================= */
+
+.avatar-video {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  transition: opacity .25s ease;
+}
+
+
+/* Show video on hover */
+
+.avatar-mark:hover .avatar-video {
+  opacity: 1;
+}
+
+
+/* ================= NAME ================= */
+
+.avatar-mark span {
+  position: relative;
+
+  z-index: 2;
+
+  color: white;
+
+  text-align: center;
+
+  line-height: 1.05;
+
+  pointer-events: none;
+}
+
+
+/* DON'T hide the text */
+
+.avatar-mark:hover span {
+  opacity: 1;
+}
+
+
+
+/* ================= SOCIAL LINKS ================= */
+
+.side-socials {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  align-items: center;
+
+  position: relative;
+}
+
+
+/* Individual social button */
+
+.soc {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  color: rgb(255, 158, 174);
+
+  cursor: pointer;
+
+  transition: color .2s ease;
+}
+
+.soc svg {
+  width: 25px;
+  height: 25px;
+
+  transition:
+    transform .45s cubic-bezier(.3,1.4,.4,1),
+    opacity .3s ease;
+}
+
+
+/* Tooltip */
+
+.soc .tip {
+  position: absolute;
+
+  left: 52px;
+  top: 50%;
+
+  transform:
+    translateY(-50%)
+    translateX(-6px);
+
+  white-space: nowrap;
+
+  background: var(--navy-3);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  color: var(--cream);
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+
+  padding: 6px 10px;
+
+  border-radius: 6px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: all .25s ease;
+}
+
+.soc:hover .tip {
+  opacity: 1;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+
+
+/* ================= TWITTER ================= */
+
+.soc.twitter .bird {
+  transition:
+    transform .5s cubic-bezier(.3,1.2,.3,1),
+    opacity .5s ease;
+}
+
+.soc.twitter:hover .bird {
+  transform:
+    translate(10px,-16px)
+    rotate(-18deg)
+    scale(1.15);
+
+  opacity: 0;
+}
+
+.soc.twitter .bird-ghost {
+  position: absolute;
+
+  opacity: 0;
+
+  transform: translate(0,0);
+
+  transition:
+    transform .5s cubic-bezier(.3,1.2,.3,1) .05s,
+    opacity .5s ease .05s;
+}
+
+.soc.twitter:hover .bird-ghost {
+  opacity: 1;
+
+  transform:
+    translate(14px,-20px)
+    rotate(10deg);
+}
+
+
+
+
+/* ================= GITHUB ================= */
+
+.soc.github:hover svg {
+  transform:
+    translateY(-3px)
+    scale(1.08);
+}
+
+
+/* ================= LINKEDIN ================= */
+
+.soc.linkedin:hover svg {
+  transform:
+    rotate(-8deg)
+    scale(1.05);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 720px) {
+  #sidebar {
+    width: 100%;
+    height: 56px;
+
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    flex-direction: row;
+
+    padding: 0 14px;
+
+    border: none;
+
+    justify-content: space-between;
+  }
+
+  .avatar-mark {
+    width: 38px;
+    height: 38px;
+    font-size: 11px;
+  }
+
+  .side-socials {
+    margin-top: 0;
+    flex-direction: row;
+  }
+
+  .soc .tip {
+    display: none;
+  }
+
+ 
+}

@@ -1,0 +1,915 @@
+/* =========================================================
+   HERO
+========================================================= */
+
+#hero {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 38px;
+  padding-bottom: 60px;
+
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   INTERACTIVE WAVES
+   DO NOT CHANGE
+========================================================= */
+
+.hero-waves {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+.hero-waves .waves-container {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-waves canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.hero-topbar {
+  position: relative;
+  z-index: 5;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.hero-id {
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 13px;
+  font-style: italic;
+  color: rgb(221, 220, 220);
+}
+
+.status i {
+  display: inline-block;
+
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #57e686;
+
+  box-shadow:
+    0 0 0 3px rgba(76, 175, 109, 0.18);
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.45;
+  }
+}
+
+
+/* =========================================================
+   HERO BODY
+========================================================= */
+
+.hero-body {
+  position: relative;
+  z-index: 2;
+
+  flex: 1;
+
+  width: 100%;
+
+  display: grid;
+
+  
+  grid-template-columns: minmax(0, 1fr) 360px;
+
+  align-items: center;
+
+  column-gap: clamp(50px, 7vw, 110px);
+
+  margin-top: 35px;
+
+  padding: 35px 5vw 60px;
+}
+
+
+
+#hero .hero-body {
+  padding-left: 0 !important;
+  padding-right: 90px !important;
+
+  margin-left: 0 !important;
+}
+/* =========================================================
+   LEFT
+========================================================= */
+
+.hero-left {
+  min-width: 0;
+  width: 100%;
+}
+
+.hero-copy {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.hero-heading {
+  margin: 0;
+ padding-top:50px;
+  font-family: "Fraunces", serif;
+
+  font-size: clamp(50px, 6vw, 76px);
+
+  font-weight: 700;
+
+  line-height: 1.04;
+
+  letter-spacing: -2.5px;
+
+  color:white;
+}
+
+
+/* =========================================================
+   WAVING HAND
+========================================================= */
+
+.wave {
+  display: inline-block;
+
+  transform-origin: 70% 70%;
+
+  animation: wave 2.4s infinite;
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(14deg);
+  }
+
+  20% {
+    transform: rotate(-8deg);
+  }
+
+  30% {
+    transform: rotate(14deg);
+  }
+
+  40% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+
+/* =========================================================
+   ARROW + SCRAMBLE ROW
+========================================================= */
+
+.hero-role-row {
+  display: flex;
+  align-items: center;
+
+  /*
+    Arrow and scramble text are now
+    side-by-side.
+  */
+  gap: 16px;
+
+  width: 100%;
+
+  margin-top: 18px;
+
+  min-height: 55px;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+.hero-arrow {
+  position: absolute;
+
+  /*
+    Positioned independently of the text.
+    Does NOT affect Hello / Prachi / role / paragraph.
+  */
+  left: -105px;
+  top: 105px;
+
+  width: 125px;
+  height: 180px;
+
+  color: var(--ink);
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* =========================================================
+   SCRAMBLE TEXT
+========================================================= */
+
+.hero-role {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(22px, 2.6vw, 34px);
+
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  color: var(--crimson);
+
+  white-space: nowrap;
+}
+
+#scrambleText {
+  display: inline-block;
+  color:rgb(255, 158, 174);
+  min-width: 0;
+}
+
+
+/* =========================================================
+   BLINKING CURSOR
+========================================================= */
+
+.cursor-bar {
+  display: inline-block;
+
+  width: 3px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  margin-left: 7px;
+
+  background: var(--ink);
+
+  animation: cursor-blink 0.8s infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.hero-copy > p {
+  max-width: 620px;
+
+  margin: 24px 0 0;
+
+  font-family: "Baloo 2", sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   SEARCH / LINK
+========================================================= */
+
+.hero-search {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+
+  margin-top: 30px;
+}
+
+.hero-search-box {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  max-width: 100%;
+
+  padding: 14px 20px;
+
+  background: #ffffff;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+
+  color: #333;
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.hero-search-box svg {
+  width: 16px;
+  height: 16px;
+
+  flex-shrink: 0;
+
+  stroke: #333;
+}
+
+.hero-work-link {
+  display: inline-block;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: rgb(255, 158, 174);
+
+  border-bottom: 2px solid rgb(226, 108, 128);
+
+  padding-bottom: 2px;
+
+  white-space: nowrap;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hero-work-link:hover {
+  opacity: 0.65;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   RESUME BUTTON
+========================================================= */
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+
+  margin-top: 26px;
+
+  padding: 9px 18px;
+
+  border: 1.4px solid var(--crimson);
+
+  border-radius: 999px;
+
+  color: var(--crimson);
+
+  font-size: 13.5px;
+
+  font-weight: 600;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.btn-outline:hover {
+  background: var(--crimson);
+
+  color: var(--cream);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.hero-right {
+  position: relative;
+
+  width: 360px;
+  min-width: 360px;
+
+  justify-self: end;
+
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   POLAROID
+========================================================= */
+.polaroid {
+  position: relative;
+
+  width: 360px;
+
+  /* PINK FRAME + TEXT AREA */
+  padding: 14px 14px 20px;
+
+  background: rgb(255, 158, 174); /* pink */
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+.polaroid img {
+  display: block;
+
+  width: 100%;
+  height: 380px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+}
+
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.profile-card {
+  margin-top: 16px;
+}
+
+.profile-name {
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: var(--ink);
+}
+
+.profile-name span {
+  font-family: "Inter", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  color: var(--ink-soft);
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.profile-loc {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 4px;
+
+  font-size: 13px;
+
+  color: var(--ink-soft);
+}
+
+.profile-loc svg {
+  width: 12px;
+  height: 12px;
+
+  flex-shrink: 0;
+
+  stroke: currentColor;
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.profile-quote {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 6px;
+
+  margin-top: 8px;
+
+  font-size: 12.5px;
+
+  line-height: 1.4;
+
+  color: var(--ink-soft);
+}
+
+.profile-quote svg {
+  width: 13px;
+  height: 13px;
+
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  stroke: currentColor;
+}
+
+/* =========================================================
+   TOP RIGHT ACTIONS
+========================================================= */
+
+.hero-top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 14px;
+
+  height: 58px;
+}
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .hero-body {
+    grid-template-columns: minmax(0, 1fr) 310px;
+
+    column-gap: 45px;
+
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+
+  .hero-right {
+    width: 310px;
+    min-width: 310px;
+  }
+
+  .polaroid {
+    width: 310px;
+  }
+
+  .polaroid img {
+    height: 330px;
+  }
+
+  .badge-filipino {
+    right: -20px;
+  }
+
+  .badge-advocate {
+    left: -30px;
+  }
+
+  .hero-heading {
+    font-size: clamp(46px, 6vw, 64px);
+  }
+
+  .hero-role {
+    font-size: clamp(20px, 2.6vw, 29px);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .hero-body {
+    grid-template-columns: minmax(0, 1fr) 280px;
+
+    column-gap: 30px;
+  }
+
+  .hero-right {
+    width: 280px;
+    min-width: 280px;
+  }
+
+  .polaroid {
+    width: 280px;
+  }
+
+  .polaroid img {
+    height: 310px;
+  }
+
+  .hero-heading {
+    font-size: clamp(42px, 6vw, 56px);
+  }
+
+  .hero-role {
+    font-size: 21px;
+  }
+
+  .hero-arrow {
+    width: 48px;
+  }
+
+  .hero-arrow svg {
+    width: 48px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+  #hero {
+    min-height: auto;
+
+    padding-top: 25px;
+    padding-bottom: 70px;
+  }
+
+  .hero-topbar {
+    padding: 0 6vw;
+  }
+
+  /*
+    ONLY on mobile do we stack the image.
+  */
+  .hero-body {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 55px;
+
+    margin-top: 30px;
+
+    padding: 40px 6vw 60px;
+
+    text-align: center;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-heading {
+    font-size: clamp(42px, 12vw, 60px);
+
+    letter-spacing: -2px;
+  }
+
+  /*
+    Arrow + role stay beside each other
+    even on mobile.
+  */
+  .hero-role-row {
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 18px;
+  }
+
+  .hero-arrow {
+    width: 45px;
+    height: 42px;
+  }
+
+  .hero-arrow svg {
+    width: 45px;
+    height: 42px;
+  }
+
+  .hero-role {
+    justify-content: flex-start;
+
+    font-size: clamp(18px, 5vw, 25px);
+
+    text-align: left;
+
+    white-space: normal;
+  }
+
+  .hero-copy > p {
+    max-width: 600px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 15px;
+  }
+
+  .hero-search {
+    justify-content: center;
+  }
+
+  .hero-search-box {
+    max-width: 100%;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+  }
+
+  .btn-outline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*
+    Image becomes below text ONLY on mobile.
+  */
+  .hero-right {
+    width: min(360px, 88vw);
+    min-width: 0;
+
+    justify-self: center;
+
+    align-self: center;
+  }
+
+  .polaroid {
+    width: 100%;
+  }
+
+  .polaroid img {
+    height: 360px;
+  }
+
+  .badge-filipino {
+    right: -5px;
+  }
+
+  .badge-advocate {
+    left: -5px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .hero-topbar {
+    align-items: flex-start;
+  }
+
+  .status {
+    font-size: 11px;
+  }
+
+  .hero-heading {
+    font-size: 42px;
+  }
+
+  .hero-role-row {
+    gap: 8px;
+  }
+
+  .hero-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-arrow svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-role {
+    font-size: 18px;
+  }
+
+  .hero-search {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .hero-search-box {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .hero-work-link {
+    margin-top: 2px;
+  }
+
+  .hero-right {
+    width: min(340px, 88vw);
+  }
+
+  .polaroid img {
+    height: 330px;
+  }
+
+  .badge {
+    font-size: 12px;
+
+    padding: 8px 13px;
+  }
+}

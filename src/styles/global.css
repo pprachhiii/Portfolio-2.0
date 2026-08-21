@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Caveat:wght@500;600;700&family=Baloo+2:wght@500;600;700&display=swap");
+
+:root{
+  --cream: #f7edc8;
+  --pink-bar: #eabfc9;
+  --pink-note: #f0c9d3;
+  --pink-note-edge: #e6b3c0;
+  --ink: #4a3226;
+  --ink-soft: #6b4c3d;
+  --cream-2:#F1EADA;
+  --ink:#1F2128;
+  --ink-soft:#585A63;
+  --crimson:#fd658b;
+  --crimson-dark:#B7332C;
+  --gold:#E8BE49;
+  --navy:#0E141B;
+  --navy-2:#141D26;
+  --navy-3:#1B2530;
+  --teal:#33D6C4;
+  --teal-dim:#2A5A57;
+  --fog:#8FA0AC;
+--sidebar-w:104px;
+  --sidebar-w-m:64px;
+}
+
+html,
+body,
+#root {
+  cursor: none;
+}
+
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Space Grotesk', sans-serif;
+  font-family: "Baloo 2", sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em;}
+.eyebrow{
+  font-family:'JetBrains Mono', monospace;
+  font-size:12.5px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+}
+::selection{background:var(--crimson); color:var(--cream);}
+
+/* ================= LAYOUT SHELL ================= */
+main {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width:720px){ main{margin-left:0; margin-bottom:56px;} }
+
+
+/* ================= DARK SECTION SHELL ================= */
+.dark{background:var(--navy); color:var(--cream);}
+.section-head{padding-top:110px; padding-bottom:10px;}
+.section-head .eyebrow{color:var(--teal);}
+.section-head h2{font-size:clamp(30px,4.2vw,48px); margin-top:10px;}
+.underline{width:70px; height:3px; background:var(--crimson); margin-top:18px; border-radius:2px;}
+
+/* ================= GLOBAL BACKGROUND ================= */
+
+.site-background {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* KineticGrid is the permanent fallback background */
+.kinetic-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+/* Section background sits ABOVE kinetic grid */
+.section-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.8s ease;
+}
+
+/* Keep React content above the background */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+#sidebar,
+.menu-toggle,
+.menu-panel {
+  z-index: 600;
+}
+
+/* ================= SMOOTH SECTION BACKGROUND ================= */
+
+/* ================= SMOOTH SECTION BACKGROUND ================= */
+
+:root {
+  --section-bg: transparent;
+  --bg-transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--section-bg);
+  transition: background-color var(--bg-transition);
+}
+
+/*
+  Hero uses KineticGrid.
+  When the active section is Hero, the page itself is transparent
+  so KineticGrid remains visible.
+*/
+html[data-bg-mode="kinetic"] body {
+  background: transparent;
+}
+
+/*
+  Non-Hero sections use the active section color.
+*/
+html[data-bg-mode="color"] body {
+  background: var(--section-bg);
+}

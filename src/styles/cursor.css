@@ -1,0 +1,71 @@
+
+
+/* Custom cursor */
+#magic-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 64px;
+  height: 64px;
+
+  pointer-events: none;
+  z-index: 99999;
+
+  transform: translate(-50%, -50%);
+
+  transition:
+    transform 0.03s linear,
+    opacity 0.15s ease;
+
+  opacity: 1;
+}
+
+/* Ring around the sparkle */
+#magic-cursor .magic-cursor-ring {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  border: 1.5px solid #d9c9a8;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Wand SVG */
+#magic-cursor svg {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 64px;
+  height: 64px;
+
+  overflow: visible;
+}
+
+/* Don't show custom cursor on touch devices */
+@media (hover: none), (pointer: coarse) {
+  html,
+  body,
+  #root,
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+
+  #magic-cursor {
+    display: none;
+  }
+}
+

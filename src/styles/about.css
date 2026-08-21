@@ -1,0 +1,280 @@
+.about-wrap {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 90px 60px 0px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+
+min-height: auto;
+  /* THIS IS THE MISSING PART */
+  background-color: var(--section-bg);
+
+  transition:
+    background-color 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-page {
+  padding-left: 0 !important;
+  padding-right: 100px !important;
+
+  margin-left: 0 !important;
+}
+/* ============================================================
+   LEFT CANDID PHOTO
+   ============================================================ */
+
+.side-photo {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: 300px;
+  transform: rotate(-9deg);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.28);
+  z-index: 2;
+}
+
+.side-photo img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* ============================================================
+   STAR DOODLE
+   ============================================================ */
+
+.star {
+  position: absolute;
+  left: 355px;
+  top: 60px;
+  font-size: 34px;
+  color: var(--pink-note-edge);
+  z-index: 3;
+  transform: rotate(-8deg);
+}
+
+/* ============================================================
+   ABOUT HEADING
+   ============================================================ */
+
+.heading {
+  position: absolute;
+  left: 410px;
+  top: 0;
+  margin: 0;
+
+  font-family: "Kalam", cursive;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 1;
+  color: var(--ink);
+
+  z-index: 4;
+  transform: rotate(-2deg);
+  white-space: nowrap;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  bottom: 14px;
+  height: 16px;
+  background: var(--pink-note);
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* ============================================================
+   PINK NOTE
+   ============================================================ */
+
+.note {
+  position: relative;
+  margin-left: 120px;
+  margin-top: 70px;
+
+  width: 1000px;
+
+  background: var(--pink-note);
+
+  clip-path: polygon(
+    0 0,
+    88% 0,
+    100% 9%,
+    100% 100%,
+    0 100%
+  );
+
+  padding: 46px 48px 42px 56px;
+
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 1.5;
+
+  color: var(--ink);
+  z-index: 1;
+
+border-radius:15%
+}
+
+.note p {
+  margin: 0 0 20px;
+}
+
+.note p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* ============================================================
+   FILMSTRIP
+   ============================================================ */
+
+.strip-wrap {
+  position: absolute;
+  right: 30px;
+  top: 90px;
+
+  width: 210px;
+
+  background: var(--pink-note);
+
+  transform: rotate(7deg);
+
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.22);
+
+  z-index: 2;
+
+  padding: 14px;
+}
+
+.strip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.strip img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .about-wrap {
+    min-height: 1400px;
+    padding: 60px 24px 700px;
+  }
+
+  .side-photo {
+    position: static;
+    width: 260px;
+    transform: rotate(-6deg);
+    margin-bottom: 30px;
+  }
+
+  .star {
+    display: none;
+  }
+
+  .heading {
+    position: static;
+    font-size: 46px;
+    margin-bottom: 20px;
+    white-space: normal;
+  }
+
+  .note {
+    margin: 0;
+    width: 100%;
+  }
+
+  .studio-photo {
+    position: absolute;
+    right: 20px;
+    top: 900px;
+    width: 260px;
+  }
+
+  .studio-photo img {
+    height: 420px;
+  }
+
+  .strip-wrap {
+    position: absolute;
+    right: 20px;
+    top: 1350px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 18px 22px;
+  }
+
+  .logo {
+    font-size: 26px;
+  }
+
+  .nav-links {
+    gap: 16px;
+    font-size: 15px;
+  }
+
+  .about-wrap {
+    padding: 40px 20px 600px;
+    min-height: 1200px;
+  }
+
+  .side-photo {
+    width: 220px;
+  }
+
+  .side-photo img {
+    height: 240px;
+  }
+
+  .heading {
+    font-size: 42px;
+  }
+
+  .note {
+    font-size: 22px;
+    padding: 38px 30px 36px 36px;
+  }
+
+  .studio-photo {
+    top: 780px;
+    right: 15px;
+    width: 220px;
+  }
+
+  .studio-photo img {
+    height: 340px;
+  }
+
+  .strip-wrap {
+    top: 1100px;
+    right: 10px;
+    width: 120px;
+    padding: 10px;
+  }
+}
