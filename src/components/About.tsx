@@ -6,8 +6,6 @@ const About: React.FC = () => {
   <section
     id="about"
     className="about-wrap"
-    data-section="about"
-    data-bg="#f7edc8"
   >        {/* Left candid / night photo */}
         <div className="side-photo">
           <img

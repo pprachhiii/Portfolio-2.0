@@ -1,0 +1,979 @@
+/* =========================================================
+   activity / LEVEL SECTION
+========================================================= */
+
+:root {
+  --activity-pink: rgb(255, 158, 174);
+  --activity-pink-dark: rgb(220, 110, 130);
+
+  --activity-panel: rgba(255, 255, 255, 0.92);
+  --activity-ink: #24121a;
+
+  --activity-white: #ffffff;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.activity-section {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 90px 30px 100px;
+
+  color: white;
+
+  overflow: hidden;
+}
+
+
+/* IMPORTANT:
+   No background here.
+   Your existing page background remains visible.
+*/
+
+
+.activity-wrap {
+  position: relative;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.activity-header {
+  position: relative;
+
+  margin-bottom: 40px;
+
+  z-index: 5;
+}
+
+
+.activity-kicker {
+  margin: 0 0 14px;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: clamp(24px, 4vw, 46px);
+
+  line-height: 1;
+
+  color: var(--activity-pink);
+
+  letter-spacing: 0.03em;
+
+  text-shadow:
+    3px 3px 0 rgba(80, 20, 35, 0.8);
+}
+
+
+.activity-title {
+  margin: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: clamp(14px, 1.7vw, 20px);
+
+  line-height: 1.5;
+
+  color: white;
+}
+
+
+.activity-title span {
+  color: var(--activity-pink);
+}
+
+
+.activity-name {
+  margin: 12px 0 0;
+
+  font-family: "VT323", monospace;
+
+  font-size: 25px;
+
+  color: white;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   MAIN SCENE
+========================================================= */
+
+.activity-scene {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(240px, 1fr)
+    minmax(360px, 460px)
+    minmax(240px, 1fr);
+
+  align-items: center;
+
+  column-gap: 55px;
+
+  min-height: 470px;
+
+  z-index: 20;
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+.laptop-wrapper {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 20;
+
+  animation: laptopFloat 4s ease-in-out infinite;
+}
+
+
+@keyframes laptopFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP BODY
+========================================================= */
+
+.laptop {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 430px;
+
+  transform-origin: center bottom;
+}
+
+
+/* =========================================================
+   SCREEN FRAME
+========================================================= */
+
+.laptop-screen-frame {
+  position: relative;
+
+  width: 82%;
+
+  margin: 0 auto;
+
+  padding: 12px;
+
+  background: #242027;
+
+  border: 3px solid #0d0a0f;
+
+  border-radius: 13px 13px 5px 5px;
+
+  box-shadow:
+    0 0 0 2px var(--activity-pink),
+    8px 8px 0 rgba(0, 0, 0, 0.35);
+}
+
+
+/* CAMERA */
+
+.laptop-camera {
+  position: absolute;
+
+  top: 4px;
+  left: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: #777;
+
+  z-index: 4;
+}
+
+
+/* =========================================================
+   SCREEN
+========================================================= */
+
+.laptop-screen {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 10;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background: #111;
+
+  border: 2px solid #050505;
+}
+
+
+.laptop-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  image-rendering: auto;
+}
+
+
+/* subtle screen glass */
+
+.laptop-screen::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.08),
+      transparent 35%
+    );
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   HINGE
+========================================================= */
+
+.laptop-hinge {
+  width: 76%;
+
+  height: 10px;
+
+  margin: -1px auto 0;
+
+  background: var(--activity-pink-dark);
+
+  border-left: 2px solid #8c394b;
+  border-right: 2px solid #8c394b;
+}
+
+
+/* =========================================================
+   LAPTOP BASE
+========================================================= */
+
+.laptop-base {
+  position: relative;
+
+  width: 100%;
+
+  height: 105px;
+
+  padding: 14px 32px 20px;
+
+  background: var(--activity-pink);
+
+  border: 3px solid #b8495d;
+
+  border-top: none;
+
+  border-radius: 4px 4px 18px 18px;
+
+  box-shadow:
+    8px 8px 0 rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+.keyboard {
+  display: grid;
+
+  grid-template-columns:
+    repeat(14, 1fr);
+
+  gap: 4px;
+
+  width: 100%;
+
+  max-width: 300px;
+
+  margin: 0 auto;
+}
+
+
+.keyboard span {
+  height: 6px;
+
+  border-radius: 1px;
+
+  background: rgba(65, 20, 30, 0.55);
+}
+
+
+/* =========================================================
+   TRACKPAD
+========================================================= */
+
+.trackpad {
+  width: 90px;
+
+  height: 30px;
+
+  margin: 10px auto 0;
+
+  border: 2px solid rgba(80, 20, 30, 0.5);
+
+  border-radius: 3px;
+}
+
+
+/* =========================================================
+   FRONT EDGE
+========================================================= */
+
+.laptop-front {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: -6px;
+
+  width: 92%;
+
+  height: 8px;
+
+  transform: translateX(-50%);
+
+  background: #9f3e52;
+
+  border-radius: 0 0 10px 10px;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.activity-card {
+  position: relative;
+
+  width: 100%;
+
+  background: var(--activity-panel);
+
+  border: 3px solid var(--activity-pink-dark);
+
+  box-shadow:
+    5px 5px 0 rgba(0, 0, 0, 0.35);
+
+  color: var(--activity-ink);
+
+  z-index: 20;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.activity-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    7px 9px 0 rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   CARD BAR
+========================================================= */
+
+.activity-card-bar {
+  position: relative;
+
+  min-height: 34px;
+
+  padding: 7px 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  background: var(--activity-pink);
+
+  border-bottom: 3px solid var(--activity-pink-dark);
+}
+
+
+.activity-card-bar > span {
+  width: 8px;
+  height: 8px;
+
+  background: rgba(50, 15, 25, 0.7);
+
+  flex-shrink: 0;
+}
+
+
+.activity-card-bar strong {
+  position: absolute;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  white-space: nowrap;
+
+  padding: 4px 8px;
+
+  background: #fff;
+
+  border: 2px solid var(--activity-pink-dark);
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 8px;
+
+  color: var(--activity-ink);
+}
+
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.activity-card-body {
+  padding: 18px 20px 21px;
+
+  font-family: "VT323", monospace;
+
+  font-size: 20px;
+
+  line-height: 1.35;
+}
+
+
+.activity-card-body p {
+  margin: 3px 0 14px;
+}
+
+
+.activity-label {
+  margin-top: 5px;
+
+  margin-bottom: 3px;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 8px;
+
+  color: var(--activity-pink-dark);
+
+  letter-spacing: 0.02em;
+}
+
+
+/* =========================================================
+   LEFT / RIGHT CARD POSITION
+========================================================= */
+
+.activity-card-left {
+  align-self: center;
+
+  transform: translateY(15px);
+}
+
+
+.activity-card-right {
+  align-self: center;
+
+  transform: translateY(-10px);
+}
+
+
+.activity-card-left:hover {
+  transform: translateY(10px);
+}
+
+
+.activity-card-right:hover {
+  transform: translateY(-15px);
+}
+
+
+/* =========================================================
+   SVG CONNECTOR LINES
+========================================================= */
+
+/* =========================================================
+   SVG CONNECTOR LINES
+========================================================= */
+
+.activity-lines {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+  pointer-events: none;
+
+  z-index: 10;
+
+  display: block;
+}
+
+.activity-lines path {
+  fill: none;
+
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+
+  stroke-dasharray: 7 7;
+  stroke-dashoffset: 500;
+
+  opacity: 0.8;
+
+  animation: activity-line-draw 1.6s ease forwards;
+}
+
+@keyframes activity-line-draw {
+  from {
+    stroke-dashoffset: 500;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* =========================================================
+   BOTTOM ROW
+========================================================= */
+
+.activity-bottom {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+
+  margin-top: 85px;
+
+  z-index: 20;
+}
+
+
+.bottom-card-one {
+  transform: translateY(0);
+}
+
+
+.bottom-card-two {
+  transform: translateY(28px);
+}
+
+
+.bottom-card-three {
+  transform: translateY(0);
+}
+
+
+.bottom-card-one:hover,
+.bottom-card-three:hover {
+  transform: translateY(-5px);
+}
+
+
+.bottom-card-two:hover {
+  transform: translateY(23px);
+}
+
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skill-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 8px;
+}
+
+
+.skill-grid span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 42px;
+
+  background: var(--activity-pink);
+
+  border: 2px solid var(--activity-pink-dark);
+
+  color: white;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 7px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-tag {
+  display: inline-block;
+
+  margin-top: 5px;
+
+  padding: 5px 8px;
+
+  background: var(--activity-pink);
+
+  color: white;
+
+  border: 2px solid var(--activity-pink-dark);
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 7px;
+}
+
+
+/* =========================================================
+   SKILLS LIST
+========================================================= */
+
+.skills-list {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+.skills-list li {
+  position: relative;
+
+  padding-left: 17px;
+
+  margin-bottom: 5px;
+}
+
+
+.skills-list li::before {
+  content: "▸";
+
+  position: absolute;
+
+  left: 0;
+
+  color: var(--activity-pink-dark);
+}
+
+/* =========================================================
+   ENTRY ANIMATION
+========================================================= */
+
+.activity-card,
+.laptop-wrapper {
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(.22, 1.2, .36, 1);
+}
+
+
+.is-loaded .activity-card,
+.is-loaded .laptop-wrapper {
+  opacity: 1;
+}
+
+
+.is-loaded .laptop-wrapper {
+  transform: translateY(0);
+}
+
+
+.is-loaded .activity-card-left {
+  transform: translateY(15px);
+}
+
+
+.is-loaded .activity-card-right {
+  transform: translateY(-10px);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .activity-scene {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+
+    min-height: auto;
+  }
+
+
+  .laptop-wrapper {
+    grid-column: 1 / -1;
+
+    grid-row: 1;
+
+    order: 1;
+  }
+
+
+  .activity-card-left {
+    grid-column: 1;
+
+    grid-row: 2;
+
+    order: 2;
+  }
+
+
+  .activity-card-right {
+    grid-column: 2;
+
+    grid-row: 2;
+
+    order: 3;
+  }
+
+
+  .connector-left,
+  .connector-right {
+    display: none;
+  }
+
+
+  .activity-bottom {
+    margin-top: 50px;
+  }
+
+
+  .connector-bottom-one,
+  .connector-bottom-two,
+  .connector-bottom-three {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .activity-section {
+    padding: 60px 18px 70px;
+  }
+
+
+  .activity-header {
+    margin-bottom: 30px;
+  }
+
+
+  .activity-scene {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+  }
+
+
+  .laptop-wrapper {
+    order: 1;
+
+    width: 100%;
+  }
+
+
+  .activity-card-left,
+  .activity-card-right {
+    order: 2;
+
+    width: 100%;
+
+    transform: none !important;
+  }
+
+
+  .activity-bottom {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    margin-top: 35px;
+  }
+
+
+  .bottom-card-one,
+  .bottom-card-two,
+  .bottom-card-three {
+    transform: none !important;
+  }
+
+
+  .connector {
+    display: none;
+  }
+
+
+  .laptop {
+    max-width: 370px;
+  }
+
+
+  .laptop-base {
+    height: 85px;
+
+    padding: 10px 22px 15px;
+  }
+
+
+  .keyboard {
+    gap: 3px;
+  }
+
+
+  .keyboard span {
+    height: 5px;
+  }
+
+
+  .trackpad {
+    width: 75px;
+
+    height: 24px;
+
+    margin-top: 8px;
+  }
+
+
+  .activity-card-body {
+    font-size: 18px;
+  }
+
+
+  .skill-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 450px) {
+
+  .activity-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+
+  .activity-kicker {
+    font-size: 24px;
+  }
+
+
+  .activity-title {
+    font-size: 12px;
+  }
+
+
+  .laptop-screen-frame {
+    width: 88%;
+  }
+
+
+  .laptop-base {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+
+  .activity-card-bar strong {
+    font-size: 7px;
+  }
+
+}

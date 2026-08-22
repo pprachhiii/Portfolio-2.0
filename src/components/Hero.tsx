@@ -104,7 +104,6 @@ export default function Hero() {
 <section
   id="hero"
   className="hero-section"
-  data-section="hero"
 >      {/* DO NOT CHANGE WAVES */}
       <div className="hero-waves" aria-hidden="true">
         <KineticGrid />

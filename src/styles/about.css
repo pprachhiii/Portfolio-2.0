@@ -12,11 +12,6 @@
   gap: 20px;
 
 min-height: auto;
-  /* THIS IS THE MISSING PART */
-  background-color: var(--section-bg);
-
-  transition:
-    background-color 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .about-page {
@@ -74,7 +69,7 @@ min-height: auto;
   font-weight: 700;
   font-size: 68px;
   line-height: 1;
-  color: var(--ink);
+  color: rgb(71, 64, 64);
 
   z-index: 4;
   transform: rotate(-2deg);
@@ -148,7 +143,7 @@ border-radius:15%
 
   width: 210px;
 
-  background: var(--pink-note);
+  background: rgb(255, 158, 174);
 
   transform: rotate(7deg);
 

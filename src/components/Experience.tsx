@@ -267,18 +267,18 @@ export default function ExperienceSection() {
       );
 
       // Card 2
-      timeline.to(
-        cardRefs.current[1],
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.4,
-          ease: "power3.out",
-        },
-        "-=0.15"
-      );
-
+// Card 2
+timeline.to(
+  cardRefs.current[1],
+  {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    duration: 0.4,
+    ease: "power3.out",
+  },
+  "-=0.15"
+);
       /*
        * Hold final state.
        */
@@ -289,8 +289,12 @@ export default function ExperienceSection() {
   }, []);
 
   return (
-    <section id="experience" ref={sectionRef} className="experience-section">
-      <div className="experience-grid" />
+    
+<section
+  id="experience"
+  ref={sectionRef}
+  className="experience-section"
+>      <div className="experience-grid" />
 
       <div className="experience-inner">
         {/* Small section label */}
@@ -359,16 +363,16 @@ export default function ExperienceSection() {
           />
 
           {/* Branch from second experience */}
-          <path
-            ref={branchTwoRef}
-            className="experience-branch"
-            d="
-              M 745 800
-              C 820 785,
-                885 785,
-                950 815
-            "
-          />
+<path
+  ref={branchTwoRef}
+  className="experience-branch"
+  d="
+    M 745 800
+    C 680 800,
+      610 815,
+      525 815
+  "
+/>
         </svg>
 
         {/* EXPERIENCE 1 */}

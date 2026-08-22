@@ -15,48 +15,82 @@ export default function Contact() {
         </h2>
 
         <p className="contact-desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
-          purus sit amet luctus venenatis, lectus magna porttitor rhoncus dolor.
+Got a project, idea, or challenge? Let’s talk — collab, <br/> tech help, or just vibing.
         </p>
 
         <div className="contact-info">
-          <div className="contact-info-item">
-            <svg
-              className="icon-mail"
-              viewBox="0 0 24 24"
-              fill="none"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 6-10 7L2 6" />
-            </svg>
+  {/* EMAIL */}
+  <a
+    href="mailto:hello@chloegalindo.com"
+    className="contact-info-item"
+  >
+    <svg
+      className="icon-mail"
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 6-10 7L2 6" />
+    </svg>
 
-            hello@chloegalindo.com
-          </div>
+    <span>hello@chloegalindo.com</span>
+  </a>
 
-          <div className="contact-info-item">
-            <svg
-              className="icon-phone"
-              viewBox="0 0 24 24"
-              fill="none"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-            </svg>
+  {/* GITHUB */}
+  <a
+    href="https://github.com/yourusername"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="contact-info-item"
+  >
+    <svg
+      className="icon-github"
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2 0 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 4.8 5 5 0 0 0 18.9 1S17.7.6 15 2.5a13.4 13.4 0 0 0-7 0C5.3.6 4.1 1 4.1 1A5 5 0 0 0 4 4.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 7 6.5 7A4.8 4.8 0 0 0 8 18v4" />
+      <path d="M9 18c-4.5 2-5-2-7-2" />
+    </svg>
 
-            (246) 234 - 4643
-          </div>
-        </div>
+    <span>GitHub</span>
+  </a>
+
+  {/* LINKEDIN */}
+  <a
+    href="https://linkedin.com/in/yourusername"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="contact-info-item"
+  >
+    <svg
+      className="icon-linkedin"
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="3" />
+      <path d="M8 11v6" />
+      <path d="M8 8v.01" />
+      <path d="M12 17v-6" />
+      <path d="M16 17v-3a3 3 0 0 0-6 0" />
+    </svg>
+
+    <span>LinkedIn</span>
+  </a>
+</div>
       </div>
 
       <form className="contact-form" onSubmit={handleSubmit}>
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="name">Name</label>
 
             <div className="input-wrap">
               <svg
@@ -79,8 +113,12 @@ export default function Contact() {
             </div>
           </div>
 
+          
+        </div>
+
+        <div className="form-row">
+
           <div className="form-group">
-            <label htmlFor="email">Email</label>
 
             <div className="input-wrap">
               <svg
@@ -98,46 +136,8 @@ export default function Contact() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="contact@email.com"
+                placeholder="Your Email"
               />
-            </div>
-          </div>
-        </div>
-
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="phone">Phone</label>
-
-            <div className="input-wrap">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder="(245) 245 - 1345"
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="subject">Subject</label>
-
-            <div className="input-wrap">
-              <select id="subject" name="subject" defaultValue="">
-                <option value="">Select</option>
-                <option value="general">General inquiry</option>
-                <option value="collaboration">Collaboration</option>
-                <option value="freelance">Freelance project</option>
-              </select>
             </div>
           </div>
         </div>
@@ -146,7 +146,6 @@ export default function Contact() {
           className="form-group"
           style={{ marginBottom: 0 }}
         >
-          <label htmlFor="message">Message</label>
 
           <textarea
             id="message"

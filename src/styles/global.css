@@ -114,38 +114,9 @@ main {
   z-index: 600;
 }
 
-/* ================= SMOOTH SECTION BACKGROUND ================= */
-
-/* ================= SMOOTH SECTION BACKGROUND ================= */
-
-:root {
-  --section-bg: transparent;
-  --bg-transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 html,
 body,
 #root {
   min-height: 100%;
 }
 
-body {
-  background: var(--section-bg);
-  transition: background-color var(--bg-transition);
-}
-
-/*
-  Hero uses KineticGrid.
-  When the active section is Hero, the page itself is transparent
-  so KineticGrid remains visible.
-*/
-html[data-bg-mode="kinetic"] body {
-  background: transparent;
-}
-
-/*
-  Non-Hero sections use the active section color.
-*/
-html[data-bg-mode="color"] body {
-  background: var(--section-bg);
-}
