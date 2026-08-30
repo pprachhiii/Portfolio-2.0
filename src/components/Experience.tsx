@@ -64,20 +64,11 @@ export default function ExperienceSection() {
 
       const pathLength = path.getTotalLength();
 
-      /*
-       * Main route
-       *
-       * Initially invisible.
-       * ScrollTrigger gradually reveals it.
-       */
       gsap.set(path, {
         strokeDasharray: pathLength,
         strokeDashoffset: pathLength,
       });
 
-      /*
-       * Branches are hidden initially.
-       */
       [branchOneRef.current, branchTwoRef.current].forEach((branch) => {
         if (!branch) return;
 
@@ -89,9 +80,6 @@ export default function ExperienceSection() {
         });
       });
 
-      /*
-       * Experience elements start hidden.
-       */
       nodeRefs.current.forEach((node) => {
         if (!node) return;
 
@@ -120,11 +108,6 @@ export default function ExperienceSection() {
         });
       });
 
-      /*
-       * MASTER TIMELINE
-       *
-       * The entire animation is controlled by page scroll.
-       */
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -149,7 +132,6 @@ export default function ExperienceSection() {
         ease: "none",
       });
 
-      // Node appears
       timeline.to(
         nodeRefs.current[0],
         {
@@ -160,7 +142,6 @@ export default function ExperienceSection() {
         "-=0.15"
       );
 
-      // Small node pulse
       timeline.to(nodeRefs.current[0], {
         scale: 1.18,
         duration: 0.08,
@@ -173,7 +154,6 @@ export default function ExperienceSection() {
         ease: "power2.inOut",
       });
 
-      // Year comes in
       timeline.to(
         yearRefs.current[0],
         {
@@ -185,7 +165,6 @@ export default function ExperienceSection() {
         "-=0.15"
       );
 
-      // Branch grows from node
       timeline.to(
         branchOneRef.current,
         {
@@ -209,11 +188,6 @@ export default function ExperienceSection() {
         "-=0.15"
       );
 
-      /*
-       * Small pause.
-       * This gives the viewer time to read
-       * the first experience before the route continues.
-       */
       timeline.to({}, { duration: 0.45 });
 
       /*
@@ -273,8 +247,6 @@ export default function ExperienceSection() {
         "-=0.1"
       );
 
-      // Card 2
-// Card 2
 timeline.to(
   cardRefs.current[1],
   {
@@ -286,10 +258,7 @@ timeline.to(
   },
   "-=0.15"
 );
-      /*
-       * Hold final state.
-       */
-      timeline.to({}, { duration: 0.6 });
+       timeline.to({}, { duration: 0.6 });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -304,13 +273,11 @@ timeline.to(
 >      <div className="experience-grid" />
 
       <div className="experience-inner">
-        {/* Small section label */}
-        <div className="experience-label">
+         <div className="experience-label">
           <span className="experience-label-line" />
           EXPERIENCE
         </div>
 
-        {/* SVG ROUTE */}
         <svg
           className="experience-route"
           viewBox="0 0 1200 1000"

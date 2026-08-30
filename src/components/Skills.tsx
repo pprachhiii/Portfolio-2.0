@@ -70,11 +70,6 @@ export default function Skills() {
     };
   }, []);
 
-  /*
-   * ---------------------------------------------
-   * SKILL REVEALS
-   * ---------------------------------------------
-   */
 
   const frontend = ease(reveal(p, 0.10, 0.30));
   const backend = ease(reveal(p, 0.18, 0.38));
@@ -94,6 +89,7 @@ export default function Skills() {
         height: "100vh",
         color: "#222222",
         zIndex: 2,
+        
       }}
     >
       <div
@@ -106,22 +102,21 @@ export default function Skills() {
         "
       >
         <div
-          className="
-            mx-auto
-            flex
-            w-full
-            max-w-[1200px]
-            flex-col
-            px-6
-            md:px-10
-            lg:px-12
-          "
-        >
-
-          {/* -------------------------------- */}
-          {/* HEADING */}
-          {/* -------------------------------- */}
-
+  className="
+    mx-auto
+    flex
+    w-full
+    max-w-[1200px]
+    flex-col
+    pl-12
+    pr-4
+    md:pl-16
+    md:pr-6
+    lg:pl-20
+    lg:pr-8
+  "
+>
+          
           <header className="w-full shrink-0">
             <h2
               className="
@@ -137,11 +132,6 @@ export default function Skills() {
             </h2>
           </header>
 
-
-          {/* -------------------------------- */}
-          {/* MAIN CONTENT */}
-          {/* -------------------------------- */}
-
           <div
             className="
               mt-8
@@ -154,17 +144,11 @@ export default function Skills() {
             "
           >
 
-            {/* ================================= */}
-            {/* LEFT - SKILLS GRID */}
-            {/* ================================= */}
 
             <div className="w-full">
 
               <div className="grid w-full grid-cols-2 text-xl">
 
-                {/* ============================= */}
-                {/* FRONTEND */}
-                {/* ============================= */}
 
                 <Skill
                   title="FRONTEND"
@@ -176,9 +160,6 @@ export default function Skills() {
 
                 />
 
-                {/* ============================= */}
-                {/* BACKEND */}
-                {/* ============================= */}
 
                 <Skill
                   title="BACKEND"
@@ -187,10 +168,6 @@ Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
                   progress={backend}
                 />
 
-
-                {/* ============================= */}
-                {/* DATABASE */}
-                {/* ============================= */}
 
                 <Skill
                   title="DATABASE"
@@ -201,9 +178,6 @@ Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
                   right
                 />
 
-                {/* ============================= */}
-                {/* LANGUAGES */}
-                {/* ============================= */}
 
                 <Skill
                   title="LANGUAGES"
@@ -215,10 +189,6 @@ Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
                 />
 
 
-                {/* ============================= */}
-                {/* DEVOPS */}
-                {/* ============================= */}
-
                 <Skill
                   title="DEVOPS"
                   description="
@@ -228,9 +198,6 @@ Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
                   right
                 />
 
-                {/* ============================= */}
-                {/* TOOLS */}
-                {/* ============================= */}
 
                 <Skill
                   title="TOOLS"
@@ -243,10 +210,6 @@ Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
               </div>
             </div>
 
-
-            {/* ================================= */}
-            {/* RIGHT - ILLUSTRATION */}
-            {/* ================================= */}
 
             <div
               className="
@@ -270,9 +233,6 @@ Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
 }
 
 
-/* ================================================= */
-/* SKILL CELL */
-/* ================================================= */
 
 function Skill({
   title,
@@ -292,20 +252,10 @@ function Skill({
       style={{
         position: "relative",
 
-        /*
-         * IMPORTANT:
-         * Large internal spacing keeps text away
-         * from the centre divider and row borders.
-         */
         paddingTop: "34px",
         paddingBottom: "34px",
-
-        /*
-         * More breathing room on the left side.
-         */
-        paddingLeft: left ? "10px" : "10px",
-        paddingRight: right ? "32px" : "32px",
-
+paddingLeft: left ? "40px" : "40px",
+paddingRight: right ? "16px" : "16px",
         minHeight: "175px",
 
         opacity: progress,
@@ -324,9 +274,6 @@ function Skill({
           letterSpacing: "0.08em",
           lineHeight: 1.2,
 
-          /*
-           * PINK HEADING
-           */
           color: "rgb(255, 158, 174) ",
         }}
       >
@@ -344,9 +291,6 @@ function Skill({
           fontWeight: 400,
           lineHeight: 1.75,
 
-          /*
-           * WHITE TEXT
-           */
           color: "#FFFFFF",
 
           opacity: 0.72,

@@ -47,7 +47,7 @@ min-height: auto;
 
 .star {
   position: absolute;
-  left: 355px;
+  left: 480px;
   top: 60px;
   font-size: 34px;
   color: var(--pink-note-edge);
@@ -61,7 +61,7 @@ min-height: auto;
 
 .heading {
   position: absolute;
-  left: 410px;
+  left: 500px;
   top: 0;
   margin: 0;
 
@@ -69,7 +69,7 @@ min-height: auto;
   font-weight: 700;
   font-size: 68px;
   line-height: 1;
-  color: rgb(71, 64, 64);
+  color: white;
 
   z-index: 4;
   transform: rotate(-2deg);

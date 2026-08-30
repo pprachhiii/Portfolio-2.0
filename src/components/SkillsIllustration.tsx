@@ -17,13 +17,6 @@ const ease = (t: number) =>
   1 - Math.pow(1 - t, 3);
 
 export function SkillsIllustration({ p }: Props) {
-  /*
-   * IMPORTANT:
-   *
-   * The final element now finishes at 1.0.
-   *
-   * There is NO dead 24% at the end.
-   */
 
   const person = ease(
     stage(p, 0.00, 0.18)

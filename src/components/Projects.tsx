@@ -110,7 +110,6 @@ function clamp01(n: number) {
 
 const ease = (t: number) => 1 - Math.pow(1 - t, 3);
 
-/** Shared scroll-progress hook: 0 as the element enters, 1 as it leaves. */
 function useScrollProgress<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const [p, setP] = useState(0);
@@ -145,13 +144,10 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const flipped = index % 2 === 1;
 
-  // staged entrance
   const enter = ease(clamp01((p - 0.08) / 0.3));
   const pop = ease(clamp01((p - 0.24) / 0.3));
   const copy = ease(clamp01((p - 0.16) / 0.3));
-  // inner screenshot auto-scroll while the row travels the viewport
   const shot = clamp01((p - 0.12) / 0.72);
-  // gentle parallax between the mockup and the copy column
   const parallax = (p - 0.5) * 60;
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -167,7 +163,6 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
   className="group relative grid min-h-[80vh] items-center gap-0 py-20 md:grid-cols-12 md:py-24"
   style={{ perspective: "1400px" }}
 >   
-      {/* ambient glow that fades in with the row */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 blur-3xl"
@@ -176,7 +171,6 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
         }}
       />
 
-      {/* browser mockup */}
 <div
   className={`relative z-0 md:col-span-6 ${
     flipped
@@ -204,24 +198,19 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
       }deg) scale(${0.94 + enter * 0.06})`,
     }}
   >
-{/* Browser header */}
 <div
   className="relative flex items-center gap-3 px-5 py-4 md:px-6 md:py-5"
   style={{ margin: "8px" }}
 >
-  {/* Dots stay on the left */}
   <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
   <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
   <span className="h-3 w-3 rounded-full bg-[#28c840]" />
 
-  {/* Always horizontally centered */}
   <div className="absolute left-1/2 w-1/2 -translate-x-1/2 bg-proj-chrome  py-1 text-center text-[11px] text-proj-muted">
     http://localhost:1234
   </div>
 </div>
-    {/* IMAGE VIEWPORT */}
     <div className="relative h-[200px] overflow-hidden bg-proj-screen md:h-[400px]">
-      {/* Horizontal image track */}
       <div
         className="absolute left-0 top-0 flex h-full will-change-transform"
         style={{
@@ -256,7 +245,6 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
   </div>
 </div>
 
-{/* copy column - overlaps the mockup */}
 <div
   className={`relative z-20 flex flex-col md:col-span-6 md:row-start-1 ${
     flipped
@@ -273,7 +261,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
     {project.label}
   </p>
 
-  {/* TITLE */}
+
 <Link
   to={`/projects/${project.slug}`}
   className="block w-fit"
@@ -300,7 +288,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
   </h3>
 </Link>
 
-{/* DESCRIPTION */}
+
 <Link
   to={`/projects/${project.slug}`}
   className="block"
@@ -344,8 +332,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
 </Link>
 
 
-  {/* STACK */}
-  <div
+   <div
     style={{
       marginTop: "20px",
     }}
@@ -381,7 +368,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
     flipped ? "" : "md:justify-end"
   }`}
 >
-  {/* VIEW DETAILS */}
+ 
   <Link
     to={`/projects/${project.slug}`}
     style={{
@@ -403,8 +390,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
     <span>→</span>
   </Link>
 
-  {/* VIEW LIVE DEMO */}
-  <a
+   <a
     href={project.href}
     target="_blank"
     rel="noreferrer"
@@ -443,7 +429,6 @@ export default function Projects() {
 >
   <div className="w-full max-w-none">
 
-        {/* Section heading */}
         <div
           ref={headRef}
           className="flex items-center gap-6"
@@ -468,7 +453,6 @@ export default function Projects() {
           />
         </div>
 
-        {/* REAL PHYSICAL SPACE BETWEEN HEADING AND PROJECT 1 */}
         <div
           aria-hidden="true"
           className="h-10 md:h-20"

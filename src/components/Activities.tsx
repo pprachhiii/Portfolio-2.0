@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import profile from "../assets/profile.png";
 
 const activities = [
   {
@@ -163,19 +164,13 @@ export default function Activities() {
 
   window.addEventListener("resize", drawLines);
 
-  /*
-   * Wait until React has painted everything.
-   */
-  requestAnimationFrame(() => {
+   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       drawLines();
     });
   });
 
-  /*
-   * Recalculate after the entry animation.
-   */
-  const delayedDraw1 = setTimeout(drawLines, 700);
+   const delayedDraw1 = setTimeout(drawLines, 700);
   const delayedDraw2 = setTimeout(drawLines, 1500);
 
   return () => {
@@ -195,19 +190,15 @@ export default function Activities() {
   className="activity-lines"
   aria-hidden="true"
 />
-        {/* ================= HEADER ================= */}
-
+ 
         <div className="activity-header">
           <p className="activity-kicker">Activities</p>
 
         </div>
 
 
-        {/* ================= MAIN SCENE ================= */}
-
+ 
         <div className="activity-scene">
-
-          {/* LEFT CARD */}
 
 <div className="activity-card activity-card-left">
   <div className="activity-card-bar">
@@ -238,13 +229,11 @@ export default function Activities() {
   </div>
 </div>
 
-          {/* ================= LAPTOP ================= */}
 
           <div className="laptop-wrapper">
 
             <div className="laptop">
 
-              {/* SCREEN */}
 
               <div className="laptop-screen-frame">
 
@@ -252,27 +241,20 @@ export default function Activities() {
 
                 <div className="laptop-screen">
 
-                  <video
-  src="/hero-video.webm"
-  autoPlay
-  loop
-  muted
-  playsInline
-    className="laptop-video"
->
-  Your browser does not support the video tag.
-</video>
+                  <img
+  src={profile}
+  alt="Prachi's profile"
+  className="laptop-video"
+/>
                 </div>
 
               </div>
 
 
-              {/* HINGE */}
 
               <div className="laptop-hinge" />
 
 
-              {/* BASE */}
 
               <div className="laptop-base">
 
@@ -289,7 +271,6 @@ export default function Activities() {
               </div>
 
 
-              {/* FRONT EDGE */}
 
               <div className="laptop-front" />
 
@@ -298,7 +279,6 @@ export default function Activities() {
           </div>
 
 
-          {/* RIGHT CARD */}
 
 <div className="activity-card activity-card-right">
   <div className="activity-card-bar">
@@ -321,7 +301,6 @@ export default function Activities() {
         </div>
 
 
-        {/* ================= BOTTOM CARDS ================= */}
 
         <div className="activity-bottom">
 

@@ -134,7 +134,7 @@ export default function Hero() {
   </div>
 </div>
 
-<p className="text-[rgb(192, 192, 192)]">
+<p className="text-[#B2BEB5]">
   I design and build fast, dependable products end-to-end -
   from pixel-level interface work to the APIs and databases
   underneath. Four years of shipping for startups and small

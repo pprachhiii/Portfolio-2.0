@@ -5,7 +5,6 @@ const About: React.FC = () => {
     <main className="about-page">
       <section id="about" className="about-wrap">
 
-        {/* Left candid / night photo */}
         <div className="side-photo">
           <img
             src="/images/candid.png"
@@ -17,15 +16,12 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Decorative star */}
         <div className="star" aria-hidden="true">
           ✦
         </div>
 
-        {/* Heading */}
         <h1 className="heading">about me!</h1>
 
-        {/* About text */}
         <div className="note">
           <p>Hey! I'm Prachi :)</p>
 
@@ -57,11 +53,9 @@ const About: React.FC = () => {
           </p>
         </div>
 
-        {/* Filmstrip */}
         <div className="strip-wrap">
           <div className="strip">
 
-            {/* Hackathon video presentation */}
             <div className="strip-photo">
               <img
                 src="/images/strip1.jpeg"
@@ -73,7 +67,6 @@ const About: React.FC = () => {
               </div>
             </div>
 
-            {/* Tech event */}
             <div className="strip-photo">
               <img
                 src="/images/strip2.jpeg"
@@ -85,7 +78,6 @@ const About: React.FC = () => {
               </div>
             </div>
 
-            {/* Winning certificate */}
             <div className="strip-photo">
               <img
                 src="/images/strip3.jpeg"
@@ -96,8 +88,6 @@ const About: React.FC = () => {
                 <span>proof that the sleep deprivation was kinda worth it 🏆</span>
               </div>
             </div>
-
-            {/* Pretty photo */}
             <div className="strip-photo">
               <img
                 src="/images/strip4.jpeg"

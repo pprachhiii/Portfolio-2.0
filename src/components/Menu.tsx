@@ -24,7 +24,6 @@ export default function Menu() {
 
   return (
     <>
-      {/* ================= MENU BUTTON ================= */}
       <button
         className={`menu-toggle ${open ? "open" : ""}`}
         onClick={() => setOpen((prev) => !prev)}
@@ -50,7 +49,6 @@ export default function Menu() {
         </svg>
       </button>
 
-      {/* ================= MENU PANEL ================= */}
       <div className={`menu-panel ${open ? "open" : ""}`}>
         <div className="menu-inner">
           <ul className="menu-list">

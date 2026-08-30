@@ -45,7 +45,6 @@ const videoRef = useRef<HTMLVideoElement | null>(null);
       </a>
       
 
-      {/* Social links */}
       <div className="side-socials">
         
 
@@ -112,7 +111,7 @@ const videoRef = useRef<HTMLVideoElement | null>(null);
           </span>
         </a>
  
- {/* Twitter / X */}
+ 
         <a
           className="soc twitter"
           href="https://x.com/pprachh11"

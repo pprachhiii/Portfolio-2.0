@@ -145,7 +145,7 @@
   padding-left: 0 !important;
   padding-right: 80px !important;
 
-  margin-left: 20px !important;
+  margin-left: 40px !important;
 }
 /* =========================================================
    LEFT
@@ -572,9 +572,9 @@
 
   margin-top: 4px;
 
-  font-size: 13px;
+  font-size: 15px;
 
-  color: var(--ink-soft);
+  color: grey;
 }
 
 .profile-loc svg {
@@ -599,11 +599,11 @@
 
   margin-top: 8px;
 
-  font-size: 12.5px;
+  font-size: 15px;
 
   line-height: 1.4;
 
-  color: var(--ink-soft);
+  color: grey;
 }
 
 .profile-quote svg {
