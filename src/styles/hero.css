@@ -143,9 +143,9 @@
 
 #hero .hero-body {
   padding-left: 0 !important;
-  padding-right: 90px !important;
+  padding-right: 80px !important;
 
-  margin-left: 0 !important;
+  margin-left: 20px !important;
 }
 /* =========================================================
    LEFT
@@ -370,6 +370,8 @@
   margin-top: 30px;
 }
 
+
+
 .hero-search-box {
   display: flex;
   align-items: center;
@@ -390,7 +392,14 @@
 
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
 }
+
+.hero-search-box:hover {
+ text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 
 .hero-search-box svg {
   width: 16px;

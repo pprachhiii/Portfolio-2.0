@@ -3,37 +3,44 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "../styles/global.css";
+import { Link } from "react-router-dom";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 type Experience = {
   year: string;
+  slug: string;
   company: string;
   role: string;
   period: string;
   description: string;
   logo: string;
+  link: string;
 };
 
 const experiences: Experience[] = [
   {
-    year: "2021",
-    company: "Company One",
-    role: "Software Engineer",
-    period: "2021 — 2023",
+    year: "2025",
+  slug: "full-stack-developer-intern",
+    company: "Shreemal Technology",
+    role: "Full-Stack Developer Intern",
+    period: "Jun 2025 - Aug 2025",
     description:
-      "Worked on scalable digital products, engineering systems and user-facing experiences.",
-    logo: "COMPANY ONE",
+      "Built responsive Next.js interfaces with TypeScript and Tailwind CSS, integrated REST APIs, implemented Upstash Redis caching and rate limiting, and worked across frontend, backend, and API integration.",
+    logo: "/images/exp1.jpg",
+    link: "https://YOUR-SHREEMAL-LINK.com",
   },
   {
-    year: "2024",
-    company: "Company Two",
-    role: "Senior Software Engineer",
-    period: "2024 — Today",
+    year: "2025",
+    slug: "backend-developer-intern",
+    company: "GetNomik",
+    role: "Backend Developer Intern",
+    period: "Jul 2025 - Aug 2025",
     description:
-      "Leading product engineering and designing systems across complex digital experiences.",
-    logo: "COMPANY TWO",
+      "Built REST APIs with Node.js, Express.js, and MySQL, implemented JWT authentication and RBAC, integrated Razorpay and SMTP services, and optimized MySQL queries across multiple API endpoints.",
+    logo: "/images/exp2.jpg",
+    link: "https://YOUR-GETNOMIK-LINK.com",
   },
 ];
 
@@ -405,7 +412,18 @@ timeline.to(
             className="experience-card"
           >
             <div className="experience-logo">
-              {experiences[0].logo}
+<a
+  href={experiences[0].link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="experience-logo"
+  aria-label={`Visit ${experiences[0].company}`}
+>
+  <img
+    src={experiences[0].logo}
+    alt={`${experiences[0].company} logo`}
+  />
+</a>
             </div>
 
             <div className="experience-card-content">
@@ -413,15 +431,39 @@ timeline.to(
                 {experiences[0].period}
               </span>
 
-              <h3>{experiences[0].company}</h3>
+              <h1>                {experiences[0].role}
+</h1>
 
-              <p className="experience-role">
-                {experiences[0].role}
-              </p>
-
+<a
+  href={experiences[0].link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="experience-company"
+>
+  {experiences[0].company}
+</a>
               <p className="experience-description">
                 {experiences[0].description}
               </p>
+              <Link
+  to={`/experience/${experiences[0].slug}`}
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    padding: "10px 20px",
+    backgroundColor: "transparent",
+    color: "#fdf14f",
+    borderRadius: "2px",
+    textDecoration: "none",
+    fontSize: "14px",
+    fontWeight: "500",
+    cursor: "pointer",
+  }}
+>
+  <span>View Details</span>
+  <span>→</span>
+</Link>
             </div>
           </div>
         </div>
@@ -456,7 +498,18 @@ timeline.to(
             className="experience-card"
           >
             <div className="experience-logo">
-              {experiences[1].logo}
+<a
+  href={experiences[1].link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="experience-logo"
+  aria-label={`Visit ${experiences[1].company}`}
+>
+  <img
+    src={experiences[1].logo}
+    alt={`${experiences[1].company} logo`}
+  />
+</a>
             </div>
 
             <div className="experience-card-content">
@@ -464,15 +517,38 @@ timeline.to(
                 {experiences[1].period}
               </span>
 
-              <h3>{experiences[1].company}</h3>
+              <h1> {experiences[1].role} </h1>
 
-              <p className="experience-role">
-                {experiences[1].role}
-              </p>
-
+<a
+  href={experiences[0].link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="experience-company"
+>
+  {experiences[1].company}
+</a>
               <p className="experience-description">
                 {experiences[1].description}
               </p>
+              <Link
+  to={`/experience/${experiences[1].slug}`}
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    padding: "10px 20px",
+    backgroundColor: "transparent",
+    color: "#fdf14f",
+    borderRadius: "2px",
+    textDecoration: "none",
+    fontSize: "14px",
+    fontWeight: "500",
+    cursor: "pointer",
+  }}
+>
+  <span>View Details</span>
+  <span>→</span>
+</Link>
             </div>
           </div>
         </div>

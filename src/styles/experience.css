@@ -5,16 +5,18 @@
   overflow: hidden;
 
   color: white;
-
   z-index: 2;
+
+  /* Reserve some visual space on the right */
+  padding-right: 20vw !important;
+  box-sizing: border-box;
 }
- 
-.experience-inner { 
-  position: relative; 
-  width: 100%; 
-  height: 100%; 
-} 
- 
+
+.experience-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
 /* ---------------------------------------- 
    SECTION LABEL 
@@ -22,16 +24,15 @@
  
 .experience-label { 
   position: absolute; 
-  left: 28px; 
-  top: 50%; 
+  left: 0px; 
+  top: 30%; 
   z-index: 20; 
  
   display: flex; 
   align-items: center; 
   gap: 10px; 
  
-  font-family: Arial, sans-serif; 
-  font-size: 10px; 
+  font-size: 30px; 
   letter-spacing: 0.16em; 
   font-weight: 600; 
  
@@ -40,8 +41,8 @@
 } 
  
 .experience-label-line { 
-  width: 1px; 
-  height: 42px; 
+  width: 4px; 
+  height: 100px; 
   background: grey;
 } 
  
@@ -136,10 +137,8 @@
   left: calc(61.25% - 82px); 
   top: -23px; 
  
-  font-family: Arial, sans-seri 
-  f; 
  
-  font-size: clamp(28px, 3vw, 48px); 
+  font-size: clamp(23px, 2.5vw, 42px); 
   line-height: 1; 
  
   font-weight: 400; 
@@ -149,28 +148,29 @@
 } 
  
  
-/* ---------------------------------------- 
-   EXPERIENCE CARD 
----------------------------------------- */ 
- 
-.experience-card { 
-  position: absolute; 
- 
-  left: calc(61.25% + 130px); 
-  top: -35px; 
- 
-  width: min(360px, 30vw); 
- 
-  display: grid; 
-  grid-template-columns: 100px 1fr; 
- 
-  gap: 22px; 
- 
-  pointer-events: auto; 
-} 
+/* ----------------------------------------
+   EXPERIENCE CARD
+---------------------------------------- */
+
+.experience-card {
+  position: absolute;
+
+  left: calc(61.25% + 130px);
+  top: -35px;
+
+  width: min(42vw, 560px);
+
+  display: grid;
+
+  grid-template-columns: clamp(5rem, 7vw, 6.5rem) minmax(0, 1fr);
+
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+
+  pointer-events: auto;
+}
  
 /* ----------------------------------------
-   EXPERIENCE 1 — YEAR LEFT OF DOT
+   EXPERIENCE 1 - YEAR LEFT OF DOT
 ---------------------------------------- */
 
 .experience-item-one .experience-year {
@@ -183,7 +183,7 @@
 }
 
 /* ----------------------------------------
-   EXPERIENCE 1 — CARD RIGHT OF DOT
+   EXPERIENCE 1 - CARD RIGHT OF DOT
 ---------------------------------------- */
 
 .experience-item-one .experience-card {
@@ -192,7 +192,7 @@
 
   top: -35px;
 
-  width: min(360px, 30vw);
+  width: min(500px, 40vw);
 }
 
 .experience-item-two .experience-node { 
@@ -201,7 +201,7 @@
 }
 /* ------------
 ---------------------------- 
-   YEAR 2 — RIGHT OF DOT 
+   YEAR 2 - RIGHT OF DOT 
 ---------------------------------------- */ 
  
 .experience-item-two .experience-year { 
@@ -213,25 +213,21 @@
   text-align: left; 
 } 
  
-/* ---------------------------------------- 
-   CARD 2 — LEFT OF DOT 
----------------------------------------- */ 
- 
 .experience-item-two .experience-card {
   left: auto;
   right: calc(37.9% + 130px);
 
   top: -35px;
 
-  width: min(360px, 30vw);
+  width: min(500px, 40vw);
 
   display: grid;
 
-  grid-template-columns: 1fr 100px;
+  grid-template-columns: minmax(0, 1fr) clamp(5rem, 7vw, 6.5rem);
 
   grid-template-areas: "content logo";
 
-  gap: 22px;
+  gap: clamp(1rem, 1.8vw, 1.5rem);
 }
 
 .experience-item-two .experience-logo {
@@ -263,29 +259,38 @@
    LOGO BLOCK 
 ---------------------------------------- */ 
  
-.experience-logo { 
-  width: 100px; 
-  height: 100px; 
+
+.experience-logo {
+  width: 100px;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  background: transparent;
+
+  color: transparent;
+
+  overflow: hidden;
+}
+
+.experience-logo img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
  
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
- 
-  padding: 15px; 
- 
-  background: rgb(255, 158, 174); 
- 
-  color: white; 
- 
-  font-family: Arial, sans-serif; 
- 
-  font-size: 9px; 
-  line-height: 1.3; 
- 
-  letter-spacing: 0.13em; 
-  text-align: center; 
-} 
- 
+.experience-logo:hover {
+  transform: scale(1.05);
+}
 /* ---------------------------------------- 
    TEXT 
 ---------------------------------------- */ 
@@ -299,50 +304,54 @@
  
   margin-bottom: 5px; 
  
-  font-family: Arial, sans-serif; 
  
-  font-size: 10px; 
+  font-size: 15px; 
   line-height: 1.3; 
  
   color: white; 
 } 
  
-.experience-card h3 { 
+.experience-card h1 { 
   margin: 0; 
  
-  font-family: Arial, sans-serif; 
- 
-  font-size: 17px; 
-  line-height: 1.05; 
+  
+  color:pink;
+  font-size: 22px; 
  
   font-weight: 700; 
   letter-spacing: -0.035em; 
 } 
  
-.experience-role { 
-  margin: 5px 0 0; 
- 
-  font-family: Arial, sans-serif; 
- 
-  font-size: 12px; 
-  line-height: 1.3; 
- 
-  font-weight: 600; 
-} 
- 
-.experience-description { 
-  margin: 12px 0 0; 
- 
-  max-width: 240px; 
- 
-  font-family: Arial, sans-serif; 
- 
-  font-size: 11px; 
-  line-height: 1.5; 
- 
-  color: white; 
-} 
- 
+.experience-company {
+  display: inline-block;
+  margin: 5px 0 0;
+
+  font-size: 15px;
+  line-height: 1.3;
+
+  color: white;
+  text-decoration: none;
+
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.experience-company:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.experience-description {
+  margin: 12px 0 0;
+
+  width: 100%;
+  max-width: none;
+
+  font-size: clamp(0.8rem, 0.9vw, 1rem);
+  line-height: 1.5;
+
+  color: white;
+}
+
 /* ---------------------------------------- 
    MOBILE 
 ---------------------------------------- */ 
@@ -370,7 +379,7 @@
   .experience-card { 
     left: calc(40% + 55px) !important; 
  
-    width: 52vw; 
+    width: 60vw; 
  
     display: block; 
   } 

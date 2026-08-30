@@ -1,4 +1,3 @@
-
 import Sidebar from "./components/Sidebar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -8,6 +7,10 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contacts";
 import Menu from "./components/Menu";
 import Activities from "./components/Activities";
+import MagicCursor from "./components/MagicCursor";
+
+import ProjectDetails from "./pages/projects/ProjectDetails";
+
 import "./styles/hero.css";
 import "./styles/about.css";
 import "./styles/contact.css";
@@ -19,10 +22,9 @@ import "./styles/global.css";
 import "./styles/tailwind.css";
 import "./styles/activities.css";
 
-import MagicCursor from "./components/MagicCursor";
+import { Routes, Route } from "react-router-dom";
 
-function App() {
-
+function Home() {
   return (
     <>
       <MagicCursor />
@@ -40,6 +42,21 @@ function App() {
         <Contact />
       </main>
     </>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      {/* MAIN PORTFOLIO */}
+      <Route path="/" element={<Home />} />
+
+      {/* PROJECT DETAIL */}
+      <Route
+        path="/projects/:slug"
+        element={<ProjectDetails />}
+      />
+    </Routes>
   );
 }
 

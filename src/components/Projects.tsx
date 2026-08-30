@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import car1pro from "../assets/car1pro.png";
-import dhara from "../assets/dhara.png";
-import project2070 from "../assets/2070.png";
+import { Link } from "react-router-dom";
 
 type Project = {
+  slug: string;
   label: string;
   title: string;
   description: string;
@@ -14,31 +13,94 @@ type Project = {
 
 const projects: Project[] = [
   {
-    label: "All Star Technology",
-    title: "ATA — Biofeedback Therapy System",
+    slug: "car1pro",
+    label: "Featured Project",
+    title: "Car1Pro - Automotive Marketplace",
     description:
-      "Medical iOS app for biofeedback respiratory therapy: gamified exercises built on FDA-cleared spirometer metrics (FVC, FEV1, PEF, and more). I worked on the backend — APIs, data flow, and integrations — using Node.js and TypeScript with MySQL, plus security tooling for a compliant healthcare stack.",
-    stack: ["Node Js", "TypeScript", "MySQL", "REST APIs"],
-    image: [project2070],
-    href: "#",
+      "A production-oriented automotive marketplace built with modern full-stack architecture. I developed a full-stack platform with 12+ responsive pages, 15+ REST APIs, secure authentication, product management, carts, orders, CRUD operations, and relational database models using Next.js, TypeScript, Prisma ORM, and PostgreSQL. The project also includes reusable UI components and automated CI/CD deployment with Docker, GitHub Actions, and Vercel.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "Docker",
+      "GitHub Actions",
+    ],
+    image: ["/images/car1pro.png"],
+    href: "https://car1pro.vercel.app/",
   },
+
   {
-    label: "Dotclick Featured Project",
-    title: "Planflo Web SaaS Platform",
+    slug: "dhara",
+    label: "Featured Project",
+    title: "Dhara - Civic Engagement Platform",
     description:
-      "Planflo is a web-based SaaS platform that helps businesses manage their projects and tasks. It is a comprehensive solution for project management, task management, and collaboration.",
-    stack: ["React Js", "Tailwind CSS", "Shadcn UI", "TypeScript", "PostgreSQL", "Express Js"],
-    image: [car1pro],
-    href: "#",
+      "A civic platform designed to turn community reports into actionable public accountability. I built a full-stack civic engagement platform with 7+ responsive workflows, 30+ REST APIs, and 20+ relational database models supporting authentication, issue reporting, tracking, and user management. The platform also uses Zustand for state management, React Hook Form for validated workflows, ImageKit for media uploads, and reusable Tailwind CSS components.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Prisma",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Zustand",
+    ],
+    image: ["/images/dhara.png"],
+    href: "https://dhara-six.vercel.app/",
   },
+
   {
-    label: "Dotclick Featured Project",
-    title: "Flowlio CRM SaaS Platform",
+    slug: "item-manager",
+    label: "Featured Project",
+    title: "Item Manager - Inventory Management",
     description:
-      "Flowlio is a CRM SaaS platform that helps businesses manage their customers and sales. It is a comprehensive solution for customer relationship management, sales management, and marketing automation.",
-    stack: ["React Js", "Tailwind CSS", "Shadcn UI", "TypeScript", "PostgreSQL", "Express Js"],
-    image: [dhara],
-    href: "#",
+      "An inventory management application focused on modular architecture and efficient CRUD operations. I built a full-stack inventory management system using React, Node.js, Express.js, and MongoDB, implementing REST APIs for inventory and product management. The application integrates frontend and backend through API-driven data synchronization and uses a modular component architecture with reusable UI components for scalability and maintainability.",
+    stack: [
+      "React",
+      "Vite",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "REST APIs",
+    ],
+    image: ["/images/item-manager.png"],
+    href: "https://item-manager-cee0.onrender.com/",
+  },
+
+  {
+    slug: "2070",
+    label: "Featured Project",
+    title: "2070 - Wildlife & Environmental Dashboard",
+    description:
+      "An interactive dashboard for environmental monitoring, geospatial insights, and data visualization. I built an environmental analytics dashboard using React, TypeScript, and Tailwind CSS, with interactive maps, heatmaps, and geospatial visualizations powered by Leaflet and reusable chart components using Recharts. The dashboard is responsive and designed around reusable UI components and efficient state management for smooth data-driven interactions.",
+    stack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Leaflet",
+      "Recharts",
+    ],
+    image: ["/images/2070.png"],
+    href: "https://2070-ten.vercel.app/",
+  },
+
+  {
+    slug: "stayease",
+    label: "Featured Project",
+    title: "StayEase - Rental Marketplace",
+    description:
+      "A rental marketplace engineered around search, authentication, and media management. I built a full-stack rental marketplace using React, Node.js, Express.js, and MongoDB for property discovery and management. The platform includes REST APIs, secure authentication, complete CRUD workflows, property listings, bookings, user accounts, property search and filtering, image uploads, and a responsive rental experience.",
+    stack: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Bootstrap",
+      "REST APIs",
+    ],
+    image: ["/images/stayease.png"],
+    href: "https://stayease-smsm.onrender.com/listings/",
   },
 ];
 
@@ -175,12 +237,18 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
               width: `${100 / project.image.length}%`,
             }}
           >
-            <img
-              src={image}
-              alt={`${project.title} screenshot ${imageIndex + 1}`}
-              loading="lazy"
-              className="h-full w-full object-cover object-top"
-            />
+            <Link
+  to={`/projects/${project.slug}`}
+  className="block h-full w-full"
+  aria-label={`View details for ${project.title}`}
+>
+  <img
+    src={image}
+    alt={`${project.title} screenshot ${imageIndex + 1}`}
+    loading="lazy"
+    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+  />
+</Link>
           </div>
         ))}
       </div>
@@ -188,7 +256,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
   </div>
 </div>
 
-{/* copy column — overlaps the mockup */}
+{/* copy column - overlaps the mockup */}
 <div
   className={`relative z-20 flex flex-col md:col-span-6 md:row-start-1 ${
     flipped
@@ -206,50 +274,74 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
   </p>
 
   {/* TITLE */}
-<h3
-  style={{
-    marginTop: "10px",
-    color: "rgb(255, 158, 174)",
-  }}
-  className="
-    mt-4
-    font-display
-    text-2xl
-    font-semibold
-    transition-colors
-    duration-300
-    md:text-[2rem]
-    md:leading-tight
-  "
+<Link
+  to={`/projects/${project.slug}`}
+  className="block w-fit"
+  aria-label={`View details for ${project.title}`}
 >
-  {project.title}
-</h3>
+  <h3
+    style={{
+      marginTop: "10px",
+      color: "rgb(255, 158, 174)",
+    }}
+    className="
+      mt-4
+      font-display
+      text-2xl
+      font-semibold
+      transition-colors
+      duration-300
+      hover:opacity-80
+      md:text-[2rem]
+      md:leading-tight
+    "
+  >
+    {project.title}
+  </h3>
+</Link>
 
 {/* DESCRIPTION */}
-<div
-  className="relative z-30 rounded-lg bg-proj-card/95 text-left text-sm leading-relaxed text-proj-body shadow-[0_25px_60px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md transition-[box-shadow] duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_35px_80px_-20px_hsl(var(--proj-teal-raw)/0.3)]"
-  style={{
-    marginTop: "20px",
-
-    // OVERLAP — leave this exactly as it is
-    marginLeft: flipped ? "0px" : "-48px",
-    marginRight: flipped ? "-48px" : "0px",
-    width: "calc(100% + 48px)",
-
-    // ACTUAL INTERNAL BREATHING ROOM
-    paddingTop: "32px",
-    paddingRight: "32px",
-    paddingBottom: "32px",
-    paddingLeft: "32px",
-
-    opacity: pop,
-
-    // NO SCALE — this keeps the padding visually intact
-    transform: `translateY(${(1 - pop) * 26}px)`,
-  }}
+<Link
+  to={`/projects/${project.slug}`}
+  className="block"
+  aria-label={`View details for ${project.title}`}
 >
-  {project.description}
-</div>
+  <div
+    className="
+      relative z-30
+      rounded-lg
+      bg-proj-card/95
+      text-left
+      text-sm
+      leading-relaxed
+      text-proj-body
+      shadow-[0_25px_60px_-20px_rgba(0,0,0,0.9)]
+      backdrop-blur-md
+      transition-all
+      duration-500
+      ease-out
+      hover:-translate-y-1.5
+      hover:shadow-[0_35px_80px_-20px_hsl(var(--proj-teal-raw)/0.3)]
+    "
+    style={{
+      marginTop: "20px",
+      marginLeft: flipped ? "0px" : "-48px",
+      marginRight: flipped ? "-48px" : "0px",
+      width: "calc(100% + 48px)",
+
+      paddingTop: "32px",
+      paddingRight: "32px",
+      paddingBottom: "32px",
+      paddingLeft: "32px",
+
+      opacity: pop,
+
+      transform: `translateY(${(1 - pop) * 26}px)`,
+    }}
+  >
+    {project.description}
+  </div>
+</Link>
 
 
   {/* STACK */}
@@ -281,15 +373,41 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
     </p>
   </div>
 
-  {/* VIEW LIVE DEMO */}
 <div
   style={{
     marginTop: "20px",
   }}
-  className={`flex ${flipped ? "" : "md:justify-end"}`}
+  className={`flex flex-wrap gap-3 ${
+    flipped ? "" : "md:justify-end"
+  }`}
 >
+  {/* VIEW DETAILS */}
+  <Link
+    to={`/projects/${project.slug}`}
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "8px",
+      padding: "10px 20px",
+      backgroundColor: "transparent",
+      color: "#ffffff",
+      border: "1px solid rgba(255,255,255,0.35)",
+      borderRadius: "2px",
+      textDecoration: "none",
+      fontSize: "14px",
+      fontWeight: "500",
+      cursor: "pointer",
+    }}
+  >
+    <span>View Details</span>
+    <span>→</span>
+  </Link>
+
+  {/* VIEW LIVE DEMO */}
   <a
     href={project.href}
+    target="_blank"
+    rel="noreferrer"
     style={{
       display: "inline-flex",
       alignItems: "center",
@@ -319,11 +437,11 @@ export default function Projects() {
   const reveal = ease(clamp01((hp - 0.05) / 0.25));
 
   return (
-    <section
-      id="works"
-      className="overflow-hidden px-6 py-28 md:px-16 md:py-40"
-    >
-      <div className="mx-auto w-full max-w-6xl">
+<section
+  id="projects"
+  className="overflow-hidden py-28 pl-40 pr-8 md:py-40 md:pl-50 md:pr-8"
+>
+  <div className="w-full max-w-none">
 
         {/* Section heading */}
         <div

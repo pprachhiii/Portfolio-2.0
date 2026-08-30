@@ -155,12 +155,12 @@ export default function Skills() {
           >
 
             {/* ================================= */}
-            {/* LEFT — SKILLS GRID */}
+            {/* LEFT - SKILLS GRID */}
             {/* ================================= */}
 
             <div className="w-full">
 
-              <div className="grid w-full grid-cols-2">
+              <div className="grid w-full grid-cols-2 text-xl">
 
                 {/* ============================= */}
                 {/* FRONTEND */}
@@ -169,11 +169,7 @@ export default function Skills() {
                 <Skill
                   title="FRONTEND"
                   description="
-                    I build client-side applications
-                    with modern frameworks, semantic
-                    coding practices, TailwindCSS,
-                    animation systems and
-                    performance-focused interfaces.
+                    React, Next.js, Tailwind CSS, HTML5, CSS3, Zustand, React Context, Responsive Web Design
                   "
                   progress={frontend}
                   right
@@ -187,11 +183,7 @@ export default function Skills() {
                 <Skill
                   title="BACKEND"
                   description="
-                    I build scalable and maintainable
-                    backend applications using Nest.js,
-                    Docker, Redis, PostgreSQL,
-                    MongoDB and modern API architecture.
-                  "
+Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
                   progress={backend}
                 />
 
@@ -203,10 +195,7 @@ export default function Skills() {
                 <Skill
                   title="DATABASE"
                   description="
-                    PostgreSQL, MongoDB and Redis
-                    with a focus on data modelling,
-                    indexing, caching, migrations
-                    and query optimisation.
+                     PostgreSQL, MySQL, MongoDB, Database Design
                   "
                   progress={database}
                   right
@@ -219,10 +208,8 @@ export default function Skills() {
                 <Skill
                   title="LANGUAGES"
                   description="
-                    TypeScript, JavaScript, Python,
-                    SQL, HTML and CSS for building
-                    reliable applications across
-                    the entire stack.
+                    TypeScript, JavaScript,
+                    SQL, HTML and CSS.
                   "
                   progress={languages}
                 />
@@ -235,9 +222,7 @@ export default function Skills() {
                 <Skill
                   title="DEVOPS"
                   description="
-                    Docker, CI/CD, deployment workflows,
-                    cloud infrastructure, monitoring
-                    and production reliability.
+                    Docker, GitHub Actions (CI/CD).
                   "
                   progress={devops}
                   right
@@ -250,10 +235,7 @@ export default function Skills() {
                 <Skill
                   title="TOOLS"
                   description="
-                    Git, GitHub, VS Code, Figma,
-                    Postman, Linux, GSAP,
-                    TailwindCSS and other tools
-                    used throughout development.
+                    Git, GitHub, Postman, Apidog, VS Code
                   "
                   progress={tools}
                 />
@@ -263,7 +245,7 @@ export default function Skills() {
 
 
             {/* ================================= */}
-            {/* RIGHT — ILLUSTRATION */}
+            {/* RIGHT - ILLUSTRATION */}
             {/* ================================= */}
 
             <div
@@ -337,7 +319,7 @@ function Skill({
         style={{
           margin: 0,
           fontFamily: "var(--font-display)",
-          fontSize: "18px",
+          fontSize: "20px",
           fontWeight: 500,
           letterSpacing: "0.08em",
           lineHeight: 1.2,
@@ -358,7 +340,7 @@ function Skill({
           maxWidth: "360px",
 
           fontFamily: "var(--font-body)",
-          fontSize: "13px",
+          fontSize: "17px",
           fontWeight: 400,
           lineHeight: 1.75,
 

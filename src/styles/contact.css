@@ -27,7 +27,6 @@
     border-radius:32px;
     box-shadow:-22px 22px 0 0 var(--black);
     overflow:hidden;
-    margin:0 20px 44px 0;
   }
   @media(max-width:700px){
     .stage{padding:14px 14px 0 14px;}
@@ -47,16 +46,11 @@
   /* Slightly taller than the actual content, but no huge empty bottom */
   min-height: auto;
 
-  padding-top: 100px !important;
-  padding-right: clamp(90px, 20vw, 150px) !important;
-  padding-bottom: 55px !important;
-  padding-left: clamp(30px, 6vw, 50px) !important;
-
+margin-left: 90px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 
-  gap: 80px;
   flex-wrap: wrap;
 
   color: var(--ink);
@@ -141,7 +135,9 @@
   padding: 48px 40px;
 
   width: 100%;
-  max-width: 570px;
+  max-width: 550px;
+    margin-right: 80px;
+
 }
 
   .form-row{

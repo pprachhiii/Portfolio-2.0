@@ -15,7 +15,7 @@ export default function Contact() {
         </h2>
 
         <p className="contact-desc">
-Got a project, idea, or challenge? Let’s talk — collab, <br/> tech help, or just vibing.
+Got a project, idea, or challenge? Let’s talk - collab, <br/> tech help, or just vibing.
         </p>
 
         <div className="contact-info">

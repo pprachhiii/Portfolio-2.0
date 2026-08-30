@@ -10,7 +10,7 @@ const phrases = [
   "A UI-minded Engineer",
 ];
 
-const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!<>-_\\/[]{}—=+*^?#";
+const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!<>-_\\/[]{}-=+*^?#";
 
 export default function Hero() {
   const [roleText, setRoleText] = useState("");
@@ -135,29 +135,34 @@ export default function Hero() {
 </div>
 
 <p className="text-[rgb(192, 192, 192)]">
-  I design and build fast, dependable products end-to-end —
+  I design and build fast, dependable products end-to-end -
   from pixel-level interface work to the APIs and databases
   underneath. Four years of shipping for startups and small
   teams who need one person who can own the whole stack.
 </p>
             <div className="hero-search">
-              <div className="hero-search-box">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="m21 21-4.3-4.3" />
-                </svg>
+            <a
+    href="https://www.linkedin.com/in/prachi-yadav-dev/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hero-search-box"
+    aria-label="Visit Prachi Yadav's LinkedIn profile"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
 
-                linkedin.com/in/prachi-yadav
-              </div>
-
-              <a         href="YOUR_GOOGLE_DRIVE_LINK"
+    linkedin.com/in/prachi-yadav-dev
+  </a>
+              <a         href="https://drive.google.com/file/d/1GcSOo57y0zwJMbH5zBmeksONaZ4FiA2K/view?usp=drive_link"
         target="_blank"
         rel="noopener noreferrer"
  className="hero-work-link">
@@ -173,7 +178,7 @@ export default function Hero() {
         <div className="hero-right">
           <div className="polaroid">
             <img
-  src="https://i.pinimg.com/736x/7f/fa/3e/7ffa3e7ef72bb732f2640de7718adf69.jpg"
+  src="/images/profile.jpeg"
   alt="Profile photo"
 />
 
