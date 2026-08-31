@@ -55,7 +55,7 @@ export default function Activities() {
   useEffect(() => {
   const timer = setTimeout(() => {
     setLoaded(true);
-  }, 500);
+  }, 300);
 
   const drawLines = () => {
     const wrap = document.querySelector(".activity-wrap");
@@ -145,9 +145,17 @@ export default function Activities() {
         );
       }
 
-      path.style.animationDelay =
-        `${0.3 + index * 0.15}s`;
-
+      /*
+       * Each line appears after the corresponding card.
+       *
+       * Card 1 → 0.4s
+       * Card 2 → 1.0s
+       * Card 3 → 1.6s
+       * Card 4 → 2.2s
+       * Card 5 → 2.8s
+       */
+path.style.animationDelay =
+  `${0.55 + index * 0.55}s`;
       svg.appendChild(path);
     });
   };
@@ -164,13 +172,11 @@ export default function Activities() {
 
   window.addEventListener("resize", drawLines);
 
-   requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      drawLines();
-    });
+  requestAnimationFrame(() => {
+    requestAnimationFrame(drawLines);
   });
 
-   const delayedDraw1 = setTimeout(drawLines, 700);
+  const delayedDraw1 = setTimeout(drawLines, 700);
   const delayedDraw2 = setTimeout(drawLines, 1500);
 
   return () => {

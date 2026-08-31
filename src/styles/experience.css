@@ -8,7 +8,7 @@
   z-index: 2;
 
   /* Reserve some visual space on the right */
-  padding-right: 20vw !important;
+  padding-right: 15vw !important;
   box-sizing: border-box;
 }
 
@@ -24,7 +24,7 @@
  
 .experience-label { 
   position: absolute; 
-  left: 0px; 
+  left: 35px; 
   top: 30%; 
   z-index: 20; 
  

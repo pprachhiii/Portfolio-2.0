@@ -101,19 +101,21 @@ export default function Skills() {
           overflow-hidden
         "
       >
-        <div
+ <div
   className="
-    mx-auto
     flex
     w-full
     max-w-[1200px]
     flex-col
-    pl-12
+    pl-4
     pr-4
-    md:pl-16
+    md:pl-8
     md:pr-6
-    lg:pl-20
+    lg:pl-10
     lg:pr-8
+    translate-x-12
+    md:translate-x-16
+    lg:translate-x-24
   "
 >
           

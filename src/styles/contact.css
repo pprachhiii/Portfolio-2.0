@@ -1,219 +1,786 @@
-:root{
-    --black:#141414;
-    --cream:#F4F1EA;
-    --yellow:#F5E68C;
-    --blue:#4A5CF5;
-    --white:#FFFFFF;
-    --gray-text:#5b5b5b;
-    --border-radius-lg:24px;
-    --border-radius-md:16px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{height:100%;}
-  body{
-    font-family:'Inter',sans-serif;
-    color:var(--black);
-  }
-  h1,h2,h3{
-    font-family:'Space Grotesk',sans-serif;
-  }
-  a{text-decoration:none;color:inherit;}
- 
-  /* ===== STACKED CARD WRAPPER ===== */
-  .stage{
-    padding:26px 26px 0 26px;
-  }
-  .page-card{
-    border-radius:32px;
-    box-shadow:-22px 22px 0 0 var(--black);
-    overflow:hidden;
-  }
-  @media(max-width:700px){
-    .stage{padding:14px 14px 0 14px;}
-    .page-card{box-shadow:-12px 12px 0 0 var(--black);margin:0 12px 26px 0;}
-  }
- 
-  /* =========================================================
-   CONTACT
-========================================================= */
-
 .contact {
   position: relative;
   z-index: 5;
 
   width: 100%;
 
-  /* Slightly taller than the actual content, but no huge empty bottom */
-  min-height: auto;
+  margin-left: 220px;
 
-margin-left: 90px;
+  padding: 80px 40px 100px 0;
+
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+
+  justify-content: flex-start;
+
+  gap: 280px;
+
+  flex-wrap: nowrap;
+
+  color: var(--black);
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   LEFT
+========================================================= */
+
+.contact-left {
+  max-width: 400px;
+
+  padding-top: 8px;
+
+  /* prevents left section from growing */
+  flex: 0 0 400px;
+}
+
+.contact-title {
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(38px, 4vw, 52px);
+
+  font-weight: 700;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
 
   flex-wrap: wrap;
 
-  color: var(--ink);
+  color: rgb(255, 158, 174);
+
+  line-height: 1.1;
 }
 
-  .contact-left{
-    max-width:420px;
-    padding-top:8px;
-  }
-  .contact-title{
-    font-size:44px;
-    font-weight:700;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
-    color:rgb(255, 158, 174);
 
-  }
-  .contact-title .highlight{
+.contact-title .highlight {
+  display: inline-block;
+
   background: rgb(255, 158, 174);
-    color:var(--white);
-    padding:4px 14px;
-    border-radius:10px;
-  }
-  .contact-desc{
-    margin-top:18px;
-    line-height:1.7;
-    color:white;
-  }
-  .contact-info{
-    margin-top:36px;
-    background:var(--white);
-    border-radius:var(--border-radius-lg);
-    border:2px solid var(--black);
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-      width: 380px;
-  padding: 30px 34px;
 
-  }
-.contact-info-item svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  display: block;
+  color: white;
+
+  padding: 5px 15px;
+
+  border-radius: 10px;
 }
 
-.icon-mail {
-  stroke: rgb(255, 158, 174);
-  fill: none;
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.contact-desc {
+  margin-top: 20px;
+
+  line-height: 1.7;
+
+  color: white;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 15px;
 }
 
-.icon-github {
-  stroke: rgb(255, 158, 174);
-  fill: none;
+.email-text { display: flex; flex-direction: column; gap: 8px; line-height: 1.4; } .email-text > div { display: flex; align-items: baseline; gap: 5px; } .email-text strong { font-size: 14.5px; font-weight: 800; white-space: nowrap; } 
+.email-text span { font-size: 14px; font-weight: 400; color: #555; white-space: nowrap; }
+/* =========================================================
+   CONTACT CARD
+========================================================= */
+
+.contact-info {
+  margin-top: 36px;
+  background: white;
+  border-radius: 24px;
+  border: 2px solid #141414;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 380px;
+  max-width: 100%;
+  padding: 28px 32px;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.85);
 }
 
-.icon-linkedin {
-  stroke: rgb(255, 158, 174);
-  fill: none;
+
+/* =========================================================
+   CARD HEADING
+========================================================= */
+
+.contact-info h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: #141414;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
 }
+
+
+/* =========================================================
+   CONTACT LINKS
+========================================================= */
 
 .contact-info-item {
   display: flex;
   align-items: center;
   gap: 14px;
-
-  color: #000;
-  font-size: 14.5px;
-  font-weight: 600;
-  line-height: 1;
-
+  width: 100%;
+  color: #141414;
+  font-family: "Inter", sans-serif;
   text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
-  .contact-form {
-  background: rgb(255, 158, 174);
-  border-radius: var(--border-radius-lg);
-  border: 2px solid var(--black);
 
-  padding: 48px 40px;
+.contact-info-item:hover {
+  transform: translateX(6px);
+  color: rgb(220, 110, 130);
+}
+
+
+/* =========================================================
+   ICONS
+========================================================= */
+
+.contact-info-item svg,
+.contact-info h3 svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.icon-mail,
+.icon-globe,
+.icon-github,
+.icon-linkedin {
+  color: rgb(255, 158, 174);
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+/* GitHub + LinkedIn: SAME LINE */
+.contact-info-item > .contact-text {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 5px;
+  line-height: 1.4;
+  min-width: 0;
+}
+
+/* Email: TWO separate rows */
+.contact-info-item > .contact-text > div {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  line-height: 1.4;
+}
+
+.contact-info-item > .contact-text > div + div {
+  margin-top: 8px;
+}
+
+.contact-text strong {
+  font-size: 14.5px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.contact-text span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   RIGHT FORM
+========================================================= */
+
+.contact-form {
+  position: relative;
+
+  background: rgb(255, 158, 174);
+
+  border-radius: 24px;
+
+  border: 2px solid #141414;
+
+  padding: 50px 50px;
+
+  width: 550px;
+
+  max-width: 550px;
+
+  box-shadow:
+    12px 12px 0 rgba(0, 0, 0, 0.85);
+}
+
+/* =========================================================
+   FORM HEADING
+========================================================= */
+
+.form-heading {
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  color: #141414;
+
+  margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   FORM ROW
+========================================================= */
+
+.form-row {
+  display: flex;
+
+  gap: 18px;
+
+  margin-bottom: 18px;
+
+  flex-wrap: wrap;
+}
+
+
+.form-group {
+  flex: 1;
+
+  min-width: 180px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.input-wrap {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border-radius: 16px;
+
+  padding: 16px 18px;
+
+  background: white;
+
+  border: 2px solid transparent;
+
+  transition:
+    border 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.input-wrap:focus-within {
+  border-color: #141414;
+
+  transform: translateY(-2px);
+}
+
+
+.input-wrap svg {
+  width: 17px;
+
+  height: 17px;
+
+  stroke: #555;
+
+  flex-shrink: 0;
+}
+
+
+.input-wrap input {
+  border: none;
+
+  outline: none;
 
   width: 100%;
-  max-width: 550px;
-    margin-right: 80px;
 
+  font-family: "Inter", sans-serif;
+
+  font-size: 14px;
+
+  background: transparent;
+
+  color: #141414;
 }
 
-  .form-row{
-    display:flex;
-    gap:18px;
-    margin-bottom:20px;
-    flex-wrap:wrap;
-  }
-  .form-group{
-    flex:1;
-    min-width:180px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-  }
-  
-  .input-wrap{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    border-radius:var(--border-radius-md);
-    padding:13px 16px;
-      background: white;
 
-  }
-  .input-wrap svg{width:16px;height:16px;stroke:#555;flex-shrink:0;}
-  .input-wrap input,
-  .input-wrap select{
-    border:none;
-    outline:none;
-    width:100%;
-    font-family:'Inter',sans-serif;
-    font-size:14px;
-    background:transparent;
-    color:var(--black);
-    appearance:none;
-  }
-  .input-wrap select{cursor:pointer;}
-  textarea{
-    width:100%;
-    border-radius:var(--border-radius-md);
-    padding:14px 16px;
-    font-family:'Inter',sans-serif;
-    font-size:14px;
-    resize:vertical;
-    min-height:110px;
-    outline:none;
-    color:var(--black);
-          background: white;
+.input-wrap input::placeholder {
+  color: #9c9c9c;
+}
 
-  }
-  ::placeholder{color:#9c9c9c;
-  }
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.message-group {
+  margin-bottom: 0;
+}
+
+
+.contact-form textarea {
+  width: 100%;
+
+  border-radius: 16px;
+
+  border: 2px solid transparent;
+
+  padding: 15px 16px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 14px;
+
+  resize: vertical;
+
+  min-height: 130px;
+
+  outline: none;
+
+  color: #141414;
+
+  background: white;
+
+  transition:
+    border 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.contact-form textarea:focus {
+  border-color: #141414;
+
+  transform: translateY(-2px);
+}
+
+
+.contact-form textarea::placeholder {
+  color: #9c9c9c;
+}
+
+
+/* =========================================================
+   SEND BUTTON
+========================================================= */
+
 .send-btn {
   display: block;
+
   margin: 22px auto 0;
 
   background: white;
-  color: black;
-  border: none;
-  padding: 15px 26px;
-  border-radius: var(--border-radius-md);
 
-  font-family: 'Inter', sans-serif;
+  color: #141414;
+
+  border: 2px solid #141414;
+
+  padding: 14px 28px;
+
+  border-radius: 16px;
+
+  font-family: "Inter", sans-serif;
+
   font-size: 14.5px;
+
   font-weight: 600;
 
   cursor: pointer;
-  transition: opacity .2s ease;
+
+  box-shadow: 4px 4px 0 #141414;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.2s ease;
 }
 
-.send-btn:hover {
-  opacity: .85;
+
+.send-btn:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+
+  box-shadow: 2px 2px 0 #141414;
 }
-  @media(max-width:760px){
-    .contact{padding:70px 6vw 90px;}
-    .contact-title{font-size:34px;}
+
+
+.send-btn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+
+  box-shadow: none;
+}
+
+
+.send-btn:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MADE WITH
+========================================================= */
+
+.contact-made-with {
+  margin-top: 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 13px;
+}
+
+
+.made-heart {
+  color: rgb(255, 158, 174);
+
+  animation: contactHeart 1.5s ease-in-out infinite;
+}
+
+
+.made-coffee {
+  color: rgb(255, 210, 100);
+}
+
+
+@keyframes contactHeart {
+
+  0%,
+  100% {
+    transform: scale(1);
   }
 
+  50% {
+    transform: scale(1.25);
+  }
+
+}
+
+
+/* =========================================================
+   THANK YOU OVERLAY
+========================================================= */
+
+.contact-thank-you {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  backdrop-filter: blur(5px);
+
+  animation: thankYouFade 5s ease forwards;
+
+  pointer-events: none;
+}
+
+
+.thank-you-card {
+  position: relative;
+
+  width: min(90%, 520px);
+
+  padding: 45px 35px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 3px solid #141414;
+
+  border-radius: 28px;
+
+  box-shadow:
+    12px 12px 0 #141414;
+
+  animation: thankYouPop 0.6s
+    cubic-bezier(.22, 1.2, .36, 1);
+}
+
+
+.thank-you-card h2 {
+  margin: 5px 0 15px;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(30px, 5vw, 48px);
+
+  color: rgb(255, 158, 174);
+}
+
+
+.thank-you-card p {
+  font-family: "Inter", sans-serif;
+
+  color: #555;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+.thank-you-sparkle {
+  font-size: 32px;
+
+  color: rgb(255, 158, 174);
+
+  animation: sparkleSpin 2s linear infinite;
+}
+
+
+.thank-you-heart {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 25px auto 0;
+
+  width: 42px;
+
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: rgb(255, 158, 174);
+
+  color: white;
+
+  animation: heartBounce 1s ease-in-out infinite;
+}
+
+
+@keyframes thankYouPop {
+
+  from {
+    opacity: 0;
+    transform: scale(0.75) translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+}
+
+
+@keyframes thankYouFade {
+
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes sparkleSpin {
+
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+
+}
+
+
+@keyframes heartBounce {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.18);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .contact {
+    margin-left: 40px;
+
+    padding-right: 40px;
+
+    gap: 45px;
+  }
+
+  .contact-form {
+    margin-right: 20px;
+
+    max-width: 500px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .contact {
+    margin-left: 0;
+
+    padding:
+      60px
+      6vw
+      80px;
+
+    flex-direction: column;
+
+    gap: 50px;
+  }
+
+
+  .contact-left {
+    width: 100%;
+
+    max-width: none;
+  }
+
+
+  .contact-title {
+    font-size: 36px;
+  }
+
+
+  .contact-desc {
+    font-size: 14px;
+  }
+
+
+  .contact-info {
+    width: 100%;
+
+    padding: 25px;
+  }
+
+
+  .contact-form {
+    width: 100%;
+
+    max-width: none;
+
+    margin-right: 0;
+
+    padding: 32px 24px;
+
+    box-shadow:
+      8px 8px 0 #141414;
+  }
+
+
+  .form-heading {
+    font-size: 22px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+  .contact {
+    padding-left: 18px;
+
+    padding-right: 18px;
+  }
+
+
+  .contact-title {
+    font-size: 32px;
+  }
+
+
+  .contact-title .highlight {
+    padding: 4px 11px;
+  }
+
+
+  .contact-form {
+    padding: 28px 20px;
+  }
+
+
+  .thank-you-card {
+    padding: 35px 22px;
+  }
+
+}

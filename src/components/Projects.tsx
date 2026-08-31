@@ -425,7 +425,18 @@ export default function Projects() {
   return (
 <section
   id="projects"
-  className="overflow-hidden py-28 pl-40 pr-8 md:py-40 md:pl-50 md:pr-8"
+  className="
+    overflow-hidden
+    py-28
+    pl-40
+    pr-8
+    md:py-40
+    md:pl-50
+    md:pr-8
+    -translate-x-10
+    md:-translate-x-10
+    lg:translate-x-12
+  "
 >
   <div className="w-full max-w-none">
 
