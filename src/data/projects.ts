@@ -53,22 +53,22 @@ export const projects: Project[] = [
       {
         src: "/images/projects/car1pro/one.png",
         caption:
-          "Homepage — the main entry point for discovering vehicles and exploring the automotive marketplace.",
+          "Homepage - the main entry point for discovering vehicles and exploring the automotive marketplace.",
       },
       {
         src: "/images/projects/car1pro/two.png",
         caption:
-          "Vehicle Listings — users can browse and explore available vehicles.",
+          "Vehicle Listings - users can browse and explore available vehicles.",
       },
       {
         src: "/images/projects/car1pro/three.png",
         caption:
-          "Vehicle Details — a detailed view containing information about an individual vehicle.",
+          "Vehicle Details - a detailed view containing information about an individual vehicle.",
       },
       {
         src: "/images/projects/car1pro/four.png",
         caption:
-          "Dashboard — managing products, orders, and user activity.",
+          "Dashboard - managing products, orders, and user activity.",
       },
     ],
 
@@ -109,12 +109,12 @@ export const projects: Project[] = [
       {
         src: "/images/projects/dhara/one.png",
         caption:
-          "Homepage — introducing the civic engagement platform and its core workflows.",
+          "Homepage - introducing the civic engagement platform and its core workflows.",
       },
       {
         src: "/images/projects/dhara/two.png",
         caption:
-          "Issue Reporting — users can submit and document civic issues.",
+          "Issue Reporting - users can submit and document civic issues.",
       },
       
     ],
@@ -155,17 +155,17 @@ export const projects: Project[] = [
       {
         src: "/images/projects/item-manager/one.png",
         caption:
-          "Dashboard — the central interface for managing inventory.",
+          "Dashboard - the central interface for managing inventory.",
       },
       {
         src: "/images/projects/item-manager/two.png",
         caption:
-          "Product Management — viewing and managing inventory items.",
+          "Product Management - viewing and managing inventory items.",
       },
       {
         src: "/images/projects/item-manager/3.png",
         caption:
-          "Add Item — creating new inventory records through the application.",
+          "Add Item - creating new inventory records through the application.",
       },
     ],
 
@@ -204,27 +204,27 @@ export const projects: Project[] = [
       {
         src: "/images/projects/2070/one.png",
         caption:
-          "Dashboard — the main environmental monitoring interface.",
+          "Dashboard - the main environmental monitoring interface.",
       },
       {
         src: "/images/projects/2070/two.png",
         caption:
-          "Interactive Map — displaying geospatial environmental information.",
+          "Interactive Map - displaying geospatial environmental information.",
       },
       {
         src: "/images/projects/2070/three.png",
         caption:
-          "Analytics — visualizing environmental data through charts and metrics.",
+          "Analytics - visualizing environmental data through charts and metrics.",
       },
             {
         src: "/images/projects/2070/four.png",
         caption:
-          "Analytics — visualizing environmental data through charts and metrics.",
+          "Analytics - visualizing environmental data through charts and metrics.",
       },
       {
         src: "/images/projects/2070/five.png",
         caption:
-          "Analytics — visualizing environmental data through charts and metrics.",
+          "Analytics - visualizing environmental data through charts and metrics.",
       },
 
     ],
@@ -265,12 +265,12 @@ export const projects: Project[] = [
       {
         src: "/images/projects/stayease/one.png",
         caption:
-          "Listings — browsing available rental properties.",
+          "Listings - browsing available rental properties.",
       },
       {
         src: "/images/projects/stayease/two.png",
         caption:
-          "Property Details — viewing detailed information about a rental property.",
+          "Property Details - viewing detailed information about a rental property.",
       },
     ],
 
