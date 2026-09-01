@@ -1,0 +1,559 @@
+
+.skills-viewport {
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.skills-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 0 32px;
+}
+
+
+/* ============================================================
+   HEADING
+   ============================================================ */
+
+.skills-heading {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================
+
+   DESKTOP:
+
+   ┌──────────────────────┬──────────────┐
+   │                      │              │
+   │       SKILLS         │     SVG      │
+   │                      │              │
+   └──────────────────────┴──────────────┘
+   */
+
+.skills-main {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 1.1fr 0.9fr;
+
+  align-items: center;
+
+  gap: 40px;
+}
+
+
+/* ============================================================
+   SIX SKILLS
+   ============================================================ */
+
+.skills-list {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  align-items: start;
+}
+
+
+.skill-item {
+  position: relative;
+
+  min-width: 0;
+
+  min-height: 155px;
+
+  padding: 28px 24px;
+
+  transition: opacity 0.15s linear;
+}
+
+
+/* LEFT COLUMN */
+
+.skill-item:nth-child(odd) {
+  padding-left: 40px;
+  padding-right: 16px;
+}
+
+
+/* RIGHT COLUMN */
+
+.skill-item:nth-child(even) {
+  padding-left: 32px;
+  padding-right: 24px;
+}
+
+
+/* ============================================================
+   SKILL TITLE
+   ============================================================ */
+
+.skill-title {
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  font-size: 20px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.08em;
+
+  line-height: 1.2;
+
+  color: rgb(255, 158, 174) !important;
+}
+
+
+/* ============================================================
+   SKILL DESCRIPTION
+   ============================================================ */
+
+.skill-description {
+  margin: 14px 0 0;
+
+  max-width: 360px;
+
+  font-family: var(--font-body);
+
+  font-size: 17px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+
+  /*
+   * FORCE WHITE.
+   * This prevents another global p/text rule
+   * from turning the skill text grey.
+   */
+
+  color: #ffffff !important;
+
+  opacity: 0.72;
+}
+
+
+/* ============================================================
+   SVG
+   ============================================================ */
+
+.skills-illustration {
+  width: 100%;
+
+  height: 420px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.skills-illustration svg {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .skills-viewport {
+    height: 100vh;
+
+    /*
+     * Keep desktop-like side-by-side layout.
+     */
+    overflow: hidden;
+  }
+
+  .skills-container {
+    padding: 0 24px;
+  }
+
+  .skills-main {
+
+    /*
+     * STILL TWO SIDES
+     *
+     * Skills | SVG
+     */
+
+    grid-template-columns: 1.15fr 0.85fr;
+
+    gap: 20px;
+  }
+
+  .skills-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-illustration {
+    height: 340px;
+  }
+
+  .skill-item {
+    min-height: 145px;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .skill-item:nth-child(odd) {
+    padding-left: 28px;
+    padding-right: 10px;
+  }
+
+  .skill-item:nth-child(even) {
+    padding-left: 20px;
+    padding-right: 14px;
+  }
+
+  .skill-title {
+    font-size: 18px;
+  }
+
+  .skill-description {
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+}
+
+
+/* ============================================================
+   SMALL TABLET
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+  .skills-container {
+    padding: 0 18px;
+  }
+
+  .skills-main {
+
+    /*
+     * STILL SIDE BY SIDE
+     *
+     * Skills | SVG
+     */
+
+    grid-template-columns: 1.2fr 0.8fr;
+
+    gap: 10px;
+  }
+
+  .skills-illustration {
+    height: 300px;
+  }
+
+  .skill-item {
+    min-height: 135px;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .skill-item:nth-child(odd) {
+    padding-left: 20px;
+    padding-right: 8px;
+  }
+
+  .skill-item:nth-child(even) {
+    padding-left: 14px;
+    padding-right: 10px;
+  }
+
+  .skill-title {
+    font-size: 16px;
+  }
+
+  .skill-description {
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================
+
+   IMPORTANT:
+
+   The SVG comes FIRST.
+
+   Then ALL SIX SKILLS.
+
+   ┌────────────────────────┐
+   │      SKILLS I HAVE     │
+   ├────────────────────────┤
+   │                        │
+   │          SVG           │
+   │                        │
+   ├────────────────────────┤
+   │ FRONTEND               │
+   │ description            │
+   ├────────────────────────┤
+   │ BACKEND                │
+   │ description            │
+   ├────────────────────────┤
+   │ DATABASE               │
+   │ description            │
+   ├────────────────────────┤
+   │ LANGUAGES              │
+   │ description            │
+   ├────────────────────────┤
+   │ DEVOPS                 │
+   │ description            │
+   ├────────────────────────┤
+   │ TOOLS                  │
+   │ description            │
+   └────────────────────────┘
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .skills-viewport {
+
+    /*
+     * Let the six skills extend below the viewport.
+     */
+    height: auto;
+
+    min-height: 100vh;
+
+    display: block;
+
+    overflow: visible;
+  }
+
+
+  .skills-container {
+    width: 100%;
+
+    padding: 55px 18px 70px;
+  }
+
+
+  /* ------------------------------------------------------------
+     HEADING
+     ------------------------------------------------------------ */
+
+  .skills-heading {
+    margin-bottom: 15px;
+  }
+
+  .skills-heading h2 {
+    font-size: 38px;
+
+    line-height: 1;
+  }
+
+
+  /* ------------------------------------------------------------
+     MAIN
+
+     Turn the desktop grid into a vertical layout.
+     ------------------------------------------------------------ */
+
+  .skills-main {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 10px;
+  }
+
+
+  /* ------------------------------------------------------------
+     SVG FIRST
+     ------------------------------------------------------------ */
+
+  .skills-illustration {
+
+    /*
+     * THIS is what puts SVG BEFORE skills.
+     */
+
+    order: 1;
+
+    width: 100%;
+
+    height: 190px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+  }
+
+  .skills-illustration svg {
+
+    width: 100%;
+
+    max-width: 300px;
+
+    height: 190px;
+
+    display: block;
+  }
+
+
+  /* ------------------------------------------------------------
+     SKILLS SECOND
+     ------------------------------------------------------------ */
+
+  .skills-list {
+
+    /*
+     * All six skills are visible here.
+     */
+
+    order: 2;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+  }
+
+
+  /* ------------------------------------------------------------
+     EACH SKILL
+     ------------------------------------------------------------ */
+
+  .skill-item {
+
+    width: 100%;
+
+    min-height: 0;
+
+    margin: 0;
+
+    padding: 22px 20px !important;
+
+    /*
+     * Keep animation.
+     */
+    transition: opacity 0.15s linear;
+  }
+
+
+  .skill-title {
+
+    font-size: 17px;
+
+    color: rgb(255, 158, 174) !important;
+  }
+
+
+  .skill-description {
+
+    width: 100%;
+
+    max-width: none;
+
+    margin-top: 10px;
+
+    font-size: 16px;
+
+    line-height: 1.55;
+
+    color: #ffffff !important;
+
+    opacity: 0.72;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+  .skills-container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+
+  .skills-heading h2 {
+    font-size: 34px;
+  }
+
+
+  /* SVG gets shorter */
+
+  .skills-illustration {
+
+    height: 160px;
+  }
+
+  .skills-illustration svg {
+
+    width: 100%;
+
+    max-width: 260px;
+
+    height: 160px;
+  }
+
+
+  /* Skills remain all six */
+
+  .skill-item {
+
+    padding: 20px 16px !important;
+  }
+
+
+  .skill-title {
+    font-size: 16px;
+  }
+
+
+  .skill-description {
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    color: #ffffff !important;
+  }
+}

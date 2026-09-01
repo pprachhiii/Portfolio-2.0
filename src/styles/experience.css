@@ -352,51 +352,835 @@
   color: white;
 }
 
-/* ---------------------------------------- 
-   MOBILE 
----------------------------------------- */ 
- 
-@media (max-width: 700px) { 
-  .experience-grid { 
-    background-size: 24px 24px; 
-  } 
- 
-  .experience-label { 
-    left: 12px; 
-    font-size: 8px; 
-  } 
- 
-  .experience-node { 
-    left: 40% !important; 
-  } 
- 
-  .experience-year { 
-    left: calc(40% - 65px) !important; 
- 
-    font-size: 30px; 
-  } 
- 
-  .experience-card { 
-    left: calc(40% + 55px) !important; 
- 
-    width: 60vw; 
- 
-    display: block; 
-  } 
- 
-  .experience-logo { 
-    width: 70px; 
-    height: 70px; 
- 
-    margin-bottom: 10px; 
-  } 
- 
-  .experience-card h3 { 
-    font-size: 14px; 
-  } 
- 
-  .experience-description { 
-    display: none; 
-  } 
-} 
- 
+
+@media (max-width: 1100px) {
+
+  .experience-section {
+    padding-right: 8vw !important;
+  }
+
+  .experience-label {
+    left: 22px;
+    font-size: 24px;
+  }
+
+  .experience-label-line {
+    width: 3px;
+    height: 85px;
+  }
+
+  .experience-node {
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+  }
+
+  .experience-node::after {
+    inset: -6px;
+  }
+
+  .experience-year {
+    font-size: clamp(21px, 2.7vw, 36px);
+  }
+
+  /* ------------------------------------------
+     CARD
+     ------------------------------------------ */
+
+  .experience-card {
+    width: min(42vw, 480px);
+
+    grid-template-columns:
+      75px
+      minmax(0, 1fr);
+
+    gap: 15px;
+  }
+
+  .experience-item-one .experience-card {
+    width: min(42vw, 480px);
+  }
+
+  .experience-item-two .experience-card {
+    width: min(42vw, 480px);
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      75px;
+
+    gap: 15px;
+  }
+
+  /* ------------------------------------------
+     LOGO
+     ------------------------------------------ */
+
+  .experience-logo {
+    width: 75px;
+    height: 75px;
+  }
+
+  /* ------------------------------------------
+     TEXT
+     ------------------------------------------ */
+
+  .experience-period {
+    font-size: 14px;
+  }
+
+  .experience-card h1 {
+    font-size: 20px;
+  }
+
+  .experience-company {
+    font-size: 14px;
+  }
+
+  /*
+   * Description intentionally hidden from tablet
+   * and smaller screens.
+   */
+  .experience-description {
+    display: none;
+  }
+
+  .experience-card-content > a:last-child {
+    font-size: 13px !important;
+  }
+}
+
+
+/* ============================================================
+   SMALL TABLET
+   ------------------------------------------------------------
+   Still keeps:
+   
+   NODE
+      |
+   YEAR / CARD relationship
+   
+   Just smaller.
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+  .experience-section {
+    padding-right: 3vw !important;
+  }
+
+  .experience-label {
+    left: 15px;
+    font-size: 18px;
+  }
+
+  .experience-label-line {
+    width: 3px;
+    height: 70px;
+  }
+
+  .experience-node {
+    width: 14px;
+    height: 14px;
+
+    margin-left: -7px;
+    margin-top: -7px;
+  }
+
+  .experience-item-two .experience-node {
+    margin-left: -7px;
+    margin-top: -7px;
+  }
+
+  .experience-year {
+    font-size: clamp(20px, 3vw, 32px);
+  }
+
+  /* ------------------------------------------
+     CARD
+     ------------------------------------------ */
+
+  .experience-card {
+    width: min(43vw, 400px);
+
+    grid-template-columns:
+      65px
+      minmax(0, 1fr);
+
+    gap: 12px;
+  }
+
+  .experience-item-one .experience-card {
+    width: min(43vw, 400px);
+  }
+
+  .experience-item-two .experience-card {
+    width: min(43vw, 400px);
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      65px;
+
+    gap: 12px;
+  }
+
+  /* ------------------------------------------
+     LOGO
+     ------------------------------------------ */
+
+  .experience-logo {
+    width: 65px;
+    height: 65px;
+  }
+
+  /* ------------------------------------------
+     TEXT
+     ------------------------------------------ */
+
+  .experience-period {
+    font-size: 13px;
+  }
+
+  .experience-card h1 {
+    font-size: 18px;
+  }
+
+  .experience-company {
+    font-size: 13px;
+  }
+
+  /*
+   * Keep hidden.
+   */
+  .experience-description {
+    display: none;
+  }
+
+  .experience-card-content > a:last-child {
+    font-size: 12px !important;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================
+
+   IMPORTANT DESIGN:
+
+   EXPERIENCE 1:
+
+             YEAR
+              |
+              ●
+              |
+              └── LOGO
+                  PERIOD
+                  ROLE
+                  COMPANY
+                  VIEW DETAILS
+
+
+   EXPERIENCE 2:
+
+                  YEAR
+                   |
+                   ●
+                   |
+        LOGO ───── CONTENT
+                 PERIOD
+                 ROLE
+                 COMPANY
+                 VIEW DETAILS
+
+
+   Description stays HIDDEN.
+
+   Desktop is NOT changed.
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  /* ----------------------------------------------------------
+     SECTION
+     ---------------------------------------------------------- */
+
+  .experience-section {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+
+    padding-right: 0 !important;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+  .experience-inner {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  /* ----------------------------------------------------------
+     SECTION LABEL
+     ---------------------------------------------------------- */
+
+  .experience-label {
+    left: 8px;
+    top: 28%;
+
+    font-size: 10px;
+
+    gap: 5px;
+
+    letter-spacing: 0.12em;
+  }
+
+  .experience-label-line {
+    width: 2px;
+    height: 58px;
+  }
+
+
+  /* ----------------------------------------------------------
+     SVG
+     
+     DO NOT CHANGE ITS GEOMETRY.
+     
+     The SVG and nodes must use the same coordinate relationship.
+     ---------------------------------------------------------- */
+
+  .experience-route {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+  }
+
+
+  /* ----------------------------------------------------------
+     NODE
+     
+     IMPORTANT:
+     
+     The SVG path is around:
+     
+       x = 610 / 1200 = 50.8%
+     
+     to
+     
+       x = 745 / 1200 = 62.1%
+     
+     So 40% was WRONG.
+     
+     Experience 1 is around 61.25%.
+     Experience 2 is around 62.1%.
+     ---------------------------------------------------------- */
+
+  .experience-node {
+    left: 61.25% !important;
+
+    width: 13px;
+    height: 13px;
+
+    margin-left: -6.5px;
+    margin-top: -6.5px;
+
+    z-index: 10;
+  }
+
+  .experience-item-two .experience-node {
+    left: 62.1% !important;
+
+    width: 13px;
+    height: 13px;
+
+    margin-left: -6.5px;
+    margin-top: -6.5px;
+  }
+
+
+  /* ----------------------------------------------------------
+     EXPERIENCE 1 YEAR
+     
+     YEAR = LEFT OF NODE
+     ---------------------------------------------------------- */
+
+  .experience-item-one .experience-year {
+    left: calc(61.25% - 88px) !important;
+
+    right: auto !important;
+
+    top: -17px;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    text-align: right;
+  }
+
+
+  /* ----------------------------------------------------------
+     EXPERIENCE 2 YEAR
+     
+     YEAR = RIGHT OF NODE
+     
+     THIS FIXES THE MAIN SECOND-EXPERIENCE PROBLEM.
+     ---------------------------------------------------------- */
+
+  .experience-item-two .experience-year {
+    left: calc(62.1% + 24px) !important;
+
+    right: auto !important;
+
+    top: -17px;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    text-align: left;
+
+    white-space: nowrap;
+  }
+
+
+  /* ==========================================================
+     EXPERIENCE 1 CARD
+     
+     On mobile we intentionally change the INTERNAL structure
+     from desktop's side-by-side logo/content to a vertical
+     hierarchy.
+     ========================================================== */
+
+  .experience-item-one .experience-card {
+
+    left: calc(61.25% + 22px) !important;
+
+    right: auto !important;
+
+    top: -30px;
+
+    /*
+     * Give the card enough room.
+     *
+     * Do NOT use 60vw here.
+     */
+    width: 34vw;
+
+    max-width: 240px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    pointer-events: auto;
+  }
+
+
+  /* ==========================================================
+     EXPERIENCE 2 CARD
+     
+     CONTENT IS LEFT OF NODE.
+     
+     LOGO IS ABOVE CONTENT.
+     
+     Everything stays inside viewport.
+     ========================================================== */
+
+  .experience-item-two .experience-card {
+
+    left: auto !important;
+
+    /*
+     * Put the RIGHT EDGE of the card safely
+     * to the LEFT of the 62.1% node.
+     */
+    right: calc(37.9% + 22px) !important;
+
+    top: -30px;
+
+    width: 34vw;
+
+    max-width: 240px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    pointer-events: auto;
+  }
+
+
+.experience-item-two .experience-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Company gets its own line */
+  .experience-item-two .experience-company {
+    display: block !important;
+    width: fit-content;
+    max-width: 100%;
+
+    margin-top: 5px;
+
+    white-space: nowrap;
+  }
+
+
+
+  /* ----------------------------------------------------------
+     LOGO
+     
+     LOGO FIRST.
+     ---------------------------------------------------------- */
+
+  .experience-logo {
+    order: 1;
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 0 8px 0;
+
+    flex-shrink: 0;
+  }
+
+  .experience-item-two .experience-logo {
+    grid-area: auto;
+
+    order: 1;
+
+    margin-bottom: 8px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CONTENT
+     
+     Logo
+     ↓
+     Period
+     ↓
+     Role
+     ↓
+     Company
+     ↓
+     View Details
+     ---------------------------------------------------------- */
+
+  .experience-card-content {
+    order: 2;
+
+    width: 100%;
+
+    min-width: 0;
+
+    padding-top: 0;
+  }
+
+
+  /* ----------------------------------------------------------
+     PERIOD
+     ---------------------------------------------------------- */
+
+  .experience-period {
+    display: block;
+
+    margin: 0 0 4px 0;
+
+    font-size: 12px;
+
+    line-height: 1.3;
+
+    color: white;
+  }
+
+
+  /* ----------------------------------------------------------
+     ROLE
+     
+     Keep this clearly visible.
+     ---------------------------------------------------------- */
+
+  .experience-card h1 {
+    margin: 0;
+
+    font-size: 17px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    letter-spacing: -0.025em;
+
+    color: pink;
+  }
+
+
+  /* ----------------------------------------------------------
+     COMPANY
+     ---------------------------------------------------------- */
+
+  .experience-company {
+    display: inline-block;
+
+    margin: 5px 0 0;
+
+    font-size: 12px;
+
+    line-height: 1.3;
+
+    color: white;
+  }
+
+
+  /* ----------------------------------------------------------
+     DESCRIPTION
+     
+     HIDDEN — AS REQUESTED.
+     ---------------------------------------------------------- */
+
+  .experience-description {
+    display: none !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     VIEW DETAILS
+     
+     IMPORTANT:
+     Your JSX has inline styles, so !important is needed.
+     
+     Keep it readable.
+     ---------------------------------------------------------- */
+
+  .experience-card-content > a:last-child {
+    display: inline-flex !important;
+
+    align-items: center;
+
+    gap: 7px !important;
+
+    margin-top: 7px;
+
+    padding: 7px 0 !important;
+
+    font-size: 12px !important;
+
+    line-height: 1.2;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    color: #fdf14f !important;
+
+    text-decoration: none;
+
+    max-width: 100%;
+  }
+
+
+  /* ----------------------------------------------------------
+     EXPERIENCE 2
+     
+     Content is LEFT aligned because it lives on
+     the LEFT side of the route.
+     ---------------------------------------------------------- */
+
+  .experience-item-two .experience-card-content {
+    text-align: left;
+  }
+
+
+    .experience-item-two .experience-card-content > a:last-child {
+    display: flex !important;
+
+    width: fit-content;
+    max-width: 100%;
+
+    margin-top: 7px;
+
+    clear: both;
+
+    white-space: nowrap;
+
+    align-self: flex-start;
+
+    flex-shrink: 0;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+   ------------------------------------------------------------
+   Do NOT destroy the hierarchy.
+   Just make the existing mobile layout slightly smaller.
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+  .experience-label {
+    left: 6px;
+
+    font-size: 8px;
+  }
+
+  .experience-label-line {
+    height: 48px;
+  }
+
+
+  /* ----------------------------------------------------------
+     NODE
+     ---------------------------------------------------------- */
+
+  .experience-node {
+    left: 61.25% !important;
+
+    width: 11px;
+    height: 11px;
+
+    margin-left: -5.5px;
+    margin-top: -5.5px;
+  }
+
+  .experience-item-two .experience-node {
+    left: 62.1% !important;
+
+    width: 11px;
+    height: 11px;
+
+    margin-left: -5.5px;
+    margin-top: -5.5px;
+  }
+
+
+  /* ----------------------------------------------------------
+     YEARS
+     ---------------------------------------------------------- */
+
+  .experience-item-one .experience-year {
+    left: calc(61.25% - 76px) !important;
+
+    top: -15px;
+
+    font-size: 19px;
+  }
+
+  .experience-item-two .experience-year {
+    left: calc(62.1% + 20px) !important;
+
+    top: -15px;
+
+    font-size: 19px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CARDS
+     ---------------------------------------------------------- */
+
+  .experience-item-one .experience-card {
+    left: calc(61.25% + 18px) !important;
+
+    top: -26px;
+
+    width: 35vw;
+
+    max-width: 220px;
+  }
+
+  .experience-item-two .experience-card {
+    right: calc(37.9% + 18px) !important;
+
+    top: -26px;
+
+    width: 35vw;
+
+    max-width: 220px;
+  }
+
+
+  /* ----------------------------------------------------------
+     LOGO
+     ---------------------------------------------------------- */
+
+  .experience-logo {
+    width: 52px;
+    height: 52px;
+
+    margin-bottom: 7px;
+  }
+
+
+  /* ----------------------------------------------------------
+     TEXT
+     
+     Still readable.
+     ---------------------------------------------------------- */
+
+  .experience-period {
+    font-size: 11px;
+  }
+
+  .experience-card h1 {
+    font-size: 15px;
+  }
+
+  .experience-company {
+    font-size: 11px;
+  }
+
+.experience-item-two .experience-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .experience-item-two .experience-company {
+    display: block !important;
+    width: fit-content;
+    max-width: 100%;
+
+    margin-top: 5px;
+
+    white-space: nowrap;
+  }
+
+  .experience-item-two .experience-card-content > a:last-child {
+    display: flex !important;
+
+    width: fit-content;
+    max-width: 100%;
+
+    margin-top: 6px;
+
+    clear: both;
+
+    white-space: nowrap;
+
+    align-self: flex-start;
+
+    flex-shrink: 0;
+  }
+}
+

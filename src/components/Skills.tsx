@@ -29,10 +29,13 @@ export default function Skills() {
     const ctx = gsap.context(() => {
       const trigger = ScrollTrigger.create({
         trigger: section,
+
         start: "top top",
-        end: "+=1400",
+        end: "+=1600",
+
         pin: true,
         pinSpacing: true,
+
         scrub: 1,
 
         onUpdate: (self) => {
@@ -70,15 +73,18 @@ export default function Skills() {
     };
   }, []);
 
+  /* ============================================================
+     ALL SIX SKILLS
+     ============================================================ */
 
-  const frontend = ease(reveal(p, 0.10, 0.30));
-  const backend = ease(reveal(p, 0.18, 0.38));
+  const frontend = ease(reveal(p, 0.04, 0.18));
+  const backend = ease(reveal(p, 0.12, 0.28));
 
-  const database = ease(reveal(p, 0.30, 0.50));
-  const languages = ease(reveal(p, 0.38, 0.58));
+  const database = ease(reveal(p, 0.22, 0.38));
+  const languages = ease(reveal(p, 0.32, 0.48));
 
-  const devops = ease(reveal(p, 0.50, 0.70));
-  const tools = ease(reveal(p, 0.58, 0.78));
+  const devops = ease(reveal(p, 0.42, 0.60));
+  const tools = ease(reveal(p, 0.54, 0.72));
 
   return (
     <section
@@ -86,40 +92,18 @@ export default function Skills() {
       id="skills"
       className="relative w-full"
       style={{
-        height: "100vh",
-        color: "#222222",
         zIndex: 2,
-        
       }}
     >
-      <div
-        className="
-          flex
-          h-screen
-          w-full
-          items-center
-          overflow-hidden
-        "
-      >
- <div
-  className="
-    flex
-    w-full
-    max-w-[1200px]
-    flex-col
-    pl-4
-    pr-4
-    md:pl-8
-    md:pr-6
-    lg:pl-10
-    lg:pr-8
-    translate-x-12
-    md:translate-x-16
-    lg:translate-x-24
-  "
->
-          
-          <header className="w-full shrink-0">
+      <div className="skills-viewport">
+
+        <div className="skills-container">
+
+          {/* =====================================================
+              HEADING
+              ===================================================== */}
+
+          <header className="skills-heading">
             <h2
               className="
                 font-display
@@ -134,96 +118,88 @@ export default function Skills() {
             </h2>
           </header>
 
-          <div
-            className="
-              mt-8
-              grid
-              w-full
-              items-center
-              gap-8
-              md:grid-cols-[1.1fr_0.9fr]
-              lg:gap-12
-            "
-          >
 
+          {/* =====================================================
+              MAIN
 
-            <div className="w-full">
+              DESKTOP / TABLET:
 
-              <div className="grid w-full grid-cols-2 text-xl">
+              LEFT  = SKILLS
+              RIGHT = SVG
 
+              MOBILE:
 
-                <Skill
-                  title="FRONTEND"
-                  description="
-                    React, Next.js, Tailwind CSS, HTML5, CSS3, Zustand, React Context, Responsive Web Design
-                  "
-                  progress={frontend}
-                  right
+              SVG
+              ↓
+              ALL SIX SKILLS
+              ===================================================== */}
 
-                />
+          <div className="skills-main">
 
+            {/* ===================================================
+                SKILLS
+                =================================================== */}
 
-                <Skill
-                  title="BACKEND"
-                  description="
-Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
-                  progress={backend}
-                />
+            <div className="skills-list">
 
+              <Skill
+                title="FRONTEND"
+                description="
+                  React, Next.js, Tailwind CSS, HTML5, CSS3,
+                  Zustand, React Context, Responsive Web Design
+                "
+                progress={frontend}
+              />
 
-                <Skill
-                  title="DATABASE"
-                  description="
-                     PostgreSQL, MySQL, MongoDB, Database Design
-                  "
-                  progress={database}
-                  right
-                />
+              <Skill
+                title="BACKEND"
+                description="
+                  Node.js, Express.js, RESTful APIs,
+                  Prisma ORM, Redis
+                "
+                progress={backend}
+              />
 
+              <Skill
+                title="DATABASE"
+                description="
+                  PostgreSQL, MySQL, MongoDB, Database Design
+                "
+                progress={database}
+              />
 
-                <Skill
-                  title="LANGUAGES"
-                  description="
-                    TypeScript, JavaScript,
-                    SQL, HTML and CSS.
-                  "
-                  progress={languages}
-                />
+              <Skill
+                title="LANGUAGES"
+                description="
+                  TypeScript, JavaScript, SQL, HTML and CSS
+                "
+                progress={languages}
+              />
 
+              <Skill
+                title="DEVOPS"
+                description="
+                  Docker, GitHub Actions (CI/CD)
+                "
+                progress={devops}
+              />
 
-                <Skill
-                  title="DEVOPS"
-                  description="
-                    Docker, GitHub Actions (CI/CD).
-                  "
-                  progress={devops}
-                  right
-                />
+              <Skill
+                title="TOOLS"
+                description="
+                  Git, GitHub, Postman, Apidog, VS Code
+                "
+                progress={tools}
+              />
 
-
-                <Skill
-                  title="TOOLS"
-                  description="
-                    Git, GitHub, Postman, Apidog, VS Code
-                  "
-                  progress={tools}
-                />
-
-              </div>
             </div>
 
 
-            <div
-              className="
-                flex
-                h-[260px]
-                w-full
-                items-center
-                justify-center
-                md:h-[380px]
-                lg:h-[420px]
-              "
-            >
+            {/* ===================================================
+                SVG
+                =================================================== */}
+
+            <div className="skills-illustration">
               <SkillsIllustration p={p} />
             </div>
 
@@ -235,71 +211,37 @@ Node.js, Express.js, RESTful APIs, Prisma ORM, Redis                  "
 }
 
 
+/* ==============================================================
+   SKILL COMPONENT
+   ============================================================== */
 
 function Skill({
   title,
   description,
   progress,
-  left = false,
-  right = false,
 }: {
   title: string;
   description: string;
   progress: number;
-  left?: boolean;
-  right?: boolean;
 }) {
   return (
-    <div
+    <article
+      className="skill-item"
       style={{
-        position: "relative",
-
-        paddingTop: "34px",
-        paddingBottom: "34px",
-paddingLeft: left ? "40px" : "40px",
-paddingRight: right ? "16px" : "16px",
-        minHeight: "175px",
-
         opacity: progress,
 
-        transform: `translateY(${(1 - progress) * 24}px)`,
-
-        transition: "opacity 0.15s linear",
+        transform: `
+          translateY(${(1 - progress) * 24}px)
+        `,
       }}
     >
-      <h3
-        style={{
-          margin: 0,
-          fontFamily: "var(--font-display)",
-          fontSize: "20px",
-          fontWeight: 500,
-          letterSpacing: "0.08em",
-          lineHeight: 1.2,
-
-          color: "rgb(255, 158, 174) ",
-        }}
-      >
+      <h3 className="skill-title">
         {title}
       </h3>
 
-      <p
-        style={{
-          margin: "16px 0 0 0",
-
-          maxWidth: "360px",
-
-          fontFamily: "var(--font-body)",
-          fontSize: "17px",
-          fontWeight: 400,
-          lineHeight: 1.75,
-
-          color: "#FFFFFF",
-
-          opacity: 0.72,
-        }}
-      >
+      <p className="skill-description">
         {description}
       </p>
-    </div>
+    </article>
   );
 }

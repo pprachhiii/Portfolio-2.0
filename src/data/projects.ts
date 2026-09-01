@@ -27,6 +27,8 @@ export const projects: Project[] = [
   {
     slug: "car1pro",
     number: "01",
+
+    
     label: "Featured Project",
 
     title: "Car1Pro",
@@ -45,33 +47,36 @@ export const projects: Project[] = [
       "Docker",
       "GitHub Actions",
     ],
+description:
+  "Car1Pro is a full-stack automotive care platform focused on vehicle cleaning, washing, detailing, and maintenance services and products. It allows users to explore automotive care products such as cleaning supplies, towels, detailing accessories, and other vehicle-care essentials, while also showcasing the services offered by the business. The application includes authentication, product management, carts, orders, and a responsive user experience, built with a production-oriented architecture, reusable components, relational data modeling, and automated deployment.",
 
-    description:
-      "Car1Pro is a full-stack automotive marketplace designed around vehicle discovery, product management, authentication, carts, and orders. The application was built with a production-oriented architecture and focuses on responsive user experiences, reusable components, relational data modeling, and automated deployment.",
-
-    images: [
-      {
-        src: "/images/projects/car1pro/one.png",
-        caption:
-          "Homepage - the main entry point for discovering vehicles and exploring the automotive marketplace.",
-      },
-      {
-        src: "/images/projects/car1pro/two.png",
-        caption:
-          "Vehicle Listings - users can browse and explore available vehicles.",
-      },
-      {
-        src: "/images/projects/car1pro/three.png",
-        caption:
-          "Vehicle Details - a detailed view containing information about an individual vehicle.",
-      },
-      {
-        src: "/images/projects/car1pro/four.png",
-        caption:
-          "Dashboard - managing products, orders, and user activity.",
-      },
-    ],
-
+images: [
+  {
+    src: "/images/projects/car1pro/one.png",
+    caption:
+      "Homepage - the main landing page introducing Car1Pro and highlighting its automotive care products and services.",
+  },
+  {
+    src: "/images/projects/car1pro/two.png",
+    caption:
+      "Products - users can explore automotive cleaning, washing, detailing, towels, and other vehicle-care products.",
+  },
+  {
+    src: "/images/projects/car1pro/three.png",
+    caption:
+      "Services - an overview of the vehicle cleaning, washing, detailing, and other automotive care services provided.",
+  },
+  {
+    src: "/images/projects/car1pro/four.png",
+    caption:
+      "About - information about Car1Pro, its purpose, and the automotive care experience it provides.",
+  },
+  {
+    src: "/images/projects/car1pro/five.png",
+    caption:
+      "Contact - a dedicated page for users to get in touch with Car1Pro and make inquiries.",
+  },
+],
     features: [
       "Built a full-stack automotive marketplace using Next.js, TypeScript, Prisma ORM, and PostgreSQL.",
       "Developed 15+ REST APIs and relational database models supporting authentication, product management, carts, orders, and CRUD operations.",
@@ -151,22 +156,22 @@ export const projects: Project[] = [
     description:
       "Item Manager is a full-stack inventory management application focused on efficient product management and modular application architecture. The system connects a React frontend with a Node.js and Express backend through REST APIs and MongoDB.",
 
-    images: [
-      {
-        src: "/images/projects/item-manager/one.png",
-        caption:
-          "Dashboard - the central interface for managing inventory.",
-      },
-      {
-        src: "/images/projects/item-manager/two.png",
-        caption:
-          "Product Management - viewing and managing inventory items.",
-      },
-      {
-        src: "/images/projects/item-manager/3.png",
-        caption:
-          "Add Item - creating new inventory records through the application.",
-      },
+   images: [
+  {
+    src: "/images/projects/item-manager/one.png",
+    caption:
+      "Dashboard - the central interface for managing and monitoring inventory.",
+  },
+  {
+    src: "/images/projects/item-manager/two.png",
+    caption:
+      "Add Item - a form for adding new inventory items and recording their details.",
+  },
+  {
+    src: "/images/projects/item-manager/3.png",
+    caption:
+      "Edit Item - a form for updating and modifying existing inventory records.",
+  },
     ],
 
     features: [
@@ -201,33 +206,27 @@ export const projects: Project[] = [
       "2070 is an environmental analytics dashboard focused on data visualization, geospatial insights, interactive maps, and environmental monitoring. The interface combines reusable React components with interactive mapping and charting tools.",
 
     images: [
-      {
-        src: "/images/projects/2070/one.png",
-        caption:
-          "Dashboard - the main environmental monitoring interface.",
-      },
-      {
-        src: "/images/projects/2070/two.png",
-        caption:
-          "Interactive Map - displaying geospatial environmental information.",
-      },
-      {
-        src: "/images/projects/2070/three.png",
-        caption:
-          "Analytics - visualizing environmental data through charts and metrics.",
-      },
-            {
-        src: "/images/projects/2070/four.png",
-        caption:
-          "Analytics - visualizing environmental data through charts and metrics.",
-      },
-      {
-        src: "/images/projects/2070/five.png",
-        caption:
-          "Analytics - visualizing environmental data through charts and metrics.",
-      },
-
-    ],
+  {
+    src: "/images/projects/2070/one.png",
+    caption:
+      "Home - the landing page introducing the platform and its environmental insights.",
+  },
+  {
+    src: "/images/projects/2070/two.png",
+    caption:
+      "Dashboard - an interactive overview of environmental data, monitoring metrics, and key insights.",
+  },
+  {
+    src: "/images/projects/2070/three.png",
+    caption:
+      "Species Cards - exploring different species with detailed information and environmental insights.",
+  },
+  {
+    src: "/images/projects/2070/four.png",
+    caption:
+      "Environmental Factors - visualizing key environmental factors and their impact through interactive data.",
+  },
+],
 
     features: [
       "Built an interactive environmental analytics dashboard using React, TypeScript, and Tailwind CSS.",
@@ -266,12 +265,7 @@ export const projects: Project[] = [
         src: "/images/projects/stayease/one.png",
         caption:
           "Listings - browsing available rental properties.",
-      },
-      {
-        src: "/images/projects/stayease/two.png",
-        caption:
-          "Property Details - viewing detailed information about a rental property.",
-      },
+      }
     ],
 
     features: [

@@ -162,7 +162,11 @@
 
 .expd-role {
   margin-bottom: 8px;
-
+font-family: var(
+    --serif-display,
+    "Fraunces",
+    serif
+  );
   color: var(--expd-text);
 
   font-size: clamp(2rem, 5vw, 4rem);
@@ -592,6 +596,7 @@ color: var(--expd-pink);
   .expd-heading {
     align-items: flex-start;
     gap: 18px;
+    font-size:2rem
   }
 
   .expd-logo-wrap {
@@ -608,11 +613,11 @@ color: var(--expd-pink);
   }
 
   .expd-title {
-    font-size: clamp(2.6rem, 11vw, 4.5rem);
+    font-size: clamp(1rem, 4vw, 1.25rem);
   }
 
   .expd-role {
-    font-size: 0.7rem;
+    font-size: 2rem;
   }
 
   .expd-info-section {

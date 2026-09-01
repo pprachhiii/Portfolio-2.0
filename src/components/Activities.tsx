@@ -60,349 +60,326 @@ export default function Activities() {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const laptopRef = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
-    const section = sectionRef.current;
-    const wrap = wrapRef.current;
-    const svg = svgRef.current;
-    const laptop = laptopRef.current;
+useLayoutEffect(() => {
+  const section = sectionRef.current;
+  const wrap = wrapRef.current;
+  const svg = svgRef.current;
+  const laptop = laptopRef.current;
 
-    if (!section || !wrap || !svg || !laptop) return;
+  if (!section || !wrap || !svg || !laptop) return;
 
-    const ctx = gsap.context(() => {
-      /*
-       * Get all cards
-       */
-      const cards: HTMLElement[] = [
-        wrap.querySelector<HTMLElement>(".activity-card-left"),
-        wrap.querySelector<HTMLElement>(".activity-card-right"),
-        wrap.querySelector<HTMLElement>(".bottom-card-one"),
-        wrap.querySelector<HTMLElement>(".bottom-card-two"),
-        wrap.querySelector<HTMLElement>(".bottom-card-three"),
-      ].filter(
-        (card): card is HTMLElement => card !== null
+  const ctx = gsap.context(() => {
+
+    // ========================================
+    // GET ALL CARDS
+    // ========================================
+
+    const cards: HTMLElement[] = [
+      wrap.querySelector<HTMLElement>(".activity-card-left"),
+      wrap.querySelector<HTMLElement>(".activity-card-right"),
+      wrap.querySelector<HTMLElement>(".bottom-card-one"),
+      wrap.querySelector<HTMLElement>(".bottom-card-two"),
+      wrap.querySelector<HTMLElement>(".bottom-card-three"),
+    ].filter(
+      (card): card is HTMLElement => card !== null
+    );
+
+
+    // ========================================
+    // DRAW CONNECTION LINES
+    // ========================================
+
+    const drawLines = () => {
+      const wrapRect = wrap.getBoundingClientRect();
+      const laptopRect = laptop.getBoundingClientRect();
+
+      svg.setAttribute("width", `${wrapRect.width}`);
+      svg.setAttribute("height", `${wrapRect.height}`);
+
+      svg.setAttribute(
+        "viewBox",
+        `0 0 ${wrapRect.width} ${wrapRect.height}`
       );
 
-      /*
-       * Draw connection lines
-       */
-      const drawLines = () => {
-        const wrapRect = wrap.getBoundingClientRect();
-        const laptopRect = laptop.getBoundingClientRect();
+      while (svg.firstChild) {
+        svg.removeChild(svg.firstChild);
+      }
 
-        svg.setAttribute(
-          "width",
-          `${wrapRect.width}`
-        );
+      const startX =
+        laptopRect.left +
+        laptopRect.width / 2 -
+        wrapRect.left;
 
-        svg.setAttribute(
-          "height",
-          `${wrapRect.height}`
-        );
+      const startY =
+        laptopRect.bottom -
+        wrapRect.top;
 
-        svg.setAttribute(
-          "viewBox",
-          `0 0 ${wrapRect.width} ${wrapRect.height}`
-        );
+      cards.forEach((card) => {
+        const cardRect =
+          card.getBoundingClientRect();
 
-        /*
-         * Remove old lines
-         */
-        while (svg.firstChild) {
-          svg.removeChild(svg.firstChild);
-        }
-
-        /*
-         * Laptop connection point
-         */
-        const startX =
-          laptopRect.left +
-          laptopRect.width / 2 -
+        const endX =
+          cardRect.left +
+          cardRect.width / 2 -
           wrapRect.left;
 
-        const startY =
-          laptopRect.bottom -
-          wrapRect.top;
+        const isBottomCard =
+          card.classList.contains("bottom-card");
 
-        /*
-         * Create a line for every card
-         */
-        cards.forEach((card) => {
-          const cardRect =
-            card.getBoundingClientRect();
+        const endY = isBottomCard
+          ? cardRect.top - wrapRect.top
+          : cardRect.top +
+            cardRect.height / 2 -
+            wrapRect.top;
 
-          const endX =
-            cardRect.left +
-            cardRect.width / 2 -
-            wrapRect.left;
-
-          const isBottomCard =
-            card.classList.contains(
-              "bottom-card"
-            );
-
-          const endY = isBottomCard
-            ? cardRect.top - wrapRect.top
-            : cardRect.top +
-              cardRect.height / 2 -
-              wrapRect.top;
-
-          const path =
-            document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "path"
-            );
-
-          /*
-           * Bottom cards use straight lines
-           */
-          if (isBottomCard) {
-            path.setAttribute(
-              "d",
-              `M ${startX} ${startY}
-               L ${endX} ${endY}`
-            );
-          } else {
-            /*
-             * Top cards use curved lines
-             */
-            const direction =
-              endX < startX ? -1 : 1;
-
-            const controlX =
-              startX +
-              direction *
-                Math.abs(endX - startX) *
-                0.45;
-
-            const controlY =
-              startY +
-              (endY - startY) * 0.2;
-
-            path.setAttribute(
-              "d",
-              `M ${startX} ${startY}
-               Q ${controlX} ${controlY}
-                 ${endX} ${endY}`
-            );
-          }
-
-          /*
-           * Prepare line for GSAP drawing animation
-           */
-          const length =
-            path.getTotalLength();
-
-          path.style.strokeDasharray =
-            `${length}`;
-
-          path.style.strokeDashoffset =
-            `${length}`;
-
-          svg.appendChild(path);
-        });
-      };
-
-      /*
-       * Draw lines before animation starts
-       */
-      drawLines();
-
-      /*
-       * Get SVG paths after creating them
-       */
-      const getPaths = () =>
-        svg.querySelectorAll<SVGPathElement>(
-          "path"
-        );
-
-      /*
-       * Initial state of all cards
-       */
-      gsap.set(cards, {
-        opacity: 0,
-        y: 70,
-        scale: 0.96,
-      });
-
-      /*
-       * Initial laptop state
-       */
-      gsap.set(laptop, {
-        opacity: 0,
-        scale: 0.9,
-      });
-
-      /*
-       * Main animation timeline
-       *
-       * It starts ONLY when the Activities
-       * section reaches 75% of the viewport.
-       */
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 75%",
-          once: true,
-
-          /*
-           * Uncomment this if you want to
-           * see the trigger position:
-           *
-           * markers: true,
-           */
-        },
-      });
-
-      /*
-       * ========================================
-       * LAPTOP
-       * ========================================
-       */
-      timeline.to(laptop, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.7,
-        ease: "power3.out",
-      });
-
-      /*
-       * ========================================
-       * CARD 1
-       * ========================================
-       */
-      timeline.to(
-        cards[0],
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.65,
-          ease: "power3.out",
-        },
-        "-=0.25"
-      );
-
-      /*
-       * LINE 1
-       */
-      timeline.to(
-        getPaths()[0],
-        {
-          strokeDashoffset: 0,
-          duration: 0.6,
-          ease: "power2.out",
-        },
-        "-=0.15"
-      );
-
-      /*
-       * ========================================
-       * CARD 2
-       * ========================================
-       */
-      timeline.to(
-        cards[1],
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.65,
-          ease: "power3.out",
-        },
-        "+=0.15"
-      );
-
-      /*
-       * LINE 2
-       */
-      timeline.to(
-        getPaths()[1],
-        {
-          strokeDashoffset: 0,
-          duration: 0.6,
-          ease: "power2.out",
-        },
-        "-=0.15"
-      );
-
-      /*
-       * ========================================
-       * BOTTOM CARDS
-       * ========================================
-       *
-       * Card 3
-       * ↓
-       * Line 3
-       * ↓
-       * Card 4
-       * ↓
-       * Line 4
-       * ↓
-       * Card 5
-       * ↓
-       * Line 5
-       */
-      cards.slice(2).forEach(
-        (card, index) => {
-          timeline.to(
-            card,
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.65,
-              ease: "power3.out",
-            },
-            "+=0.15"
+        const path =
+          document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path"
           );
 
-          timeline.to(
-            getPaths()[index + 2],
-            {
-              strokeDashoffset: 0,
-              duration: 0.6,
-              ease: "power2.out",
-            },
-            "-=0.15"
+        if (isBottomCard) {
+          path.setAttribute(
+            "d",
+            `M ${startX} ${startY}
+             L ${endX} ${endY}`
+          );
+        } else {
+          const direction =
+            endX < startX ? -1 : 1;
+
+          const controlX =
+            startX +
+            direction *
+              Math.abs(endX - startX) *
+              0.45;
+
+          const controlY =
+            startY +
+            (endY - startY) * 0.2;
+
+          path.setAttribute(
+            "d",
+            `M ${startX} ${startY}
+             Q ${controlX} ${controlY}
+               ${endX} ${endY}`
           );
         }
+
+        const length =
+          path.getTotalLength();
+
+        path.style.strokeDasharray =
+          `${length}`;
+
+        path.style.strokeDashoffset =
+          `${length}`;
+
+        svg.appendChild(path);
+      });
+    };
+
+
+    // ========================================
+    // DRAW LINES FIRST
+    // ========================================
+
+    drawLines();
+
+
+    // ========================================
+    // GET PATHS
+    // ========================================
+
+    const getPaths = () =>
+      svg.querySelectorAll<SVGPathElement>(
+        "path"
       );
 
-      /*
-       * ========================================
-       * RESIZE HANDLING
-       * ========================================
-       */
-      const resizeObserver =
-        new ResizeObserver(() => {
-          drawLines();
-          ScrollTrigger.refresh();
-        });
 
-      resizeObserver.observe(wrap);
+    // ========================================
+    // INITIAL STATES
+    // ========================================
 
-      window.addEventListener(
+    gsap.set(cards, {
+      opacity: 0,
+      y: 35,
+      scale: 0.97,
+      transformOrigin: "center center",
+    });
+
+    gsap.set(laptop, {
+      opacity: 0,
+      y: 20,
+      scale: 0.96,
+    });
+
+
+    // ========================================
+    // FAST SEQUENTIAL ENTRY
+    // ========================================
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+
+        // Starts earlier
+        start: "top 85%",
+
+        once: true,
+      },
+    });
+
+
+    // ========================================
+    // LAPTOP FIRST
+    // ========================================
+
+    timeline.to(laptop, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.35,
+      ease: "power2.out",
+    });
+
+
+    // ========================================
+    // CARD 1
+    // ========================================
+
+    timeline.to(
+      cards[0],
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.35,
+        ease: "power2.out",
+      },
+      "-=0.18"
+    );
+
+
+    // ========================================
+    // LINE 1
+    // ========================================
+
+    timeline.to(
+      getPaths()[0],
+      {
+        opacity: 0.8,
+        strokeDashoffset: 0,
+        duration: 0.25,
+        ease: "power1.out",
+      },
+      "-=0.18"
+    );
+
+
+    // ========================================
+    // CARD 2
+    // ========================================
+
+    timeline.to(
+      cards[1],
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.35,
+        ease: "power2.out",
+      },
+      "-=0.08"
+    );
+
+
+    // ========================================
+    // LINE 2
+    // ========================================
+
+    timeline.to(
+      getPaths()[1],
+      {
+        opacity: 0.8,
+        strokeDashoffset: 0,
+        duration: 0.25,
+        ease: "power1.out",
+      },
+      "-=0.18"
+    );
+
+
+    // ========================================
+    // BOTTOM CARDS
+    // ========================================
+
+    cards.slice(2).forEach((card, index) => {
+
+      timeline.to(
+        card,
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.35,
+          ease: "power2.out",
+        },
+        "-=0.08"
+      );
+
+      timeline.to(
+        getPaths()[index + 2],
+        {
+          opacity: 0.8,
+          strokeDashoffset: 0,
+          duration: 0.22,
+          ease: "power1.out",
+        },
+        "-=0.18"
+      );
+
+    });
+
+
+    // ========================================
+    // RESIZE HANDLING
+    // ========================================
+
+    const resizeObserver =
+      new ResizeObserver(() => {
+        drawLines();
+        ScrollTrigger.refresh();
+      });
+
+    resizeObserver.observe(wrap);
+
+    window.addEventListener(
+      "resize",
+      drawLines
+    );
+
+
+    // ========================================
+    // CLEANUP
+    // ========================================
+
+    return () => {
+      resizeObserver.disconnect();
+
+      window.removeEventListener(
         "resize",
         drawLines
       );
-
-      /*
-       * Cleanup
-       */
-      return () => {
-        resizeObserver.disconnect();
-
-        window.removeEventListener(
-          "resize",
-          drawLines
-        );
-      };
-    }, sectionRef);
-
-    return () => {
-      ctx.revert();
     };
-  }, []);
+
+  }, sectionRef);
+
+  return () => {
+    ctx.revert();
+  };
+
+}, []);
 
   return (
     <section

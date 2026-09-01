@@ -581,37 +581,6 @@ margin-left: 120px;
   display: block;
 }
 
-.activity-lines path {
-  fill: none;
-
-  stroke: #ffffff;
-  stroke-width: 3;
-  stroke-linecap: round;
-
-  stroke-dasharray: 7 7;
-  stroke-dashoffset: 500;
-
-  opacity: 0;
-
-  animation: activity-line-draw 0.7s ease forwards;
-}
-
-@keyframes activity-line-draw {
-  0% {
-    opacity: 0;
-    stroke-dashoffset: 500;
-  }
-
-  20% {
-    opacity: 0.8;
-  }
-
-  100% {
-    opacity: 0.8;
-    stroke-dashoffset: 0;
-  }
-}
-
 /* =========================================================
    BOTTOM ROW
 ========================================================= */
@@ -748,230 +717,342 @@ margin-left: 120px;
 }
 
 /* =========================================================
-   ENTRY ANIMATION
-========================================================= */
-/* =========================================================
-   SPIDER WEB ENTRY ANIMATION
+   RESPONSIVE
 ========================================================= */
 
-.activity-card {
-  opacity: 0;
-  transform: translateY(35px) scale(0.92);
+/* ---------------------------------------------------------
+   LARGE TABLET / SMALL DESKTOP
+--------------------------------------------------------- */
 
-  transition:
-    opacity 0.65s ease,
-    transform 0.65s cubic-bezier(.22, 1.2, .36, 1);
-}
-
-/* Laptop appears first */
-.laptop-wrapper {
-  opacity: 0;
-  transform: translateY(25px) scale(0.95);
-
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(.22, 1.2, .36, 1);
-}
-
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 1000px) {
-
-  .activity-scene {
-    grid-template-columns: 1fr 1fr;
-
-    gap: 25px;
-
-    min-height: auto;
-  }
-
-
-  .laptop-wrapper {
-    grid-column: 1 / -1;
-
-    grid-row: 1;
-
-    order: 1;
-  }
-
-
-  .activity-card-left {
-    grid-column: 1;
-
-    grid-row: 2;
-
-    order: 2;
-  }
-
-
-  .activity-card-right {
-    grid-column: 2;
-
-    grid-row: 2;
-
-    order: 3;
-  }
-
-
-  .connector-left,
-  .connector-right {
-    display: none;
-  }
-
-
-  .activity-bottom {
-    margin-top: 50px;
-  }
-
-
-  .connector-bottom-one,
-  .connector-bottom-two,
-  .connector-bottom-three {
-    display: none;
-  }
-
-}
-
-
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
 
   .activity-section {
-    padding: 60px 18px 70px;
+    padding-left: clamp(20px, 4vw, 50px) !important;
+    padding-right: clamp(20px, 6vw, 70px) !important;
   }
 
-
-  .activity-header {
-    margin-bottom: 30px;
+  .activity-wrap {
+    margin-left: 40px;
+    max-width: 1100px;
   }
-
 
   .activity-scene {
-    display: flex;
+    grid-template-columns:
+      minmax(210px, 1fr)
+      minmax(300px, 390px)
+      minmax(210px, 1fr);
 
-    flex-direction: column;
-
-    gap: 25px;
+    column-gap: 30px;
   }
 
+  .activity-card-bar strong {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
 
-  .laptop-wrapper {
-    order: 1;
+  .activity-card-body {
+    padding: 16px 17px 19px;
+    font-size: 16px;
+  }
 
+  .activity-label {
+    font-size: 10px;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .activity-section {
+    padding: 70px 28px 80px !important;
+  }
+
+  .activity-wrap {
     width: 100%;
+    max-width: 100%;
+    margin-left: 0;
   }
 
+  /*
+   * Keep the same visual concept:
+   * card - laptop - card
+   */
+  .activity-scene {
+    grid-template-columns:
+      minmax(170px, 1fr)
+      minmax(250px, 320px)
+      minmax(170px, 1fr);
 
-  .activity-card-left,
-  .activity-card-right {
-    order: 2;
+    column-gap: 18px;
 
-    width: 100%;
-
-    transform: none !important;
+    min-height: 400px;
   }
-
-
-  .activity-bottom {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 20px;
-
-    margin-top: 35px;
-  }
-
-
-  .bottom-card-one,
-  .bottom-card-two,
-  .bottom-card-three {
-    transform: none !important;
-  }
-
-
-  .connector {
-    display: none;
-  }
-
 
   .laptop {
-    max-width: 370px;
+    max-width: 320px;
   }
-
 
   .laptop-base {
-    height: 85px;
-
-    padding: 10px 22px 15px;
+    height: 82px;
+    padding: 10px 20px 14px;
   }
-
 
   .keyboard {
     gap: 3px;
   }
 
-
   .keyboard span {
     height: 5px;
   }
 
-
   .trackpad {
-    width: 75px;
-
-    height: 24px;
-
-    margin-top: 8px;
+    width: 70px;
+    height: 22px;
+    margin-top: 7px;
   }
 
+  .activity-card-bar {
+    min-height: 38px;
+    padding: 6px 8px;
+  }
+
+  .activity-card-bar strong {
+    font-size: 8px;
+    padding: 5px 7px;
+  }
 
   .activity-card-body {
-    font-size: 18px;
+    padding: 13px 14px 15px;
+    font-size: 15px;
+    line-height: 1.3;
   }
 
+  .activity-label {
+    font-size: 8px;
+  }
 
-  .skill-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .activity-certificate {
+    font-size: 12px;
+  }
+
+  .activity-bottom {
+    gap: 14px;
+    margin-top: 55px;
   }
 
 }
 
 
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+  .activity-section {
+    padding: 60px 16px 70px !important;
+  }
+
+  .activity-header {
+    margin-bottom: 25px;
+  }
+
+  .activity-kicker {
+    font-size: clamp(24px, 8vw, 34px);
+  }
+
+  /*
+   * Mobile keeps the same desktop visual language,
+   * but stacks the pieces vertically.
+   */
+  .activity-scene {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 22px;
+
+    min-height: auto;
+  }
+
+  /*
+   * Laptop remains the centerpiece.
+   */
+  .laptop-wrapper {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .laptop {
+    width: min(100%, 360px);
+    max-width: 360px;
+  }
+
+  /*
+   * Cards become full width but retain
+   * exactly the same styling.
+   */
+  .activity-card-left,
+  .activity-card-right {
+    order: 2;
+    width: 100%;
+    transform: none !important;
+  }
+
+  .activity-card-bar {
+    min-height: 42px;
+    padding: 7px 9px;
+  }
+
+  .activity-card-bar > span {
+    width: 7px;
+    height: 7px;
+  }
+
+  .activity-card-bar strong {
+    font-size: clamp(8px, 2.2vw, 11px);
+    padding: 5px 8px;
+
+    max-width: calc(100% - 45px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .activity-card-body {
+    padding: 17px 18px 19px;
+
+    font-size: clamp(16px, 4vw, 19px);
+    line-height: 1.35;
+  }
+
+  .activity-label {
+    font-size: clamp(8px, 2vw, 10px);
+  }
+
+  .activity-certificate {
+    font-size: 13px;
+  }
+
+  /*
+   * Bottom cards stack in the same order.
+   */
+  .activity-bottom {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    margin-top: 28px;
+  }
+
+  .bottom-card-one,
+  .bottom-card-two,
+  .bottom-card-three {
+    width: 100%;
+    transform: none !important;
+  }
+
+  /*
+   * Connection lines don't make sense
+   * when everything is stacked.
+   */
+  .activity-lines {
+    display: none;
+  }
+
+  /*
+   * Slightly smaller laptop.
+   */
+  .laptop-screen-frame {
+    width: 86%;
+    padding: 9px;
+  }
+
+  .laptop-base {
+    height: 80px;
+    padding: 9px 18px 13px;
+  }
+
+  .keyboard {
+    gap: 2px;
+  }
+
+  .keyboard span {
+    height: 4px;
+  }
+
+  .trackpad {
+    width: 65px;
+    height: 21px;
+    margin-top: 7px;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   SMALL PHONES
+--------------------------------------------------------- */
+
 @media (max-width: 450px) {
 
   .activity-section {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
   }
-
 
   .activity-kicker {
     font-size: 24px;
   }
 
-
-  .activity-title {
-    font-size: 12px;
+  .activity-card {
+    border-width: 2px;
   }
 
-
-  .laptop-screen-frame {
-    width: 88%;
+  .activity-card-bar {
+    min-height: 38px;
   }
-
-
-  .laptop-base {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
 
   .activity-card-bar strong {
     font-size: 7px;
+    padding: 4px 6px;
+  }
+
+  .activity-card-body {
+    padding: 15px 14px 17px;
+    font-size: 16px;
+  }
+
+  .activity-label {
+    font-size: 7px;
+  }
+
+  .laptop {
+    max-width: 320px;
+  }
+
+  .laptop-screen-frame {
+    width: 88%;
+    padding: 8px;
+    border-width: 2px;
+  }
+
+  .laptop-base {
+    height: 72px;
+    padding: 8px 13px 11px;
+  }
+
+  .trackpad {
+    width: 58px;
+    height: 18px;
+    margin-top: 6px;
   }
 
 }

@@ -7,7 +7,7 @@ const About: React.FC = () => {
 
         <div className="side-photo">
           <img
-            src="/images/candid.png"
+            src="/images/candid.jpeg"
             alt="Candid portrait"
           />
 
@@ -69,12 +69,12 @@ const About: React.FC = () => {
 
             <div className="strip-photo">
               <img
-                src="/images/strip2.jpeg"
+                src="/images/strip2.png"
                 alt="Attending a tech event"
               />
 
               <div className="photo-note strip-note">
-                <span>just casually collecting tech events like they're pokemon :)</span>
+                <span>in my locked-in era 💻:)</span>
               </div>
             </div>
 
@@ -85,7 +85,7 @@ const About: React.FC = () => {
               />
 
               <div className="photo-note strip-note">
-                <span>proof that the sleep deprivation was kinda worth it 🏆</span>
+                <span>built. shipped. won. 🏆</span>
               </div>
             </div>
             <div className="strip-photo">
@@ -95,7 +95,7 @@ const About: React.FC = () => {
               />
 
               <div className="photo-note strip-note">
-                <span>no context. just me being pretty &lt;3</span>
+                <span>POV: hackathon nights &gt;&gt;&gt;&gt;</span>
               </div>
             </div>
 

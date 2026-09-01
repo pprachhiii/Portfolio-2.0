@@ -27,7 +27,13 @@ const projects: Project[] = [
       "Docker",
       "GitHub Actions",
     ],
-    image: ["/images/car1pro.png"],
+image: [
+  "/images/projects/car1pro/one.png",
+  "/images/projects/car1pro/two.png",
+  "/images/projects/car1pro/three.png",
+  "/images/projects/car1pro/four.png",
+  "/images/projects/car1pro/five.png",
+],
     href: "https://car1pro.vercel.app/",
   },
 
@@ -46,8 +52,10 @@ const projects: Project[] = [
       "Tailwind CSS",
       "Zustand",
     ],
-    image: ["/images/dhara.png"],
-    href: "https://dhara-six.vercel.app/",
+  image: [
+  "/images/projects/dhara/one.png",
+  "/images/projects/dhara/two.png",
+],    href: "https://dhara-six.vercel.app/",
   },
 
   {
@@ -64,8 +72,11 @@ const projects: Project[] = [
       "MongoDB",
       "REST APIs",
     ],
-    image: ["/images/item-manager.png"],
-    href: "https://item-manager-cee0.onrender.com/",
+image: [
+  "/images/projects/item-manager/one.png",
+  "/images/projects/item-manager/two.png",
+  "/images/projects/item-manager/three.png",
+],    href: "https://item-manager-cee0.onrender.com/",
   },
 
   {
@@ -81,7 +92,12 @@ const projects: Project[] = [
       "Leaflet",
       "Recharts",
     ],
-    image: ["/images/2070.png"],
+   image: [
+  "/images/projects/2070/one.png",
+  "/images/projects/2070/two.png",
+  "/images/projects/2070/three.png",
+  "/images/projects/2070/four.png",
+],
     href: "https://2070-ten.vercel.app/",
   },
 
@@ -409,7 +425,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
       cursor: "pointer",
     }}
   >
-    <span>View Live Demo</span>
+    <span>Live Demo</span>
     <span>→</span>
   </a>
 </div>
@@ -433,9 +449,6 @@ export default function Projects() {
     md:py-40
     md:pl-50
     md:pr-8
-    -translate-x-10
-    md:-translate-x-10
-    lg:translate-x-12
   "
 >
   <div className="w-full max-w-none">

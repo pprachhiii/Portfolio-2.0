@@ -24,6 +24,8 @@ import "./styles/tailwind.css";
 import "./styles/activities.css";
 import "./styles/projectdetails.css";
 import "./styles/experiencedetails.css";
+import "./styles/skills.css";
+import "./styles/project.css";
 
 import { Routes, Route, Outlet } from "react-router-dom";
 
