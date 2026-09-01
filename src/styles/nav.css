@@ -54,27 +54,92 @@ section{padding:9vh 7vw;position:relative;}
 }
 .eyebrow::before{content:'';width:22px;height:1px;background:var(--verdigris-light);display:inline-block;}
 h1,h2,h3{font-family:var(--font-display);font-weight:480;line-height:1.08;}
-
-/* ---------- creative menu ---------- */
-.menu-toggle{
-  position:fixed;top:28px;right:7vw;z-index:60;
-  width:50px;height:50px;display:flex;align-items:center;justify-content:center;
+.menu-toggle {
+  position: fixed;
+  top: 28px;
+  right: 7vw;
+  z-index: 60;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.menu-toggle svg{width:40px;height:40px;}
+
+.menu-toggle svg {
+  width: 40px;
+  height: 40px;
+  overflow: visible;
+}
+
+/* Both lines */
 .menu-toggle .m-h,
 .menu-toggle .m-v {
   stroke: rgb(255, 158, 174);
   stroke-width: 1.6;
+  fill: none;
+
+  transform-box: fill-box;
+  transform-origin: center;
 
   transition:
     transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
     stroke 0.3s ease;
-
-  transform-origin: center;
 }
-.menu-toggle:hover .m-v{stroke:var(--verdigris-light);}
-.menu-toggle.open .m-v{transform:rotate(90deg);}
 
+/* =========================
+   CLOSED
+   ========================= */
+
+/* Horizontal line visible */
+.menu-toggle .m-h {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Vertical line visible */
+.menu-toggle .m-v {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+
+/* =========================
+   OPEN
+   ========================= */
+
+/* =========================
+   OPEN
+   ========================= */
+
+.menu-toggle.open .m-h {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.menu-toggle.open .m-v {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Hide original horizontal line */
+.menu-toggle.open .m-h {
+  opacity: 0;
+}
+
+/* Rotate vertical line into horizontal */
+.menu-toggle.open .m-v {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+
+/* Hover */
+.menu-toggle:hover .m-h,
+.menu-toggle:hover .m-v {
+  stroke: var(--verdigris-light);
+}
 .menu-panel{
   position:fixed;top:0;right:0;height:100vh;width:0;
   background:var(--basalt-soft);z-index:55;overflow:hidden;

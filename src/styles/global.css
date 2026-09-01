@@ -109,11 +109,6 @@ main {
   z-index: 1;
 }
 
-#sidebar,
-.menu-toggle,
-.menu-panel {
-  z-index: 600;
-}
 
 html,
 body,
@@ -121,3 +116,14 @@ body,
   min-height: 100%;
 }
 
+#sidebar {
+  z-index: 600;
+}
+
+.menu-panel {
+  z-index: 650;
+}
+
+.menu-toggle {
+  z-index: 700 !important;
+}

@@ -14,14 +14,18 @@ export default function ProjectGallery({
     if (images.length <= 1) return;
 
     const interval = setInterval(() => {
-      setCurrent((previous) => (previous + 1) % images.length);
-    }, 4500);
+      setCurrent(
+        (previous) => (previous + 1) % images.length
+      );
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   const next = () => {
-    setCurrent((previous) => (previous + 1) % images.length);
+    setCurrent(
+      (previous) => (previous + 1) % images.length
+    );
   };
 
   const previous = () => {
@@ -31,95 +35,92 @@ export default function ProjectGallery({
     );
   };
 
+  if (!images.length) return null;
+
   const image = images[current];
 
   return (
-    <div className="w-full">
+    <div className="project-gallery">
+
       {/* IMAGE */}
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+      <div className="gallery-frame">
+
         <img
           key={image.src}
           src={image.src}
           alt={image.caption}
-          className="w-full aspect-video object-cover transition-opacity duration-700"
+          className="gallery-image"
         />
 
-        {/* PREVIOUS */}
+        <div className="gallery-overlay" />
+
+        {/* CONTROLS */}
         {images.length > 1 && (
-          <button
-            onClick={previous}
-            aria-label="Previous image"
-            className="
-              absolute left-4 top-1/2 -translate-y-1/2
-              h-10 w-10 rounded-full
-              border border-white/20
-              bg-black/50
-              text-white
-              backdrop-blur-md
-              transition
-              hover:bg-black/80
-            "
-          >
-            ←
-          </button>
+          <>
+            <button
+              onClick={previous}
+              aria-label="Previous image"
+              className="gallery-control gallery-control--previous"
+            >
+              <span>←</span>
+            </button>
+
+            <button
+              onClick={next}
+              aria-label="Next image"
+              className="gallery-control gallery-control--next"
+            >
+              <span>→</span>
+            </button>
+          </>
         )}
 
-        {/* NEXT */}
-        {images.length > 1 && (
-          <button
-            onClick={next}
-            aria-label="Next image"
-            className="
-              absolute right-4 top-1/2 -translate-y-1/2
-              h-10 w-10 rounded-full
-              border border-white/20
-              bg-black/50
-              text-white
-              backdrop-blur-md
-              transition
-              hover:bg-black/80
-            "
-          >
-            →
-          </button>
-        )}
+        {/* COUNTER */}
+        <div className="gallery-counter">
+          <span>
+            {String(current + 1).padStart(2, "0")}
+          </span>
+
+          <span className="counter-divider">
+            /
+          </span>
+
+          <span>
+            {String(images.length).padStart(2, "0")}
+          </span>
+        </div>
+
       </div>
 
       {/* CAPTION */}
-      <div className="mt-5 flex items-start justify-between gap-6">
-        <div>
-          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-cyan-500">
-            Project View
-          </p>
-
-          <p className="max-w-3xl text-sm leading-7 text-white/60">
-            {image.caption}
-          </p>
-        </div>
-
-        <span className="shrink-0 text-xs tracking-[0.2em] text-white/30">
-          {String(current + 1).padStart(2, "0")} /{" "}
-          {String(images.length).padStart(2, "0")}
-        </span>
+      <div className="gallery-caption-row">
+        <p className="gallery-caption">
+          {image.caption}
+        </p>
       </div>
 
       {/* DOTS */}
       {images.length > 1 && (
-        <div className="mt-5 flex gap-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrent(index)}
-              aria-label={`Go to image ${index + 1}`}
-              className={`h-1 transition-all duration-300 ${
-                index === current
-                  ? "w-10 bg-cyan-500"
-                  : "w-4 bg-white/20"
-              }`}
-            />
-          ))}
+        <div className="gallery-navigation">
+          <div className="gallery-progress">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrent(index)}
+                aria-label={`Go to image ${index + 1}`}
+                className={`gallery-dot ${
+                  index === current
+                    ? "gallery-dot--active"
+                    : ""
+                }`}
+              />
+            ))}
+          </div>
+
+          
         </div>
       )}
+
     </div>
   );
 }

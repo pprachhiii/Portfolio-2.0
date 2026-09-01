@@ -1,6 +1,33 @@
 import { Link, useParams } from "react-router-dom";
 import ProjectGallery from "../../components/ProjectGallery";
 import { projects } from "../../data/projects";
+import KineticGrid from "../../components/KineticGrid";
+
+function highlightKeywords(text: string, keywords: string[]) {
+  if (!keywords.length) return text;
+
+  const escaped = keywords
+    .filter(Boolean)
+    .map((keyword) =>
+      keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    );
+
+  if (!escaped.length) return text;
+
+  const regex = new RegExp(`(${escaped.join("|")})`, "gi");
+
+  return text.split(regex).map((part, index) => {
+    const isKeyword = keywords.some(
+      (keyword) => keyword.toLowerCase() === part.toLowerCase()
+    );
+
+    return isKeyword ? (
+      <strong key={index}>{part}</strong>
+    ) : (
+      part
+    );
+  });
+}
 
 export default function ProjectDetails() {
   const { slug } = useParams();
@@ -11,227 +38,192 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <main className="min-h-screen bg-[#050505] px-6 py-32 text-white">
-        <div className="mx-auto max-w-5xl">
-          <p className="mb-4 text-xs uppercase tracking-[0.3em] text-cyan-500">
-            404
-          </p>
+      <main className="project-page project-page--404">
+        <div className="project-container">
+          <p className="project-eyebrow">404</p>
 
-          <h1 className="text-4xl font-bold">
+          <h1 className="not-found-title">
             Project not found
           </h1>
 
           <Link
-            to="/projects"
-            className="mt-8 inline-block text-sm text-white/60 transition hover:text-white"
+            to="/#projects"
+            className="back-link"
           >
-            ← Back to Projects
+            ← View All Projects
+
           </Link>
+
         </div>
       </main>
     );
   }
 
-  return (
-    <main className="min-h-screen bg-[#050505] text-white">
-      {/* HEADER */}
-      <section className="px-6 pb-20 pt-32 md:px-16 lg:px-24">
-        <div className="mx-auto max-w-7xl">
+  const keywords = [
+    ...project.stack,
+    "responsive",
+    "performance",
+    "design",
+    "frontend",
+    "user experience",
+    "interaction",
+  ];
 
-          {/* BACK */}
-          <Link
-            to="/projects"
-            className="
-              mb-16
-              inline-flex
-              text-xs
-              uppercase
-              tracking-[0.2em]
-              text-white/40
-              transition
-              hover:text-cyan-500
-            "
+  return (
+    <main className="project-page">
+
+      {/* HEADER */}
+      <section className="project-hero">
+        <div
+          className="hero-grid"
+          aria-hidden="true"
+        >
+          <KineticGrid />
+        </div>
+
+        <div className="project-container hero-content">
+
+    
+<Link
+            to="/#projects"
+            className="back-link"
           >
             ← Back to Projects
           </Link>
 
-          {/* NUMBER */}
-          <p className="mb-5 text-xs tracking-[0.3em] text-cyan-500">
-            {project.number} / {project.label}
-          </p>
+          <div className="project-meta">
+            <span>{project.number}</span>
+            <span className="meta-divider">/</span>
+            <span>{project.label}</span>
+          </div>
 
-          {/* TITLE */}
-          <h1
-            className="
-              max-w-5xl
-              text-5xl
-              font-black
-              leading-[0.95]
-              md:text-7xl
-              lg:text-8xl
-            "
-          >
+          <h1 className="project-title">
             {project.title}
           </h1>
 
-          {/* SUBTITLE */}
-          <p className="mt-8 max-w-3xl text-lg italic leading-8 text-white/50 md:text-xl">
-            {project.subtitle}
-          </p>
         </div>
       </section>
 
       {/* GALLERY */}
-      <section className="px-6 md:px-16 lg:px-24">
-        <div className="mx-auto max-w-7xl">
+      <section className="project-section gallery-section">
+        <div className="project-container">
           <ProjectGallery images={project.images} />
         </div>
       </section>
 
       {/* LINKS + STACK */}
-      <section className="px-6 py-20 md:px-16 lg:px-24">
-        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[1fr_2fr]">
+      <section className="project-section project-info-section">
+        <div className="project-container info-grid">
 
-          {/* LINKS */}
-          <div>
-            <p className="mb-5 text-xs uppercase tracking-[0.25em] text-white/30">
+          <div className="info-column">
+            <p className="section-label">
               Links
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="project-actions">
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="
-                  border border-cyan-500
-                  bg-cyan-500/10
-                  px-6 py-3
-                  text-xs
-                  uppercase
-                  tracking-[0.15em]
-                  transition
-                  hover:bg-cyan-500
-                  hover:text-black
-                "
+                className="project-button project-button--primary"
               >
-                Live Demo ↗
+                Live Demo
+                <span>↗</span>
               </a>
 
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="
-                  border border-white/20
-                  px-6 py-3
-                  text-xs
-                  uppercase
-                  tracking-[0.15em]
-                  transition
-                  hover:border-white
-                "
+                className="project-button project-button--secondary"
               >
-                GitHub ↗
+                GitHub
+                <span>↗</span>
               </a>
             </div>
           </div>
 
-          {/* STACK */}
-          <div>
-            <p className="mb-5 text-xs uppercase tracking-[0.25em] text-white/30">
+          <div className="info-column">
+            <p className="section-label">
               Tech Stack
             </p>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="tech-list">
               {project.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="
-                    rounded-full
-                    border border-cyan-500/20
-                    bg-cyan-500/5
-                    px-4 py-2
-                    text-xs
-                    tracking-wider
-                    text-cyan-400
-                  "
+                  className="tech-pill"
                 >
                   {tech}
                 </span>
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
       {/* DESCRIPTION */}
-      <section className="border-t border-white/10 px-6 py-20 md:px-16 lg:px-24">
-        <div className="mx-auto max-w-7xl">
-
-          <p className="mb-8 text-xs uppercase tracking-[0.25em] text-cyan-500">
+      <section className="project-section description-section">
+        <div className="project-container">
+          <p className="section-label section-label--accent">
             About the Project
           </p>
 
-          <p className="max-w-4xl text-xl leading-9 text-white/70 md:text-2xl md:leading-10">
-            {project.description}
+          <p className="project-description">
+            {highlightKeywords(
+              project.description,
+              keywords
+            )}
           </p>
         </div>
       </section>
 
       {/* FEATURES */}
-      <section className="border-t border-white/10 px-6 py-20 md:px-16 lg:px-24">
-        <div className="mx-auto max-w-7xl">
+      <section className="project-section features-section">
+        <div className="project-container">
 
-          <p className="mb-10 text-xs uppercase tracking-[0.25em] text-cyan-500">
+          <p className="section-label section-label--accent">
             What I Built
           </p>
 
-          <ul className="max-w-4xl space-y-6">
+          <ul className="feature-list">
             {project.features.map((feature, index) => (
               <li
                 key={feature}
-                className="
-                  flex
-                  gap-5
-                  border-b
-                  border-white/10
-                  pb-6
-                  text-base
-                  leading-8
-                  text-white/60
-                  md:text-lg
-                "
+                className="feature-item"
               >
-                <span className="shrink-0 text-xs tracking-[0.2em] text-cyan-500">
+                <span className="feature-number">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span>{feature}</span>
+                <span className="feature-text">
+                  {highlightKeywords(
+                    feature,
+                    keywords
+                  )}
+                </span>
               </li>
             ))}
           </ul>
+
         </div>
       </section>
 
       {/* BOTTOM */}
-      <section className="px-6 py-24 md:px-16 lg:px-24">
-        <div className="mx-auto max-w-7xl border-t border-white/10 pt-10">
-          <Link
-            to="/projects"
-            className="
-              text-sm
-              uppercase
-              tracking-[0.2em]
-              text-white/40
-              transition
-              hover:text-cyan-500
-            "
+      <section className="project-footer">
+        <div className="project-container">
+                    <Link
+            to="/#projects"
+            className="back-link"
           >
             ← View All Projects
+
           </Link>
+
         </div>
       </section>
+
     </main>
   );
 }

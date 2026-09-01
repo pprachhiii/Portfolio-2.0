@@ -1,0 +1,739 @@
+
+.expd-page {
+  --expd-bg: #050505;
+  --expd-surface: #0b0b0d;
+  --expd-text: #f5f5f5;
+  --expd-muted: rgba(255, 255, 255, 0.56);
+  --expd-faint: rgba(255, 255, 255, 0.3);
+  --expd-line: rgba(255, 255, 255, 0.1);
+
+  --expd-cyan: #22d3ee;
+  --expd-pink: #f472b6;
+  --expd-pink-soft: rgba(244, 114, 182, 0.12);
+
+  min-height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 8%,
+      rgba(244, 114, 182, 0.06),
+      transparent 25%
+    ),
+    var(--expd-bg);
+
+  color: var(--expd-text);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.expd-container {
+  width: min(calc(100% - 48px), 1180px);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.expd-hero {
+  position: relative;
+  padding: 50px 0 55px;
+  isolation: isolate;
+}
+
+.expd-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.expd-hero-content {
+  position: relative;
+}
+
+
+/* =========================================================
+   BACK LINK
+   ========================================================= */
+
+.expd-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 28px;
+
+  color: rgba(255, 255, 255, 0.4);
+
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.expd-back-link:hover {
+  color: var(--expd-pink);
+  transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.expd-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 18px;
+
+  color: var(--expd-cyan);
+
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.expd-meta-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.expd-heading {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.expd-heading-text {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.expd-logo-wrap {
+  flex-shrink: 0;
+
+  width: 105px;
+  height: 105px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.expd-logo {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   ROLE / COMPANY
+   ========================================================= */
+
+.expd-role {
+  margin-bottom: 8px;
+
+  color: var(--expd-text);
+
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.expd-title {
+  margin: 0;
+
+  color: var(--expd-pink);
+
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+   ========================================================= */
+
+.expd-section {
+  position: relative;
+}
+
+
+/* =========================================================
+   INFO
+   Reduced vertical space
+   ========================================================= */
+
+.expd-info-section {
+  padding: 5px 0 18px;
+}
+
+.expd-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 45px;
+
+}
+
+.expd-info-column {
+  min-width: 0;
+}
+
+.expd-section-label {
+  margin: 0 0 10px;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.expd-section-label--accent {
+  color: var(--expd-cyan);
+}
+
+.expd-info-value {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   TYPE / LOCATION PILL
+   ========================================================= */
+
+.expd-type-pill {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 34px;
+  padding: 0 13px;
+
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  border-radius: 999px;
+
+  color: #f9a8d4;
+  background: rgba(244, 114, 182, 0.06);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   Tightened
+   ========================================================= */
+.expd-description-section {
+  padding: 25px 0 35px;
+}
+
+.expd-description {
+  max-width: 1600px;
+  margin: 0 0 0 12px;
+  color: rgba(255, 255, 255, 0.67);
+  font-family: sans-serif;
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: -0.015em;
+}
+
+.expd-description strong,
+.expd-description b {
+  font-weight: 900;
+  color: var(--expd-pink);
+}
+/* =========================================================
+   TECH STACK
+   Tightened
+   ========================================================= */
+
+.expd-stack-section {
+  padding: 10px 0 35px;
+}
+
+.expd-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-left: 12px;
+}
+
+.expd-tech-pill {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 42px;
+  padding: 0 15px;
+
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 999px;
+
+color: var(--expd-pink);
+  background: rgba(34, 211, 238, 0.045);
+
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.expd-tech-pill:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(244, 114, 182, 0.55);
+
+  background: var(--expd-pink-soft);
+
+  color: #f9a8d4;
+}
+
+
+/* =========================================================
+   HIGHLIGHTS
+   ========================================================= */
+
+.expd-highlights-section {
+  padding: 5px 0 40px;
+}
+
+.expd-feature-list {
+  max-width: 1100px;
+
+  margin: 0 0 0 12px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.expd-feature-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+
+  gap: 20px;
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid var(--expd-line);
+
+  transition:
+    padding-left 220ms ease,
+    border-color 220ms ease;
+}
+
+.expd-feature-item:first-child {
+  border-top: 1px solid var(--expd-line);
+}
+
+.expd-feature-item:hover {
+  padding-left: 8px;
+
+  border-color: rgba(244, 114, 182, 0.28);
+}
+
+.expd-feature-number {
+  padding-top: 5px;
+
+  color: var(--expd-pink);
+
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+}
+
+.expd-feature-text {
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   CERTIFICATE
+   ========================================================= */
+
+.expd-certificate-section {
+  padding: 5px 0 40px;
+}
+
+.expd-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-height: 48px;
+  padding: 0 19px;
+
+  border: 1px solid transparent;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transition:
+    transform 200ms ease,
+    background 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.expd-button span {
+  transition: transform 200ms ease;
+}
+
+.expd-button:hover {
+  transform: translateY(-3px);
+}
+
+.expd-button:hover span {
+  transform: translate(2px, -2px);
+}
+
+.expd-button--primary {
+  color: #050505;
+
+  background: var(--expd-cyan);
+  border-color: var(--expd-cyan);
+}
+
+.expd-button--primary:hover {
+  background: #67e8f9;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.expd-footer {
+  padding: 10px 0 60px;
+}
+
+.expd-navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+
+  margin-bottom: 35px;
+}
+
+.expd-nav-card {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  min-height: 100px;
+  padding: 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease;
+}
+
+.expd-nav-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(244, 114, 182, 0.35);
+
+  background: rgba(244, 114, 182, 0.04);
+}
+
+.expd-nav-card--next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.expd-nav-label {
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.expd-nav-card strong {
+  color: rgba(255, 255, 255, 0.78);
+
+  font-family: var(
+    --serif-display,
+    "Fraunces",
+    serif
+  );
+
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.expd-back-bottom {
+  display: inline-flex;
+
+  color: rgba(255, 255, 255, 0.4);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.expd-back-bottom:hover {
+  color: var(--expd-pink);
+  transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   404
+   ========================================================= */
+
+.expd-page--404 {
+  min-height: 100vh;
+  padding-top: 150px;
+}
+
+.expd-eyebrow {
+  margin-bottom: 15px;
+
+  color: var(--expd-cyan);
+
+  font-family: var(--mono, monospace);
+
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+}
+
+.expd-not-found-title {
+  margin: 0 0 32px;
+
+  font-family:
+    var(
+      --serif-display,
+      "Fraunces",
+      serif
+    );
+
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .expd-container {
+    width: min(calc(100% - 32px), 1180px);
+  }
+
+  .expd-hero {
+    padding: 70px 0 42px;
+  }
+
+  .expd-heading {
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .expd-logo-wrap {
+    width: 72px;
+    height: 72px;
+
+    border-radius: 13px;
+  }
+
+  .expd-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .expd-title {
+    font-size: clamp(2.6rem, 11vw, 4.5rem);
+  }
+
+  .expd-role {
+    font-size: 0.7rem;
+  }
+
+  .expd-info-section {
+    padding-top: 5px;
+  }
+
+  .expd-info-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px 20px;
+
+    padding-left: 0;
+  }
+
+  .expd-description-section {
+    padding: 30px 0 28px;
+  }
+
+  .expd-description {
+    margin-left: 0;
+
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .expd-tech-list,
+  .expd-feature-list {
+    margin-left: 0;
+  }
+
+  .expd-stack-section {
+    padding: 5px 0 30px;
+  }
+
+  .expd-highlights-section {
+    padding: 5px 0 35px;
+  }
+
+  .expd-feature-item {
+    grid-template-columns: 38px 1fr;
+
+    gap: 12px;
+
+    padding: 16px 0;
+  }
+
+  .expd-navigation {
+    grid-template-columns: 1fr;
+  }
+
+  .expd-nav-card--next {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+  .expd-container {
+    width: calc(100% - 28px);
+  }
+
+  .expd-hero {
+    padding-top: 60px;
+  }
+
+  .expd-heading {
+    align-items: flex-start;
+  }
+
+  .expd-logo-wrap {
+    width: 58px;
+    height: 58px;
+  }
+
+  .expd-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .expd-title {
+    font-size: 2.65rem;
+  }
+
+  .expd-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expd-description {
+    font-size: 0.92rem;
+  }
+
+  .expd-tech-pill {
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 0.76rem;
+  }
+
+  .expd-feature-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .expd-page *,
+  .expd-page *::before,
+  .expd-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

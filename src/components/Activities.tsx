@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import profile from "../assets/profile.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const activities = [
   {
@@ -50,196 +55,427 @@ const activities = [
 ];
 
 export default function Activities() {
-  const [loaded, setLoaded] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const laptopRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-  const timer = setTimeout(() => {
-    setLoaded(true);
-  }, 300);
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const wrap = wrapRef.current;
+    const svg = svgRef.current;
+    const laptop = laptopRef.current;
 
-  const drawLines = () => {
-    const wrap = document.querySelector(".activity-wrap");
-    const svg = document.querySelector(".activity-lines");
-    const laptop = document.querySelector(".laptop-wrapper");
+    if (!section || !wrap || !svg || !laptop) return;
 
-    if (!wrap || !svg || !laptop) return;
-
-    const wrapRect = wrap.getBoundingClientRect();
-    const laptopRect = laptop.getBoundingClientRect();
-
-    const cards = [
-      wrap.querySelector(".activity-card-left"),
-      wrap.querySelector(".activity-card-right"),
-      wrap.querySelector(".bottom-card-one"),
-      wrap.querySelector(".bottom-card-two"),
-      wrap.querySelector(".bottom-card-three"),
-    ].filter((card): card is Element => card !== null);
-
-    svg.setAttribute("width", `${wrapRect.width}`);
-    svg.setAttribute("height", `${wrapRect.height}`);
-
-    svg.setAttribute(
-      "viewBox",
-      `0 0 ${wrapRect.width} ${wrapRect.height}`
-    );
-
-    const startX =
-      laptopRect.left +
-      laptopRect.width / 2 -
-      wrapRect.left;
-
-    const startY =
-      laptopRect.bottom -
-      wrapRect.top;
-
-    while (svg.firstChild) {
-      svg.removeChild(svg.firstChild);
-    }
-
-    cards.forEach((card, index) => {
-      const cardRect = card.getBoundingClientRect();
-
-      const endX =
-        cardRect.left +
-        cardRect.width / 2 -
-        wrapRect.left;
-
-      const isBottomCard =
-        card.classList.contains("bottom-card");
-
-      const endY = isBottomCard
-        ? cardRect.top - wrapRect.top
-        : cardRect.top +
-          cardRect.height / 2 -
-          wrapRect.top;
-
-      const path = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "path"
+    const ctx = gsap.context(() => {
+      /*
+       * Get all cards
+       */
+      const cards: HTMLElement[] = [
+        wrap.querySelector<HTMLElement>(".activity-card-left"),
+        wrap.querySelector<HTMLElement>(".activity-card-right"),
+        wrap.querySelector<HTMLElement>(".bottom-card-one"),
+        wrap.querySelector<HTMLElement>(".bottom-card-two"),
+        wrap.querySelector<HTMLElement>(".bottom-card-three"),
+      ].filter(
+        (card): card is HTMLElement => card !== null
       );
 
-      if (isBottomCard) {
-        path.setAttribute(
-          "d",
-          `M ${startX} ${startY}
-           L ${endX} ${endY}`
+      /*
+       * Draw connection lines
+       */
+      const drawLines = () => {
+        const wrapRect = wrap.getBoundingClientRect();
+        const laptopRect = laptop.getBoundingClientRect();
+
+        svg.setAttribute(
+          "width",
+          `${wrapRect.width}`
         );
-      } else {
-        const direction = endX < startX ? -1 : 1;
 
-        const controlX =
-          startX +
-          direction *
-            Math.abs(endX - startX) *
-            0.45;
-
-        const controlY =
-          startY +
-          (endY - startY) * 0.2;
-
-        path.setAttribute(
-          "d",
-          `M ${startX} ${startY}
-           Q ${controlX} ${controlY}
-             ${endX} ${endY}`
+        svg.setAttribute(
+          "height",
+          `${wrapRect.height}`
         );
-      }
+
+        svg.setAttribute(
+          "viewBox",
+          `0 0 ${wrapRect.width} ${wrapRect.height}`
+        );
+
+        /*
+         * Remove old lines
+         */
+        while (svg.firstChild) {
+          svg.removeChild(svg.firstChild);
+        }
+
+        /*
+         * Laptop connection point
+         */
+        const startX =
+          laptopRect.left +
+          laptopRect.width / 2 -
+          wrapRect.left;
+
+        const startY =
+          laptopRect.bottom -
+          wrapRect.top;
+
+        /*
+         * Create a line for every card
+         */
+        cards.forEach((card) => {
+          const cardRect =
+            card.getBoundingClientRect();
+
+          const endX =
+            cardRect.left +
+            cardRect.width / 2 -
+            wrapRect.left;
+
+          const isBottomCard =
+            card.classList.contains(
+              "bottom-card"
+            );
+
+          const endY = isBottomCard
+            ? cardRect.top - wrapRect.top
+            : cardRect.top +
+              cardRect.height / 2 -
+              wrapRect.top;
+
+          const path =
+            document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "path"
+            );
+
+          /*
+           * Bottom cards use straight lines
+           */
+          if (isBottomCard) {
+            path.setAttribute(
+              "d",
+              `M ${startX} ${startY}
+               L ${endX} ${endY}`
+            );
+          } else {
+            /*
+             * Top cards use curved lines
+             */
+            const direction =
+              endX < startX ? -1 : 1;
+
+            const controlX =
+              startX +
+              direction *
+                Math.abs(endX - startX) *
+                0.45;
+
+            const controlY =
+              startY +
+              (endY - startY) * 0.2;
+
+            path.setAttribute(
+              "d",
+              `M ${startX} ${startY}
+               Q ${controlX} ${controlY}
+                 ${endX} ${endY}`
+            );
+          }
+
+          /*
+           * Prepare line for GSAP drawing animation
+           */
+          const length =
+            path.getTotalLength();
+
+          path.style.strokeDasharray =
+            `${length}`;
+
+          path.style.strokeDashoffset =
+            `${length}`;
+
+          svg.appendChild(path);
+        });
+      };
 
       /*
-       * Each line appears after the corresponding card.
-       *
-       * Card 1 → 0.4s
-       * Card 2 → 1.0s
-       * Card 3 → 1.6s
-       * Card 4 → 2.2s
-       * Card 5 → 2.8s
+       * Draw lines before animation starts
        */
-path.style.animationDelay =
-  `${0.55 + index * 0.55}s`;
-      svg.appendChild(path);
-    });
-  };
+      drawLines();
 
-  const wrap = document.querySelector(".activity-wrap");
+      /*
+       * Get SVG paths after creating them
+       */
+      const getPaths = () =>
+        svg.querySelectorAll<SVGPathElement>(
+          "path"
+        );
 
-  const resizeObserver = new ResizeObserver(() => {
-    requestAnimationFrame(drawLines);
-  });
+      /*
+       * Initial state of all cards
+       */
+      gsap.set(cards, {
+        opacity: 0,
+        y: 70,
+        scale: 0.96,
+      });
 
-  if (wrap) {
-    resizeObserver.observe(wrap);
-  }
+      /*
+       * Initial laptop state
+       */
+      gsap.set(laptop, {
+        opacity: 0,
+        scale: 0.9,
+      });
 
-  window.addEventListener("resize", drawLines);
+      /*
+       * Main animation timeline
+       *
+       * It starts ONLY when the Activities
+       * section reaches 75% of the viewport.
+       */
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          once: true,
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(drawLines);
-  });
+          /*
+           * Uncomment this if you want to
+           * see the trigger position:
+           *
+           * markers: true,
+           */
+        },
+      });
 
-  const delayedDraw1 = setTimeout(drawLines, 700);
-  const delayedDraw2 = setTimeout(drawLines, 1500);
+      /*
+       * ========================================
+       * LAPTOP
+       * ========================================
+       */
+      timeline.to(laptop, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.7,
+        ease: "power3.out",
+      });
 
-  return () => {
-    clearTimeout(timer);
-    clearTimeout(delayedDraw1);
-    clearTimeout(delayedDraw2);
+      /*
+       * ========================================
+       * CARD 1
+       * ========================================
+       */
+      timeline.to(
+        cards[0],
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.65,
+          ease: "power3.out",
+        },
+        "-=0.25"
+      );
 
-    resizeObserver.disconnect();
-    window.removeEventListener("resize", drawLines);
-  };
-}, []);
+      /*
+       * LINE 1
+       */
+      timeline.to(
+        getPaths()[0],
+        {
+          strokeDashoffset: 0,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.15"
+      );
+
+      /*
+       * ========================================
+       * CARD 2
+       * ========================================
+       */
+      timeline.to(
+        cards[1],
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.65,
+          ease: "power3.out",
+        },
+        "+=0.15"
+      );
+
+      /*
+       * LINE 2
+       */
+      timeline.to(
+        getPaths()[1],
+        {
+          strokeDashoffset: 0,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.15"
+      );
+
+      /*
+       * ========================================
+       * BOTTOM CARDS
+       * ========================================
+       *
+       * Card 3
+       * ↓
+       * Line 3
+       * ↓
+       * Card 4
+       * ↓
+       * Line 4
+       * ↓
+       * Card 5
+       * ↓
+       * Line 5
+       */
+      cards.slice(2).forEach(
+        (card, index) => {
+          timeline.to(
+            card,
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.65,
+              ease: "power3.out",
+            },
+            "+=0.15"
+          );
+
+          timeline.to(
+            getPaths()[index + 2],
+            {
+              strokeDashoffset: 0,
+              duration: 0.6,
+              ease: "power2.out",
+            },
+            "-=0.15"
+          );
+        }
+      );
+
+      /*
+       * ========================================
+       * RESIZE HANDLING
+       * ========================================
+       */
+      const resizeObserver =
+        new ResizeObserver(() => {
+          drawLines();
+          ScrollTrigger.refresh();
+        });
+
+      resizeObserver.observe(wrap);
+
+      window.addEventListener(
+        "resize",
+        drawLines
+      );
+
+      /*
+       * Cleanup
+       */
+      return () => {
+        resizeObserver.disconnect();
+
+        window.removeEventListener(
+          "resize",
+          drawLines
+        );
+      };
+    }, sectionRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
 
   return (
-    <section className={`activity-section ${loaded ? "is-loaded" : ""}`}>
-      <div className="activity-wrap">
-<svg
-  className="activity-lines"
-  aria-hidden="true"
-/>
- 
-        <div className="activity-header">
-          <p className="activity-kicker">Activities</p>
+    <section
+      ref={sectionRef}
+      id="activities"
+      className="activity-section"
+    >
+      <div
+        ref={wrapRef}
+        className="activity-wrap"
+      >
+        {/* SVG CONNECTION LINES */}
+        <svg
+          ref={svgRef}
+          className="activity-lines"
+          aria-hidden="true"
+        />
 
+        {/* HEADER */}
+        <div className="activity-header">
+          <p className="activity-kicker">
+            Activities
+          </p>
         </div>
 
-
- 
+        {/* MAIN SCENE */}
         <div className="activity-scene">
 
-<div className="activity-card activity-card-left">
-  <div className="activity-card-bar">
-    <span />
-    <span />
+          {/* ================================= */}
+          {/* LEFT CARD */}
+          {/* ================================= */}
 
-    <strong>{activities[0].title}</strong>
-  </div>
+          <div className="activity-card activity-card-left">
+            <div className="activity-card-bar">
+              <span />
+              <span />
 
-  <div className="activity-card-body">
+              <strong>
+                {activities[0].title}
+              </strong>
+            </div>
 
+            <div className="activity-card-body">
+              <div className="activity-label">
+                {activities[0].date}
+              </div>
 
-    <div className="activity-label">{activities[0].date}</div>
+              <p>
+                {activities[0].description}
+              </p>
 
-    <p>{activities[0].description}</p>
+              {activities[0].link && (
+                <a
+                  href={activities[0].link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="activity-certificate"
+                >
+                  Certificate ↗
+                </a>
+              )}
+            </div>
+          </div>
 
-    {activities[0].link && (
-      <a
-        href={activities[0].link}
-        target="_blank"
-        rel="noreferrer"
-            className="activity-certificate"
+          {/* ================================= */}
+          {/* LAPTOP */}
+          {/* ================================= */}
 
-      >
-        Certificate ↗
-      </a>
-    )}
-  </div>
-</div>
-
-
-          <div className="laptop-wrapper">
-
+          <div
+            ref={laptopRef}
+            className="laptop-wrapper"
+          >
             <div className="laptop">
-
 
               <div className="laptop-screen-frame">
 
@@ -248,153 +484,171 @@ path.style.animationDelay =
                 <div className="laptop-screen">
 
                   <img
-  src={profile}
-  alt="Prachi's profile"
-  className="laptop-video"
-/>
-                </div>
+                    src={profile}
+                    alt="Prachi's profile"
+                    className="laptop-video"
+                  />
 
+                </div>
               </div>
 
-
-
               <div className="laptop-hinge" />
-
-
 
               <div className="laptop-base">
 
                 <div className="keyboard">
-
-                  {Array.from({ length: 42 }).map((_, index) => (
-                    <span key={index} />
+                  {Array.from({
+                    length: 42,
+                  }).map((_, index) => (
+                    <span
+                      key={index}
+                    />
                   ))}
-
                 </div>
 
                 <div className="trackpad" />
 
               </div>
 
-
-
               <div className="laptop-front" />
 
             </div>
-
           </div>
 
+          {/* ================================= */}
+          {/* RIGHT CARD */}
+          {/* ================================= */}
 
+          <div className="activity-card activity-card-right">
 
-<div className="activity-card activity-card-right">
-  <div className="activity-card-bar">
-    <span />
-    <span />
+            <div className="activity-card-bar">
+              <span />
+              <span />
 
-    <strong>{activities[1].title}</strong>
-  </div>
+              <strong>
+                {activities[1].title}
+              </strong>
+            </div>
 
-  <div className="activity-card-body">
+            <div className="activity-card-body">
 
+              <div className="activity-label">
+                {activities[1].date}
+              </div>
 
-    <div className="activity-label">{activities[1].date}</div>
+              <p>
+                {activities[1].description}
+              </p>
 
-    <p>{activities[1].description}</p>
-  </div>
-</div>
-
+            </div>
+          </div>
 
         </div>
 
-
+        {/* ================================= */}
+        {/* BOTTOM CARDS */}
+        {/* ================================= */}
 
         <div className="activity-bottom">
 
-          {/* CARD 1 */}
-
-<div className="activity-card bottom-card bottom-card-one">
-  <div className="activity-card-bar">
-    <span />
-    <span />
-
-    <strong>{activities[2].title}</strong>
-  </div>
-
-  <div className="activity-card-body">
-
-
-    <div className="activity-label">{activities[2].date}</div>
-
-    <p>{activities[2].description}</p>
-
-    {activities[2].link && (
-  <a
-    href={activities[2].link}
-    target="_blank"
-    rel="noreferrer"
-    className="activity-certificate"
-  >
-    Certificate ↗
-  </a>
-)}
-  
-  </div>
-</div>
-
-          {/* CARD 2 */}
-
-          <div className="activity-card bottom-card bottom-card-two">
-  <div className="activity-card-bar">
-    <span />
-    <span />
-
-    <strong>{activities[3].title}</strong>
-  </div>
-
-  <div className="activity-card-body">
-
-
-    <div className="activity-label">{activities[3].date}</div>
-    <p>{activities[3].description}</p>
-
-    {activities[3].link && (
-      <a
-        href={activities[3].link}
-        target="_blank"
-        rel="noreferrer"
-            className="activity-certificate"
-
-      >
-        Certificate ↗
-      </a>
-    )}
-  </div>
-</div>
-
-
           {/* CARD 3 */}
+          <div className="activity-card bottom-card bottom-card-one">
 
-<div className="activity-card bottom-card bottom-card-three">
-  <div className="activity-card-bar">
-    <span />
-    <span />
+            <div className="activity-card-bar">
+              <span />
+              <span />
 
-    <strong>{activities[4].title}</strong>
-  </div>
+              <strong>
+                {activities[2].title}
+              </strong>
+            </div>
 
-  <div className="activity-card-body">
+            <div className="activity-card-body">
 
+              <div className="activity-label">
+                {activities[2].date}
+              </div>
 
-    <div className="activity-label">{activities[4].date}</div>
+              <p>
+                {activities[2].description}
+              </p>
 
-    <p>{activities[4].description}</p>
-  </div>
-</div>
+              {activities[2].link && (
+                <a
+                  href={activities[2].link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="activity-certificate"
+                >
+                  Certificate ↗
+                </a>
+              )}
+
+            </div>
+          </div>
+
+          {/* CARD 4 */}
+          <div className="activity-card bottom-card bottom-card-two">
+
+            <div className="activity-card-bar">
+              <span />
+              <span />
+
+              <strong>
+                {activities[3].title}
+              </strong>
+            </div>
+
+            <div className="activity-card-body">
+
+              <div className="activity-label">
+                {activities[3].date}
+              </div>
+
+              <p>
+                {activities[3].description}
+              </p>
+
+              {activities[3].link && (
+                <a
+                  href={activities[3].link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="activity-certificate"
+                >
+                  Certificate ↗
+                </a>
+              )}
+
+            </div>
+          </div>
+
+          {/* CARD 5 */}
+          <div className="activity-card bottom-card bottom-card-three">
+
+            <div className="activity-card-bar">
+              <span />
+              <span />
+
+              <strong>
+                {activities[4].title}
+              </strong>
+            </div>
+
+            <div className="activity-card-body">
+
+              <div className="activity-label">
+                {activities[4].date}
+              </div>
+
+              <p>
+                {activities[4].description}
+              </p>
+
+            </div>
+          </div>
 
         </div>
-
-
-
       </div>
     </section>
   );

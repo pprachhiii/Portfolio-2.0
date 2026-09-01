@@ -1,15 +1,16 @@
 import Sidebar from "./components/Sidebar";
+import Menu from "./components/Menu";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contacts";
-import Menu from "./components/Menu";
 import Activities from "./components/Activities";
 import MagicCursor from "./components/MagicCursor";
 
 import ProjectDetails from "./pages/projects/ProjectDetails";
+import ExperienceDetails from "./pages/projects/ExperienceDetails";
 
 import "./styles/hero.css";
 import "./styles/about.css";
@@ -21,10 +22,26 @@ import "./styles/sidebar.css";
 import "./styles/global.css";
 import "./styles/tailwind.css";
 import "./styles/activities.css";
+import "./styles/projectdetails.css";
+import "./styles/experiencedetails.css";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
 function Home() {
+  return (
+    <main>
+      <Hero />
+      <About />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Activities />
+      <Contact />
+    </main>
+  );
+}
+
+function Layout() {
   return (
     <>
       <MagicCursor />
@@ -32,15 +49,7 @@ function Home() {
       <Sidebar />
       <Menu />
 
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Activities />
-        <Contact />
-      </main>
+      <Outlet />
     </>
   );
 }
@@ -48,14 +57,26 @@ function Home() {
 function App() {
   return (
     <Routes>
-      {/* MAIN PORTFOLIO */}
-      <Route path="/" element={<Home />} />
+      <Route element={<Layout />}>
+        {/* HOME */}
+        <Route path="/" element={<Home />} />
 
-      {/* PROJECT DETAIL */}
-      <Route
-        path="/projects/:slug"
-        element={<ProjectDetails />}
-      />
+        {/* PROJECT DETAILS */}
+        <Route
+          path="/projects/:slug"
+          element={<ProjectDetails />}
+        />
+
+        <Route
+          path="/projects/:slug"
+          element={<ProjectDetails />}
+        />
+
+        <Route
+          path="/experience/:slug"
+          element={<ExperienceDetails />}
+        />
+      </Route>
     </Routes>
   );
 }

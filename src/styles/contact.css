@@ -159,12 +159,14 @@
 }
 
 .icon-mail,
-.icon-globe,
-.icon-github,
-.icon-linkedin {
+.icon-globe {
   color: rgb(255, 158, 174);
 }
 
+.icon-github,
+.icon-linkedin {
+  color: black;
+}
 
 /* =========================================================
    TEXT
