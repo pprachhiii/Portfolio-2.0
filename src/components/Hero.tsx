@@ -137,9 +137,8 @@ export default function Hero() {
 <p className="text-[#B2BEB5]">
   I design and build fast, dependable products end-to-end -
   from pixel-level interface work to the APIs and databases
-  underneath. Four years of shipping for startups and small
-  teams who need one person who can own the whole stack.
-</p>
+  underneath. 
+  </p>
             <div className="hero-search">
             <a
     href="https://www.linkedin.com/in/prachi-yadav-dev/"
@@ -162,7 +161,7 @@ export default function Hero() {
 
     linkedin.com/in/prachi-yadav-dev
   </a>
-              <a         href="https://drive.google.com/file/d/1GcSOo57y0zwJMbH5zBmeksONaZ4FiA2K/view?usp=drive_link"
+              <a         href="https://drive.google.com/file/d/1uY5QRYcIWPSgYVtNwyEO9PJE5BK1svGZ/view?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
  className="hero-work-link">
