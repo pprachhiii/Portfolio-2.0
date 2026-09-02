@@ -716,10 +716,28 @@ margin-left: 120px;
   color: var(--activity-pink-dark);
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+.activity-wrap {
+  position: relative;
+}
 
+.activity-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  overflow: visible;
+
+  z-index: 2;
+}
+
+.activity-scene,
+.activity-bottom {
+  position: relative;
+  z-index: 3;
+}
 /* ---------------------------------------------------------
    LARGE TABLET / SMALL DESKTOP
 --------------------------------------------------------- */

@@ -3,38 +3,44 @@
   z-index: 5;
 
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 
-  margin-left: 220px;
-
-  padding: 80px 40px 100px 0;
+  padding: 80px 40px 100px 100px;
 
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
 
-  justify-content: flex-start;
-
-  gap: 280px;
-
-  flex-wrap: nowrap;
+  gap: 60px;
 
   color: var(--black);
-
-  overflow: visible;
+  overflow: hidden;
 }
-
-
-/* =========================================================
-   LEFT
-========================================================= */
 
 .contact-left {
+  flex: 1 1 400px;
+  min-width: 0;
   max-width: 400px;
-
-  padding-top: 8px;
-
-  /* prevents left section from growing */
-  flex: 0 0 400px;
 }
+
+.contact-form {
+  position: relative;
+
+  flex: 1 1 550px;
+  width: 100%;
+  max-width: 550px;
+  min-width: 0;
+
+  background: rgb(255, 158, 174);
+  border-radius: 24px;
+  border: 2px solid #141414;
+
+  padding: 50px;
+
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.85);
+}
+
 
 .contact-title {
   font-family: "Space Grotesk", sans-serif;
@@ -205,29 +211,6 @@
   font-weight: 400;
   color: #555;
   white-space: nowrap;
-}
-
-/* =========================================================
-   RIGHT FORM
-========================================================= */
-
-.contact-form {
-  position: relative;
-
-  background: rgb(255, 158, 174);
-
-  border-radius: 24px;
-
-  border: 2px solid #141414;
-
-  padding: 50px 50px;
-
-  width: 550px;
-
-  max-width: 550px;
-
-  box-shadow:
-    12px 12px 0 rgba(0, 0, 0, 0.85);
 }
 
 /* =========================================================

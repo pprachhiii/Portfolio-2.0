@@ -69,11 +69,6 @@ useLayoutEffect(() => {
   if (!section || !wrap || !svg || !laptop) return;
 
   const ctx = gsap.context(() => {
-
-    // ========================================
-    // GET ALL CARDS
-    // ========================================
-
     const cards: HTMLElement[] = [
       wrap.querySelector<HTMLElement>(".activity-card-left"),
       wrap.querySelector<HTMLElement>(".activity-card-right"),
@@ -84,10 +79,11 @@ useLayoutEffect(() => {
       (card): card is HTMLElement => card !== null
     );
 
-
-    // ========================================
-    // DRAW CONNECTION LINES
-    // ========================================
+    /*
+    ========================================
+    DRAW CONNECTION LINES
+    ========================================
+    */
 
     const drawLines = () => {
       const wrapRect = wrap.getBoundingClientRect();
@@ -101,9 +97,14 @@ useLayoutEffect(() => {
         `0 0 ${wrapRect.width} ${wrapRect.height}`
       );
 
+      // Remove old paths
       while (svg.firstChild) {
         svg.removeChild(svg.firstChild);
       }
+
+      /*
+      Laptop connection point
+      */
 
       const startX =
         laptopRect.left +
@@ -114,9 +115,12 @@ useLayoutEffect(() => {
         laptopRect.bottom -
         wrapRect.top;
 
+      /*
+      Create one line per card
+      */
+
       cards.forEach((card) => {
-        const cardRect =
-          card.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
 
         const endX =
           cardRect.left +
@@ -125,6 +129,14 @@ useLayoutEffect(() => {
 
         const isBottomCard =
           card.classList.contains("bottom-card");
+
+        /*
+        LEFT / RIGHT CARDS
+        Connect to the middle of the card.
+
+        BOTTOM CARDS
+        Connect to the top of the card.
+        */
 
         const endY = isBottomCard
           ? cardRect.top - wrapRect.top
@@ -138,13 +150,35 @@ useLayoutEffect(() => {
             "path"
           );
 
+        /*
+        ========================================
+        BOTTOM CARDS
+        ========================================
+        */
+
         if (isBottomCard) {
+          const controlY =
+            startY +
+            (endY - startY) * 0.55;
+
           path.setAttribute(
             "d",
-            `M ${startX} ${startY}
-             L ${endX} ${endY}`
+            `
+              M ${startX} ${startY}
+              C ${startX} ${controlY},
+                ${endX} ${controlY},
+                ${endX} ${endY}
+            `
           );
-        } else {
+        }
+
+        /*
+        ========================================
+        LEFT / RIGHT CARDS
+        ========================================
+        */
+
+        else {
           const direction =
             endX < startX ? -1 : 1;
 
@@ -160,11 +194,55 @@ useLayoutEffect(() => {
 
           path.setAttribute(
             "d",
-            `M ${startX} ${startY}
-             Q ${controlX} ${controlY}
-               ${endX} ${endY}`
+            `
+              M ${startX} ${startY}
+              Q ${controlX} ${controlY}
+                ${endX} ${endY}
+            `
           );
         }
+
+        /*
+        ========================================
+        SVG STYLE
+        ========================================
+        */
+
+        path.setAttribute(
+          "fill",
+          "none"
+        );
+
+        path.setAttribute(
+          "stroke",
+          "#ffffff"
+        );
+
+        path.setAttribute(
+          "stroke-width",
+          "1.5"
+        );
+
+        path.setAttribute(
+          "stroke-dasharray",
+          "7 7"
+        );
+
+        path.setAttribute(
+          "stroke-linecap",
+          "round"
+        );
+
+        path.setAttribute(
+          "opacity",
+          "0"
+        );
+
+        /*
+        ========================================
+        DRAW ANIMATION
+        ========================================
+        */
 
         const length =
           path.getTotalLength();
@@ -179,27 +257,32 @@ useLayoutEffect(() => {
       });
     };
 
-
-    // ========================================
-    // DRAW LINES FIRST
-    // ========================================
+    /*
+    ========================================
+    INITIAL DRAW
+    ========================================
+    */
 
     drawLines();
 
-
-    // ========================================
-    // GET PATHS
-    // ========================================
+    /*
+    ========================================
+    GET PATHS
+    ========================================
+    */
 
     const getPaths = () =>
-      svg.querySelectorAll<SVGPathElement>(
-        "path"
+      Array.from(
+        svg.querySelectorAll<SVGPathElement>(
+          "path"
+        )
       );
 
-
-    // ========================================
-    // INITIAL STATES
-    // ========================================
+    /*
+    ========================================
+    INITIAL CARD STATES
+    ========================================
+    */
 
     gsap.set(cards, {
       opacity: 0,
@@ -214,39 +297,39 @@ useLayoutEffect(() => {
       scale: 0.96,
     });
 
-
-    // ========================================
-    // FAST SEQUENTIAL ENTRY
-    // ========================================
+    /*
+    ========================================
+    TIMELINE
+    ========================================
+    */
 
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-
-        // Starts earlier
         start: "top 85%",
-
         once: true,
       },
     });
 
-
-    // ========================================
-    // LAPTOP FIRST
-    // ========================================
+    /*
+    ========================================
+    LAPTOP
+    ========================================
+    */
 
     timeline.to(laptop, {
       opacity: 1,
       y: 0,
       scale: 1,
-      duration: 0.35,
+      duration: 0.4,
       ease: "power2.out",
     });
 
-
-    // ========================================
-    // CARD 1
-    // ========================================
+    /*
+    ========================================
+    LEFT CARD
+    ========================================
+    */
 
     timeline.to(
       cards[0],
@@ -257,29 +340,35 @@ useLayoutEffect(() => {
         duration: 0.35,
         ease: "power2.out",
       },
-      "-=0.18"
+      "-=0.15"
     );
 
-
-    // ========================================
-    // LINE 1
-    // ========================================
+    /*
+    LEFT LINE
+    */
 
     timeline.to(
-      getPaths()[0],
-      {
-        opacity: 0.8,
-        strokeDashoffset: 0,
-        duration: 0.25,
-        ease: "power1.out",
+      () => {
+        const path = getPaths()[0];
+
+        if (path) {
+          gsap.to(path, {
+            opacity: 0.9,
+            strokeDashoffset: 0,
+            duration: 0.35,
+            ease: "power1.out",
+          });
+        }
       },
-      "-=0.18"
+      {},
+      "-=0.15"
     );
 
-
-    // ========================================
-    // CARD 2
-    // ========================================
+    /*
+    ========================================
+    RIGHT CARD
+    ========================================
+    */
 
     timeline.to(
       cards[1],
@@ -293,28 +382,39 @@ useLayoutEffect(() => {
       "-=0.08"
     );
 
-
-    // ========================================
-    // LINE 2
-    // ========================================
+    /*
+    RIGHT LINE
+    */
 
     timeline.to(
-      getPaths()[1],
-      {
-        opacity: 0.8,
-        strokeDashoffset: 0,
-        duration: 0.25,
-        ease: "power1.out",
+      () => {
+        const path = getPaths()[1];
+
+        if (path) {
+          gsap.to(path, {
+            opacity: 0.9,
+            strokeDashoffset: 0,
+            duration: 0.35,
+            ease: "power1.out",
+          });
+        }
       },
-      "-=0.18"
+      {},
+      "-=0.15"
     );
 
-
-    // ========================================
-    // BOTTOM CARDS
-    // ========================================
+    /*
+    ========================================
+    BOTTOM CARDS
+    ========================================
+    */
 
     cards.slice(2).forEach((card, index) => {
+      const pathIndex = index + 2;
+
+      /*
+      CARD APPEARS
+      */
 
       timeline.to(
         card,
@@ -325,30 +425,64 @@ useLayoutEffect(() => {
           duration: 0.35,
           ease: "power2.out",
         },
-        "-=0.08"
+        "-=0.05"
       );
+
+      /*
+      CORRESPONDING LINE APPEARS
+      */
 
       timeline.to(
-        getPaths()[index + 2],
-        {
-          opacity: 0.8,
-          strokeDashoffset: 0,
-          duration: 0.22,
-          ease: "power1.out",
-        },
-        "-=0.18"
-      );
+        () => {
+          const path =
+            getPaths()[pathIndex];
 
+          if (path) {
+            gsap.to(path, {
+              opacity: 0.9,
+              strokeDashoffset: 0,
+              duration: 0.35,
+              ease: "power1.out",
+            });
+          }
+        },
+        {},
+        "-=0.15"
+      );
     });
 
-
-    // ========================================
-    // RESIZE HANDLING
-    // ========================================
+    /*
+    ========================================
+    RESIZE
+    ========================================
+    */
 
     const resizeObserver =
       new ResizeObserver(() => {
         drawLines();
+
+        /*
+        Important:
+        redraw the paths but don't replay
+        the entrance animation.
+        */
+
+        const paths = getPaths();
+
+        paths.forEach((path) => {
+          const length =
+            path.getTotalLength();
+
+          path.style.strokeDasharray =
+            `${length}`;
+
+          path.style.strokeDashoffset =
+            "0";
+
+          path.style.opacity =
+            "0.9";
+        });
+
         ScrollTrigger.refresh();
       });
 
@@ -359,10 +493,11 @@ useLayoutEffect(() => {
       drawLines
     );
 
-
-    // ========================================
-    // CLEANUP
-    // ========================================
+    /*
+    ========================================
+    CLEANUP
+    ========================================
+    */
 
     return () => {
       resizeObserver.disconnect();
@@ -372,13 +507,11 @@ useLayoutEffect(() => {
         drawLines
       );
     };
-
   }, sectionRef);
 
   return () => {
     ctx.revert();
   };
-
 }, []);
 
   return (

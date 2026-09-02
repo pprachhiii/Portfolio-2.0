@@ -4,7 +4,7 @@
 
   max-width: 1400px;
   margin: 0 auto;
-  padding: 90px 60px 0px;
+  padding: 90px 0px 0px;
 
   display: flex;
   align-items: flex-start;
@@ -28,7 +28,7 @@ min-height: auto;
   position: absolute;
   left: 0;
   top: 30px;
-  width: 350px;
+  width: 300px;
   transform: rotate(-9deg);
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.28);
   z-index: 2;
@@ -137,7 +137,7 @@ border-radius:15%
    ============================================================ */
 .strip-wrap {
   position: absolute;
-  right: 30px;
+  right: -30px;
   top: 90px;
   width: 210px;
   background: rgb(255, 158, 174);
