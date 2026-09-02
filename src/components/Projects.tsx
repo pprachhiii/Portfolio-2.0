@@ -384,50 +384,23 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
     flipped ? "" : "md:justify-end"
   }`}
 >
- 
-  <Link
-    to={`/projects/${project.slug}`}
-    style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "8px",
-      padding: "10px 20px",
-      backgroundColor: "transparent",
-      color: "#ffffff",
-      border: "1px solid rgba(255,255,255,0.35)",
-      borderRadius: "2px",
-      textDecoration: "none",
-      fontSize: "14px",
-      fontWeight: "500",
-      cursor: "pointer",
-    }}
-  >
-    <span>View Details</span>
-    <span>→</span>
-  </Link>
+ <Link
+  to={`/projects/${project.slug}`}
+  className="project-action project-action--details"
+>
+  <span>View Details</span>
+  <span className="project-action-arrow">→</span>
+</Link>
 
-   <a
-    href={project.href}
-    target="_blank"
-    rel="noreferrer"
-    style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "8px",
-      padding: "10px 20px",
-      backgroundColor: "#ffffff",
-      color: "#000000",
-      border: "1px solid #000000",
-      borderRadius: "2px",
-      textDecoration: "none",
-      fontSize: "14px",
-      fontWeight: "500",
-      cursor: "pointer",
-    }}
-  >
-    <span>Live Demo</span>
-    <span>→</span>
-  </a>
+<a
+  href={project.href}
+  target="_blank"
+  rel="noreferrer"
+  className="project-action project-action--demo"
+>
+  <span>Live Demo</span>
+  <span className="project-action-arrow">→</span>
+</a>
 </div>
 </div>
     </div>

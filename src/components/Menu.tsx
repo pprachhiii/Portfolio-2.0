@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const menuItems = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "activities", href: "#activities" },
-  { label: "Contact", href: "#contact-section" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Activities", href: "/#activities" },
+  { label: "Contact", href: "/#contact-section" },
 ];
 
 export default function Menu() {
@@ -16,10 +17,6 @@ export default function Menu() {
 
   const closeMenu = () => {
     setOpen(false);
-  };
-
-  const handleLinkClick = () => {
-    closeMenu();
   };
 
   return (
@@ -54,9 +51,9 @@ export default function Menu() {
           <ul className="menu-list">
             {menuItems.map((item, index) => (
               <li key={item.href}>
-                <a
-                  href={item.href}
-                  onClick={handleLinkClick}
+                <Link
+                  to={item.href}
+                  onClick={closeMenu}
                   style={
                     {
                       "--item-index": index,
@@ -64,7 +61,7 @@ export default function Menu() {
                   }
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

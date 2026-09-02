@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
 const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -21,29 +22,28 @@ const videoRef = useRef<HTMLVideoElement | null>(null);
   return (
     <aside id="sidebar">
 
-      <a
-        href="#hero"
-        className="avatar-mark"
-        aria-label="Go to home"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <video
-          ref={videoRef}
-          className="avatar-video"
-          src="/video.mp4"
-          muted
-          playsInline
-          preload="metadata"
-        />
+      <Link
+  to="/"
+  className="avatar-mark"
+  aria-label="Go to home"
+  onMouseEnter={handleMouseEnter}
+  onMouseLeave={handleMouseLeave}
+>
+  <video
+    ref={videoRef}
+    className="avatar-video"
+    src="/video.mp4"
+    muted
+    playsInline
+    preload="metadata"
+  />
 
-        <span>
-          Prachi
-          <br />
-          Yadav
-        </span>
-      </a>
-      
+  <span>
+    Prachi
+    <br />
+    Yadav
+  </span>
+</Link>      
 
       <div className="side-socials">
         

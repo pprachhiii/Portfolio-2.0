@@ -1,20 +1,58 @@
-/* =========================================================
-   PROJECTS RESPONSIVE CSS
-   Desktop design remains untouched.
-   
-   Strategy:
-   - Keep desktop composition as long as possible.
-   - Shrink proportionally on tablet.
-   - Keep image + content side-by-side on larger phones.
-   - Only use stacked layout on very small phones.
-   - Prevent horizontal overflow at every breakpoint.
-   ========================================================= */
+.project-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
 
+  border-radius: 2px;
+  text-decoration: none;
 
-/* =========================================================
-   TABLET
-   1023px and below
-   ========================================================= */
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* View Details */
+.project-action--details {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Live Demo */
+.project-action--demo {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+/* Hover */
+.project-action:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 114, 182, 0.55);
+  background: var(--expd-pink-soft);
+  color: #f9a8d4;
+}
+
+/* Arrow animation */
+.project-action-arrow {
+  transition: transform 0.25s ease;
+}
+
+.project-action:hover .project-action-arrow {
+  transform: translate(3px, -1px);
+}
+
+/* Click */
+.project-action:active {
+  transform: translateY(0);
+}
 
 @media (max-width: 1023px) {
 

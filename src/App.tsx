@@ -11,6 +11,7 @@ import MagicCursor from "./components/MagicCursor";
 
 import ProjectDetails from "./pages/projects/ProjectDetails";
 import ExperienceDetails from "./pages/projects/ExperienceDetails";
+import ScrollToTop from "./components/ScrollToTop";
 
 import "./styles/hero.css";
 import "./styles/about.css";
@@ -46,6 +47,8 @@ function Home() {
 function Layout() {
   return (
     <>
+      <ScrollToTop />
+
       <MagicCursor />
 
       <Sidebar />
@@ -60,6 +63,7 @@ function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
+
         {/* HOME */}
         <Route path="/" element={<Home />} />
 
@@ -69,15 +73,12 @@ function App() {
           element={<ProjectDetails />}
         />
 
-        <Route
-          path="/projects/:slug"
-          element={<ProjectDetails />}
-        />
-
+        {/* EXPERIENCE DETAILS */}
         <Route
           path="/experience/:slug"
           element={<ExperienceDetails />}
         />
+
       </Route>
     </Routes>
   );
