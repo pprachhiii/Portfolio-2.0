@@ -1,4 +1,3 @@
-/* ================= SIDEBAR ================= */
 
 #sidebar {
   position: fixed;
@@ -25,8 +24,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 #sidebar > * {
   pointer-events: auto;
 }
-
-/* ================= KS CIRCLE ================= */
 
 .avatar-mark {
   width: 70px;
@@ -58,7 +55,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 }
 
 
-/* ================= VIDEO BACKGROUND ================= */
 
 .avatar-video {
   position: absolute;
@@ -80,14 +76,12 @@ html[data-bg-mode="kinetic"] #sidebar {
 }
 
 
-/* Show video on hover */
 
 .avatar-mark:hover .avatar-video {
   opacity: 1;
 }
 
 
-/* ================= NAME ================= */
 
 .avatar-mark span {
   position: relative;
@@ -104,7 +98,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 }
 
 
-/* DON'T hide the text */
 
 .avatar-mark:hover span {
   opacity: 1;
@@ -112,7 +105,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 
 
 
-/* ================= SOCIAL LINKS ================= */
 
 .side-socials {
   margin-top: auto;
@@ -128,7 +120,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 }
 
 
-/* Individual social button */
 
 .soc {
   width: 35px;
@@ -158,8 +149,6 @@ html[data-bg-mode="kinetic"] #sidebar {
     opacity .3s ease;
 }
 
-
-/* Tooltip */
 
 .soc .tip {
   position: absolute;
@@ -203,7 +192,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 
 
 
-/* ================= TWITTER ================= */
 
 .soc.twitter .bird {
   transition:
@@ -243,7 +231,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 
 
 
-/* ================= GITHUB ================= */
 
 .soc.github:hover svg {
   transform:
@@ -252,7 +239,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 }
 
 
-/* ================= LINKEDIN ================= */
 
 .soc.linkedin:hover svg {
   transform:
@@ -261,7 +247,6 @@ html[data-bg-mode="kinetic"] #sidebar {
 }
 
 
-/* ================= MOBILE ================= */
 
 @media (max-width: 720px) {
   #sidebar {
@@ -285,7 +270,7 @@ html[data-bg-mode="kinetic"] #sidebar {
   .avatar-mark {
     width: 38px;
     height: 38px;
-    font-size: 11px;
+    font-size: 9px;
   }
 
   .side-socials {

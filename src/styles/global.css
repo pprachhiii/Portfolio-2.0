@@ -56,7 +56,6 @@ h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em;
 }
 ::selection{background:var(--crimson); color:var(--cream);}
 
-/* ================= LAYOUT SHELL ================= */
 main {
   width: 100%;
   margin: 0;
@@ -65,14 +64,12 @@ main {
 @media (max-width:720px){ main{margin-left:0; margin-bottom:56px;} }
 
 
-/* ================= DARK SECTION SHELL ================= */
 .dark{background:var(--navy); color:var(--cream);}
 .section-head{padding-top:110px; padding-bottom:10px;}
 .section-head .eyebrow{color:var(--teal);}
 .section-head h2{font-size:clamp(30px,4.2vw,48px); margin-top:10px;}
 .underline{width:70px; height:3px; background:var(--crimson); margin-top:18px; border-radius:2px;}
 
-/* ================= GLOBAL BACKGROUND ================= */
 
 .site-background {
   position: fixed;
@@ -84,7 +81,6 @@ main {
   pointer-events: none;
 }
 
-/* KineticGrid is the permanent fallback background */
 .kinetic-background {
   position: absolute;
   inset: 0;
@@ -94,7 +90,6 @@ main {
   transition: opacity 0.8s ease;
 }
 
-/* Section background sits ABOVE kinetic grid */
 .section-background {
   position: absolute;
   inset: 0;
@@ -103,7 +98,6 @@ main {
   transition: background-color 0.8s ease;
 }
 
-/* Keep React content above the background */
 main {
   position: relative;
   z-index: 1;

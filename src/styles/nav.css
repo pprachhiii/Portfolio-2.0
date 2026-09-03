@@ -72,7 +72,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:480;line-height:1.08;}
   overflow: visible;
 }
 
-/* Both lines */
 .menu-toggle .m-h,
 .menu-toggle .m-v {
   stroke: rgb(255, 158, 174);
@@ -88,30 +87,18 @@ h1,h2,h3{font-family:var(--font-display);font-weight:480;line-height:1.08;}
     stroke 0.3s ease;
 }
 
-/* =========================
-   CLOSED
-   ========================= */
 
-/* Horizontal line visible */
 .menu-toggle .m-h {
   opacity: 1;
   transform: rotate(0deg);
 }
 
-/* Vertical line visible */
 .menu-toggle .m-v {
   opacity: 1;
   transform: rotate(0deg);
 }
 
 
-/* =========================
-   OPEN
-   ========================= */
-
-/* =========================
-   OPEN
-   ========================= */
 
 .menu-toggle.open .m-h {
   opacity: 1;
@@ -123,19 +110,16 @@ h1,h2,h3{font-family:var(--font-display);font-weight:480;line-height:1.08;}
   transform: rotate(90deg);
 }
 
-/* Hide original horizontal line */
 .menu-toggle.open .m-h {
   opacity: 0;
 }
 
-/* Rotate vertical line into horizontal */
 .menu-toggle.open .m-v {
   opacity: 1;
   transform: rotate(90deg);
 }
 
 
-/* Hover */
 .menu-toggle:hover .m-h,
 .menu-toggle:hover .m-v {
   stroke: var(--verdigris-light);

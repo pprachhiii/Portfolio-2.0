@@ -1,6 +1,5 @@
 
 
-/* Custom cursor */
 #magic-cursor {
   position: fixed;
   top: 0;
@@ -21,7 +20,6 @@
   opacity: 1;
 }
 
-/* Ring around the sparkle */
 #magic-cursor .magic-cursor-ring {
   position: absolute;
 
@@ -40,7 +38,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Wand SVG */
 #magic-cursor svg {
   position: absolute;
 
@@ -53,7 +50,6 @@
   overflow: visible;
 }
 
-/* Don't show custom cursor on touch devices */
 @media (hover: none), (pointer: coarse) {
   html,
   body,

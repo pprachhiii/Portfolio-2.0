@@ -18,21 +18,18 @@
     color 0.25s ease;
 }
 
-/* View Details */
 .project-action--details {
   background-color: transparent;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-/* Live Demo */
 .project-action--demo {
   background-color: #ffffff;
   color: #000000;
   border: 1px solid #000000;
 }
 
-/* Hover */
 .project-action:hover {
   transform: translateY(-2px);
   border-color: rgba(244, 114, 182, 0.55);
@@ -40,7 +37,6 @@
   color: #f9a8d4;
 }
 
-/* Arrow animation */
 .project-action-arrow {
   transition: transform 0.25s ease;
 }
@@ -49,7 +45,6 @@
   transform: translate(3px, -1px);
 }
 
-/* Click */
 .project-action:active {
   transform: translateY(0);
 }
@@ -68,11 +63,6 @@
     padding-top: 96px !important;
     padding-bottom: 96px !important;
 
-    /*
-      Remove desktop translation.
-      This is the main fix for content disappearing
-      outside the left side of the viewport.
-    */
     transform: none !important;
 
     overflow-x: hidden !important;
@@ -85,19 +75,12 @@
   }
 
 
-  /* ---------------------------------------------------------
-     PROJECT ROW
-     --------------------------------------------------------- */
-
   #projects .group {
     min-height: 620px !important;
 
     padding-top: 60px !important;
     padding-bottom: 60px !important;
 
-    /*
-      Keep the original 12-column composition.
-    */
     display: grid !important;
     grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
 
@@ -108,26 +91,17 @@
   }
 
 
-  /* ---------------------------------------------------------
-     IMAGE
-     --------------------------------------------------------- */
 
   #projects .group > div.relative.z-0 {
     width: auto !important;
     max-width: none !important;
 
-    /*
-      Keep it around 6 columns.
-    */
     grid-column: span 6 !important;
 
     transform: none !important;
   }
 
 
-  /*
-    Browser window
-  */
   #projects .group > div.relative.z-0 > div {
     width: 100% !important;
     max-width: 100% !important;
@@ -136,17 +110,9 @@
   }
 
 
-  /*
-    Screenshot height becomes smaller than desktop.
-  */
   #projects .group > div.relative.z-0 .bg-proj-screen {
     height: 300px !important;
   }
-
-
-  /* ---------------------------------------------------------
-     CONTENT
-     --------------------------------------------------------- */
 
   #projects .group > div.relative.z-20 {
     width: auto !important;
@@ -160,10 +126,6 @@
   }
 
 
-  /*
-    Description should still overlap slightly,
-    like desktop, but less aggressively.
-  */
 
   #projects .group > div.relative.z-20 .bg-proj-card {
     width: calc(100% + 24px) !important;
@@ -178,9 +140,6 @@
   }
 
 
-  /*
-    For flipped projects, restore opposite overlap.
-  */
 
   #projects .group > div.relative.z-20.md\:col-start-1
     .bg-proj-card {
@@ -189,29 +148,18 @@
   }
 
 
-  /* ---------------------------------------------------------
-     TITLE
-     --------------------------------------------------------- */
-
   #projects .group > div.relative.z-20 h3 {
     font-size: 28px !important;
     line-height: 1.2 !important;
   }
 
 
-  /* ---------------------------------------------------------
-     STACK
-     --------------------------------------------------------- */
 
   #projects .group > div.relative.z-20 p.flex {
     font-size: 12px !important;
     line-height: 1.5 !important;
   }
 
-
-  /* ---------------------------------------------------------
-     BUTTONS
-     --------------------------------------------------------- */
 
   #projects .group > div.relative.z-20 > div.flex {
     gap: 8px !important;
@@ -229,10 +177,6 @@
 
 
 
-/* =========================================================
-   SMALL TABLET / LARGE PHONE
-   850px and below
-   ========================================================= */
 
 @media (max-width: 850px) {
 
@@ -250,10 +194,6 @@
   }
 
 
-  /*
-    Slightly wider content distribution.
-  */
-
   #projects .group > div.relative.z-0 {
     grid-column: span 6 !important;
   }
@@ -263,18 +203,11 @@
   }
 
 
-  /*
-    Smaller screenshot.
-  */
-
   #projects .group > div.relative.z-0 .bg-proj-screen {
     height: 260px !important;
   }
 
 
-  /*
-    Smaller description overlap.
-  */
 
   #projects .group > div.relative.z-20 .bg-proj-card {
     width: calc(100% + 16px) !important;
@@ -307,11 +240,6 @@
 
 
 
-/* =========================================================
-   PHONE / TABLET
-   767px and below
-   ========================================================= */
-
 @media (max-width: 767px) {
 
   #projects {
@@ -332,10 +260,7 @@
   }
 
 
-  /* ---------------------------------------------------------
-     HEADING
-     --------------------------------------------------------- */
-
+ 
   #projects h2 {
     font-size: 27px !important;
     line-height: 1.15 !important;
@@ -354,16 +279,7 @@
   }
 
 
-  /* ---------------------------------------------------------
-     KEEP SIDE-BY-SIDE
-     --------------------------------------------------------- */
-
   #projects .group {
-
-    /*
-      IMPORTANT:
-      Do NOT switch to flex column here.
-    */
 
     display: grid !important;
 
@@ -383,10 +299,6 @@
   }
 
 
-  /*
-    Remove the Tailwind md placement because we're
-    manually controlling the two columns here.
-  */
 
   #projects .group > div.relative.z-0 {
     grid-column: 1 !important;
@@ -414,11 +326,6 @@
   }
 
 
-  /*
-    For flipped projects, still use the same
-    two-column relationship but reverse it.
-  */
-
   #projects .group > div.relative.z-0.md\:order-2 {
     grid-column: 2 !important;
   }
@@ -428,9 +335,6 @@
   }
 
 
-  /* ---------------------------------------------------------
-     IMAGE
-     --------------------------------------------------------- */
 
   #projects .group > div.relative.z-0 > div {
     width: 100% !important;
@@ -440,9 +344,6 @@
   }
 
 
-  /*
-    Browser bar
-  */
 
   #projects .group > div.relative.z-0 .px-5 {
     padding-left: 10px !important;
@@ -455,19 +356,12 @@
   }
 
 
-  /*
-    Browser dots
-  */
-
   #projects .group > div.relative.z-0 .h-3.w-3 {
     width: 7px !important;
     height: 7px !important;
   }
 
 
-  /*
-    Browser URL
-  */
 
   #projects .group > div.relative.z-0 .absolute.left-1\/2 {
     width: 48% !important;
@@ -484,21 +378,10 @@
     text-overflow: ellipsis;
   }
 
-
-  /*
-    Screenshot.
-    Keep aspect ratio visually similar,
-    but much smaller than desktop.
-  */
-
   #projects .group > div.relative.z-0 .bg-proj-screen {
     height: 190px !important;
   }
 
-
-  /* ---------------------------------------------------------
-     TITLE
-     --------------------------------------------------------- */
 
   #projects .group > div.relative.z-20 h3 {
     font-size: 21px !important;
@@ -516,15 +399,8 @@
   }
 
 
-  /* ---------------------------------------------------------
-     DESCRIPTION
-     --------------------------------------------------------- */
-
   #projects .group > div.relative.z-20 .bg-proj-card {
 
-    /*
-      Desktop overlap becomes very small.
-    */
 
     width: calc(100% + 10px) !important;
 
@@ -544,9 +420,6 @@
   }
 
 
-  /*
-    Flipped project overlap.
-  */
 
   #projects .group > div.relative.z-20.md\:col-start-1
     .bg-proj-card {
@@ -555,13 +428,6 @@
 
     margin-right: -10px !important;
   }
-
-
-  /* ---------------------------------------------------------
-     STACK
-     --------------------------------------------------------- */
-
-
 
 
 
@@ -581,10 +447,6 @@
     text-align: left !important;
   }
 
-
-  /* ---------------------------------------------------------
-     BUTTONS
-     --------------------------------------------------------- */
 
    #projects .group > div.relative.z-20 > div.flex {
     justify-content: flex-start !important;
@@ -621,11 +483,6 @@
 
 
 
-/* =========================================================
-   SMALL PHONE
-   600px and below
-   ========================================================= */
-
 @media (max-width: 600px) {
 
   #projects {
@@ -634,9 +491,6 @@
   }
 
 
-  /*
-    Slightly more balanced columns.
-  */
 
   #projects .group {
 
@@ -649,27 +503,16 @@
   }
 
 
-  /*
-    Smaller browser.
-  */
-
   #projects .group > div.relative.z-0 .bg-proj-screen {
     height: 165px !important;
   }
 
-
-  /*
-    Title
-  */
 
   #projects .group > div.relative.z-20 h3 {
     font-size: 19px !important;
   }
 
 
-  /*
-    Description
-  */
 
   #projects .group > div.relative.z-20 .bg-proj-card {
 
@@ -681,18 +524,12 @@
   }
 
 
-  /*
-    Stack
-  */
 
   #projects .group > div.relative.z-20 p.flex {
     font-size: 8px !important;
   }
 
 
-  /*
-    Buttons become compact, but remain horizontal.
-  */
 
   #projects .group > div.relative.z-20 > div.flex {
 
@@ -716,10 +553,6 @@
 
 
 
-/* =========================================================
-   VERY SMALL PHONE
-   480px and below
-   ========================================================= */
 
 @media (max-width: 480px) {
 
@@ -734,11 +567,6 @@
   }
 
 
-  /*
-    Still preserve hierarchy,
-    but now give the content more room.
-  */
-
   #projects .group {
 
     grid-template-columns:
@@ -750,18 +578,12 @@
   }
 
 
-  /*
-    Smallest screenshot.
-  */
 
   #projects .group > div.relative.z-0 .bg-proj-screen {
     height: 135px !important;
   }
 
 
-  /*
-    Browser controls.
-  */
 
   #projects .group > div.relative.z-0 .px-5 {
     height: 32px !important;
@@ -776,9 +598,6 @@
   }
 
 
-  /*
-    URL
-  */
 
   #projects .group > div.relative.z-0 .absolute.left-1\/2 {
 
@@ -788,10 +607,6 @@
   }
 
 
-  /*
-    Title
-  */
-
   #projects .group > div.relative.z-20 h3 {
 
     font-size: 16px !important;
@@ -800,9 +615,6 @@
   }
 
 
-  /*
-    Description
-  */
 
   #projects .group > div.relative.z-20 .bg-proj-card {
 
@@ -816,9 +628,6 @@
   }
 
 
-  /*
-    Stack
-  */
 
   #projects .group > div.relative.z-20 p.flex {
 
@@ -828,9 +637,6 @@
   }
 
 
-  /*
-    Buttons
-  */
 
   #projects .group > div.relative.z-20 > div.flex {
 
@@ -851,10 +657,6 @@
 }
 
 
-
-/* =========================================================
-   TOUCH DEVICES
-   ========================================================= */
 
 @media (hover: none) and (pointer: coarse) {
 
@@ -877,10 +679,6 @@
 }
 
 
-
-/* =========================================================
-   GLOBAL SAFETY
-   ========================================================= */
 
 #projects,
 #projects * {

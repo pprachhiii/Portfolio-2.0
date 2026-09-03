@@ -99,9 +99,6 @@ export default function Skills() {
 
         <div className="skills-container">
 
-          {/* =====================================================
-              HEADING
-              ===================================================== */}
 
           <header className="skills-heading">
             <h2
@@ -119,26 +116,9 @@ export default function Skills() {
           </header>
 
 
-          {/* =====================================================
-              MAIN
-
-              DESKTOP / TABLET:
-
-              LEFT  = SKILLS
-              RIGHT = SVG
-
-              MOBILE:
-
-              SVG
-              ↓
-              ALL SIX SKILLS
-              ===================================================== */}
 
           <div className="skills-main">
 
-            {/* ===================================================
-                SKILLS
-                =================================================== */}
 
             <div className="skills-list">
 
@@ -195,9 +175,6 @@ export default function Skills() {
             </div>
 
 
-            {/* ===================================================
-                SVG
-                =================================================== */}
 
             <div className="skills-illustration">
               <SkillsIllustration p={p} />
@@ -211,9 +188,6 @@ export default function Skills() {
 }
 
 
-/* ==============================================================
-   SKILL COMPONENT
-   ============================================================== */
 
 function Skill({
   title,

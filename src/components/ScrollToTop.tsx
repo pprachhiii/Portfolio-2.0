@@ -5,7 +5,6 @@ export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // If URL has a hash, scroll to that section
     if (hash) {
       const timeout = setTimeout(() => {
         const id = hash.substring(1);
@@ -22,11 +21,6 @@ export default function ScrollToTop() {
       return () => clearTimeout(timeout);
     }
 
-    // Normal page navigation:
-    // /projects/car1pro
-    // /experience/frontend
-    // etc.
-    // should always start at the top.
     window.scrollTo({
       top: 0,
       left: 0,
