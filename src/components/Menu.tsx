@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const menuItems = [
+    { label: "Home", href: "/#hero" },
   { label: "About", href: "/#about" },
   { label: "Experience", href: "/#experience" },
   { label: "Skills", href: "/#skills" },

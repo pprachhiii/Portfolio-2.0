@@ -151,4 +151,4 @@ h1,h2,h3{font-family:var(--font-display);font-weight:480;line-height:1.08;}
 .menu-list li:nth-child(4) a{transition-delay:.23s;}
 .menu-list li:nth-child(5) a{transition-delay:.28s;}
 .menu-list li:nth-child(6) a{transition-delay:.33s;}
-.menu-foot{font-family:var(--font-mono);font-size:11px;color:var(--plaster);opacity:.5;letter-spacing:.06em;}
+.menu-foot{font-family:var(--font-mono);font-size:15px;color:var(--plaster);opacity:.5;letter-spacing:.06em;}

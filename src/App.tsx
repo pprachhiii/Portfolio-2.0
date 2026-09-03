@@ -18,7 +18,7 @@ import "./styles/about.css";
 import "./styles/contact.css";
 import "./styles/cursor.css";
 import "./styles/experience.css";
-import "./styles/nav.css";
+import "./styles/menu.css";
 import "./styles/sidebar.css";
 import "./styles/global.css";
 import "./styles/tailwind.css";
