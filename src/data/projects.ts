@@ -133,6 +133,54 @@ images: [
   },
 
   {
+    slug: "stayease",
+    number: "05",
+    label: "Featured Project",
+
+    title: "StayEase",
+    subtitle:
+      "A rental marketplace engineered around search, authentication, and media management.",
+
+    liveUrl: "https://stayease-smsm.onrender.com/",
+    githubUrl: "https://github.com/pprachhiii/StayEase",
+
+    stack: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Bootstrap",
+      "REST APIs",
+    ],
+
+    description:
+      "StayEase is a full-stack rental marketplace built for property discovery and management. The platform provides property listings, authentication, bookings, search and filtering, image uploads, and user account functionality.",
+
+    images: [
+      {
+        src: "/images/projects/stayease/one.png",
+        caption:
+          "Homepage",
+      },  {
+        src: "/images/projects/stayease/two.png",
+        caption:
+          "Listings - browsing available rental properties.",
+      },
+       {
+        src: "/images/projects/stayease/three.png",
+        caption:
+          "Detail page of a listing",
+      }
+    ],
+
+    features: [
+      "Built a full-stack rental marketplace using React, Node.js, Express.js, and MongoDB.",
+      "Developed REST APIs, secure authentication, and complete CRUD workflows for property listings, bookings, and user accounts.",
+      "Implemented property search, filtering, and image uploads.",
+      "Designed a responsive rental experience using reusable frontend components.",
+    ],
+  },
+  {
     slug: "item-manager",
     number: "03",
     label: "Featured Project",
@@ -236,52 +284,5 @@ images: [
     ],
   },
 
-  {
-    slug: "stayease",
-    number: "05",
-    label: "Featured Project",
-
-    title: "StayEase",
-    subtitle:
-      "A rental marketplace engineered around search, authentication, and media management.",
-
-    liveUrl: "https://stayease-smsm.onrender.com/",
-    githubUrl: "https://github.com/pprachhiii/StayEase",
-
-    stack: [
-      "React",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Bootstrap",
-      "REST APIs",
-    ],
-
-    description:
-      "StayEase is a full-stack rental marketplace built for property discovery and management. The platform provides property listings, authentication, bookings, search and filtering, image uploads, and user account functionality.",
-
-    images: [
-      {
-        src: "/images/projects/stayease/one.png",
-        caption:
-          "Homepage",
-      },  {
-        src: "/images/projects/stayease/two.png",
-        caption:
-          "Listings - browsing available rental properties.",
-      },
-       {
-        src: "/images/projects/stayease/three.png",
-        caption:
-          "Detail page of a listing",
-      }
-    ],
-
-    features: [
-      "Built a full-stack rental marketplace using React, Node.js, Express.js, and MongoDB.",
-      "Developed REST APIs, secure authentication, and complete CRUD workflows for property listings, bookings, and user accounts.",
-      "Implemented property search, filtering, and image uploads.",
-      "Designed a responsive rental experience using reusable frontend components.",
-    ],
-  },
+  
 ];
