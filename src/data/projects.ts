@@ -264,7 +264,16 @@ images: [
       {
         src: "/images/projects/stayease/one.png",
         caption:
+          "Homepage",
+      },  {
+        src: "/images/projects/stayease/two.png",
+        caption:
           "Listings - browsing available rental properties.",
+      },
+       {
+        src: "/images/projects/stayease/three.png",
+        caption:
+          "Detail page of a listing",
       }
     ],
 
