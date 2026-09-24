@@ -245,7 +245,7 @@ images: [
     subtitle:
       "A rental marketplace engineered around search, authentication, and media management.",
 
-    liveUrl: "https://stayease-smsm.onrender.com/listings/",
+    liveUrl: "https://stayease-smsm.onrender.com/",
     githubUrl: "https://github.com/pprachhiii/StayEase",
 
     stack: [
